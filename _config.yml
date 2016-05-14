@@ -28,7 +28,11 @@ i18n_dir: :lang
 skip_render:
 
 # 头像
-avatar: "https://avatars1.githubusercontent.com/u/13213680?v=3&u=891fee6770a01d7cefb5f4b84f3393ddd0e80eb8&s=140"
+# avatar: https://avatars1.githubusercontent.com/u/13213680?v=3&u=891fee6770a01d7cefb5f4b84f3393ddd0e80eb8&s=140
+avatar: "/images/default_avatar.jpg"
+
+# 多说
+duoshuo_shortname: "short name"
 
 # Writing
 new_post_name: :title.md # File name of new posts
