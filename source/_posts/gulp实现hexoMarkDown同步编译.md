@@ -1,5 +1,5 @@
 ---
-title: hexo边写边看
+title: gulp实现hexoMarkDown同步编译
 date: 2016-05-14 17:02:07
 tags:
 ---
