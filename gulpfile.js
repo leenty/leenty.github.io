@@ -25,5 +25,5 @@ gulp.task('server',shell.task([
 gulp.task('watch',function(){
   // liveReload.listen();
   gulp.start('server');
-  gulp.watch("./source/*/*md",['default']);
+  gulp.watch(["./source/*/*md","./_config.yml"],['default']);
 })
