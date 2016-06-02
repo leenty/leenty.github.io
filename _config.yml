@@ -7,7 +7,7 @@ title: leenty blog
 subtitle:
 description:
 author: leenty
-language:
+language: zh-CN
 timezone:
 
 # URL
@@ -29,10 +29,25 @@ skip_render:
 
 # 头像
 # avatar: https://avatars1.githubusercontent.com/u/13213680?v=3&u=891fee6770a01d7cefb5f4b84f3393ddd0e80eb8&s=140
-avatar: "/images/default_avatar.jpg"
+avatar: "/img/default_avatar.png"
 
 # 多说
-duoshuo_shortname: "short name"
+#你的头像url
+#是否开启分享
+share_jia: true
+share_addthis: false
+#是否开启多说评论，填写你在多说申请的项目名称 duoshuo: duoshuo-key
+#若使用disqus，请在博客config文件中填写disqus_shortname，并关闭多说评论
+# duoshuo: e3169a75a5d51e34271f3619013acaf4
+duoshuo: true
+duoshuo_shortname: "leenty"
+#是否开启云标签
+tagcloud: true
+
+
+# livereload:
+#   port: 4000
+
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -71,6 +86,44 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: yilia
+
+# Header
+menu:
+  主页: /
+  # 随笔: /tags/随笔
+  所有文章: /archives
+
+# SubNav
+subnav:
+  github: "https://github.com/leenty"
+  # weibo: "#"
+  # rss: "#"
+  # zhihu: "#"
+  #douban: "#"
+  #mail: "#"
+  #facebook: "#"
+  #google: "#"
+  #twitter: "#"
+  #linkedin: "#"
+
+
+#是否开启友情链接
+#不开启——
+friends: false
+#开启——
+# friends:
+#   奥巴马的博客: http://localhost:4000/
+#   卡卡的美丽传说: http://localhost:4000/
+#   本泽马的博客: http://localhost:4000/
+#   吉格斯的博客: http://localhost:4000/
+#   习大大大不同: http://localhost:4000/
+#   托蒂的博客: http://localhost:4000/
+
+#是否开启“关于我”。
+#不开启——
+#aboutme: false
+#开启——
+aboutme: 这是一只具有捣(xia)鼓(gao)精神的前端
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
