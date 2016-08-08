@@ -70,7 +70,7 @@
 						<li>Tags</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -337,8 +337,12 @@
 <p>几秒钟后你的hexo项目就创建好了</p>
 <p>接下来就可以看看这个项目了，在此之前需要先生成静态页面。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：hexo generate (缩写：hexo g)</span><br></pre></td></tr></table></figure>
-<p>开始本地预览服务</p>
-<p>命令：hexo server</p>
+<p>进入文件观察模式，实时编译你的文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：hexo generate --watch</span><br></pre></td></tr></table></figure></p>
+<p>开始本地预览服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：hexo server</span><br></pre></td></tr></table></figure></p>
+<p>指定地址开启预览<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：hexo server -i localhost -p 4000</span><br></pre></td></tr></table></figure></p>
+<p>部署<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy (hexo D)</span><br></pre></td></tr></table></figure></p>
+<h2 id="进阶："><a href="#进阶：" class="headerlink" title="进阶："></a>进阶：</h2><p>利用package.json的scripts来搞点事情<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"hexo server -i localhost -p 4000"</span>,</span><br><span class="line">    <span class="string">"watch"</span>: <span class="string">"hexo g -w"</span>,</span><br><span class="line">    <span class="string">"deploy"</span>:<span class="string">"hexo D"</span>,</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"npm run server &amp;&amp; npm run watch"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>将上述代码写在package.json里，就可以通过<code>npm run server</code>来开启服务<br>通过<code>npm run generate</code>来启动文件观察模式<br>通过<code>npm run deploy</code>来部署博客<br>当然，最最主要的是可以通过<code>npm run dev</code>同时开启服务和观察模式</p>
 
       
     </div>
