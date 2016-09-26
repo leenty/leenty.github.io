@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>gulp实现hexoMarkDown同步编译 | leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作为一个前端，作为一个具有捣(zhuang)鼓(bi)精神的前端，心想着得有一个可以写写技术文章的地方呀！于是就开始玩起了hexo。
+虽然说Markdown设计之初就是为了方便作者快捷的写作。但是作为一个有强迫症的前端，写了一段总想看看写成了什么样子，但无奈看一眼得切到命令行bash输入1hexo generate //缩写 hexo g
+在hexo编译完成后又切到浏览器刷新查看。心想，这不行啊，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gulp实现hexoMarkDown同步编译">
+<meta property="og:url" content="http://baidu.com/2016/05/14/gulp实现hexoMarkDown同步编译/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="作为一个前端，作为一个具有捣(zhuang)鼓(bi)精神的前端，心想着得有一个可以写写技术文章的地方呀！于是就开始玩起了hexo。
+虽然说Markdown设计之初就是为了方便作者快捷的写作。但是作为一个有强迫症的前端，写了一段总想看看写成了什么样子，但无奈看一眼得切到命令行bash输入1hexo generate //缩写 hexo g
+在hexo编译完成后又切到浏览器刷新查看。心想，这不行啊，">
+<meta property="og:updated_time" content="2016-08-30T15:49:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gulp实现hexoMarkDown同步编译">
+<meta name="twitter:description" content="作为一个前端，作为一个具有捣(zhuang)鼓(bi)精神的前端，心想着得有一个可以写写技术文章的地方呀！于是就开始玩起了hexo。
+虽然说Markdown设计之初就是为了方便作者快捷的写作。但是作为一个有强迫症的前端，写了一段总想看看写成了什么样子，但无奈看一眼得切到命令行bash输入1hexo generate //缩写 hexo g
+在hexo编译完成后又切到浏览器刷新查看。心想，这不行啊，">
+  
+    <link rel="alternate" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">leenty blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://baidu.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-gulp实现hexoMarkDown同步编译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/14/gulp实现hexoMarkDown同步编译/" class="article-date">
+  <time datetime="2016-05-14T09:02:07.000Z" itemprop="datePublished">2016-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      gulp实现hexoMarkDown同步编译
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>作为一个前端，作为一个具有捣(zhuang)鼓(bi)精神的前端，心想着得有一个可以写写技术文章的地方呀！于是就开始玩起了hexo。</strong></p>
+<p>虽然说Markdown设计之初就是为了方便作者快捷的写作。但是作为一个有强迫症的前端，写了一段总想看看写成了什么样子，但无奈看一眼得切到命令行bash输入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment">//缩写 hexo g</span></div></pre></td></tr></table></figure></p>
+<p>在hexo编译完成后又切到浏览器刷新查看。心想，这不行啊，这样子怎么对得起捣(zhuang)鼓(bi)精神。于是就想着在里面加入gulp的想法。话不多说，下面就上代码。</p>
+<h2 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h2><p>和hexo一样gulp也是需要全局安装的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i gulp -g</div></pre></td></tr></table></figure></p>
+<h2 id="安装gulp-shell"><a href="#安装gulp-shell" class="headerlink" title="安装gulp-shell"></a>安装gulp-shell</h2><p>gulp并没有hexo的组件，所以这里选择使用gulp-shell来实现。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -D gulp-shell</div></pre></td></tr></table></figure></p>
+<h2 id="编写gulpfile-js文件"><a href="#编写gulpfile-js文件" class="headerlink" title="编写gulpfile.js文件"></a>编写gulpfile.js文件</h2><p>新建并打开gulpfile.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim gulpfile.js</div></pre></td></tr></table></figure></p>
+<p>编写gulp代码,引入gulp、gulp-shell和gulp-notify<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> shell = <span class="built_in">require</span>(<span class="string">'gulp-shell'</span>);<span class="comment">//bash输入</span></div><div class="line"><span class="keyword">var</span> notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>);<span class="comment">//系统通知</span></div></pre></td></tr></table></figure></p>
+<p>编写默认任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">"default"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.src(<span class="string">"./public/index.html"</span>)</div><div class="line">    .pipe(shell([</div><div class="line">      <span class="string">'hexo g'</span></div><div class="line">    ]))</div><div class="line">    .pipe(notify(<span class="string">'hexo编译完成！'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>可以在bash里使用<code>gulp</code>来启动默认任务</p>
+<p>之前有用过gulp的同学可能会发现我gulp的src方法获取的地址只是一个文件，而且也没有指向source文件夹下的.md文件，这是因为这里根本不需要src方法来得到文件流。这里需要的只是其后的pipe方法来运行shell方法。<br>然而gulp-shell还提供了另一种方法来执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'default'</span>, shell.task([</div><div class="line">  <span class="string">'hexo g'</span></div><div class="line">]));</div></pre></td></tr></table></figure></p>
+<p>只是这样的方法却是不能接pipe方法也就不能使用notify的系统通知了。权衡之下，我选择了前者。</p>
+<h2 id="编写watch任务"><a href="#编写watch任务" class="headerlink" title="编写watch任务"></a>编写watch任务</h2><p>watch任务会监听指定文件的变更来触发默认任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.watch(<span class="string">"./source/*/*md"</span>,[<span class="string">'default'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>在bash里使用<code>gulp watch</code>来启动watch任务<br>在编写完watch任务后，尽管已经解决了自动构建，但是本地调试却需要另一个bash界面来开启hexo的服务。<br>于是，我还需要一个server任务来启动服务</p>
+<h2 id="编写server任务"><a href="#编写server任务" class="headerlink" title="编写server任务"></a>编写server任务</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'server'</span>,shell.task([</div><div class="line">  <span class="string">'hexo server'</span></div><div class="line">]));</div></pre></td></tr></table></figure>
+<p>在bash里使用 <code>gulp server</code>来启动server任务<br>于是这里就可以改写watch任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.start(<span class="string">'server'</span>);</div><div class="line">  gulp.watch(<span class="string">"./source/*/*md"</span>,[<span class="string">'default'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>这样就可以在启动watch任务的时候也开启本地服务了。<br>到了这一步，就可以在bash命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp watch</div></pre></td></tr></table></figure></p>
+<p>回车后就可以开始边写边看了</p>
+<p><strong>这里还缺少了自动刷新的功能，这个功能使用我之前的方法并不能起到作用，还需要再思考思考</strong></p>
+<p>好了，我的第一篇技术文章就这么结束了，哈哈。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://baidu.com/2016/05/14/gulp实现hexoMarkDown同步编译/" data-id="citk91ao800027exm06sde374" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/02/git入门级-在github创建项目/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          git入门级--在github创建项目
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/07/hexo-基础操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo 基础操作</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/30/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/06/02/git入门级-在github创建项目/">git入门级--在github创建项目</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/14/gulp实现hexoMarkDown同步编译/">gulp实现hexoMarkDown同步编译</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/07/hexo-基础操作/">hexo 基础操作</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/02/first-article/">first article</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 leenty<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
