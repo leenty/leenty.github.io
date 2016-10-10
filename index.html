@@ -122,6 +122,53 @@
       <div class="body-wrap">
         
   
+    <article id="post-使用原生js以base64读取本地图片文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/11/使用原生js以base64读取本地图片文件/">使用原生js以base64读取本地图片文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。<br>这里为了备忘，记录下。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">File.prototype.convertToBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> FR= <span class="keyword">new</span> FileReader();</div><div class="line">    FR.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">         callback(e.target.result)</div><div class="line">    &#125;;       </div><div class="line">    FR.readAsDataURL(<span class="keyword">this</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'[type="file"]'</span>).files[<span class="number">0</span>].convertToBase64(<span class="function"><span class="keyword">function</span>(<span class="params">base64</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(base64);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/11/使用原生js以base64读取本地图片文件/" class="archive-article-date">
+  	<time datetime="2016-10-10T17:01:23.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-zz的我和hexo多说配置" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -140,7 +187,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在-config-yml中添加多说的配置："><a href="#在-config-yml中添加多说的配置：" class="headerlink" title="在_config.yml中添加多说的配置："></a>在_config.yml中添加多说的配置：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">duoshuo: 你站点的short_name</div><div class="line">duoshuo_shortname: 你站点的short_name</div></pre></td></tr></table></figure>
+        <h3 id="在-config-yml中添加多说的配置："><a href="#在-config-yml中添加多说的配置：" class="headerlink" title="在_config.yml中添加多说的配置："></a>在_config.yml中添加多说的配置：</h3><p><strong>(⚠️注意：_config.yml在根目录和主题根目录都会存在，主题目录下的文件信息将会覆盖根目录的文件信息)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">duoshuo: 你站点的short_name</div><div class="line">duoshuo_shortname: 你站点的short_name</div></pre></td></tr></table></figure></p>
 <p>修改<code>themes\landscape\layout\_partial\article.ejs</code>模板<br><strong>把</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</div><div class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</div><div class="line">    &lt;div id=<span class="string">"disqus_thread"</span>&gt;</div><div class="line">      &lt;noscript&gt;Please <span class="built_in">enable</span> JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
 <p><strong>改为</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</div><div class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</div><div class="line">    &lt;!-- 多说评论框 start --&gt;</div><div class="line">    &lt;div class=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;"</span> data-title=<span class="string">"&lt;%= post.title %&gt;"</span> data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- 多说评论框 end --&gt;</div><div class="line">    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    var duoshuoQuery = &#123;short_name:<span class="string">'&lt;%= config.duoshuo_shortname %&gt;'</span>&#125;;</div><div class="line">      (<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ds = document.createElement(<span class="string">'script'</span>);</div><div class="line">        ds.type = <span class="string">'text/javascript'</span>;</div><div class="line">        ds.async = <span class="literal">true</span>;</div><div class="line">        ds.src = (document.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</div><div class="line">        ds.charset = <span class="string">'UTF-8'</span>;</div><div class="line">        (document.getElementsByTagName(<span class="string">'head'</span>)[0] </div><div class="line">         || document.getElementsByTagName(<span class="string">'body'</span>)[0]).appendChild(ds);</div><div class="line">      &#125;)();</div><div class="line">      &lt;/script&gt;</div><div class="line">    &lt;!-- 多说公共JS代码 end --&gt;</div><div class="line">  &lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
 <h3 id="同时使用多个deployer"><a href="#同时使用多个deployer" class="headerlink" title="同时使用多个deployer"></a>同时使用多个deployer</h3><p>单个deployer的时候的 _config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:leenty/leenty.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
@@ -171,7 +218,7 @@
 
 
   
-    <article id="post-晒一晒我的prefernces-sublime-setting" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-推荐一个不错的sublime UI界面美化方案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -181,7 +228,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/06/晒一晒我的prefernces-sublime-setting/">晒一晒我的prefernces.sublime-setting</a>
+      <a class="article-title" href="/2016/10/06/推荐一个不错的sublime UI界面美化方案/">推荐一个不错的sublime UI界面美化方案</a>
     </h1>
   
 
@@ -189,14 +236,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="推荐正在用的一个不错的sublime-UI美化界面"><a href="#推荐正在用的一个不错的sublime-UI美化界面" class="headerlink" title="推荐正在用的一个不错的sublime UI美化界面"></a>推荐正在用的一个不错的sublime UI美化界面</h2><p><img src="/img/prefernces-sublime-setting.png" alt="prefernces-sublime-setting"></p>
+        <h2 id="晒一晒我的prefernces-sublime-setting"><a href="#晒一晒我的prefernces-sublime-setting" class="headerlink" title="晒一晒我的prefernces.sublime-setting"></a>晒一晒我的prefernces.sublime-setting</h2><p>界面如图<br><img src="/img/prefernces-sublime-setting.png" alt="prefernces-sublime-setting"></p>
 <h3 id="主题地址"><a href="#主题地址" class="headerlink" title="主题地址"></a>主题地址</h3><p><a href="https://github.com/equinusocio/material-theme" target="_blank" rel="external">equinusocio/material-theme</a><br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"always_show_minimap_viewport"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"color_scheme"</span>: <span class="string">"Packages/Material Theme/schemes/Material-Theme.tmTheme"</span>,</div><div class="line">	<span class="attr">"file_exclude_patterns"</span>:</div><div class="line">	[</div><div class="line">		<span class="string">".DS_Store"</span></div><div class="line">	],</div><div class="line">	<span class="attr">"folder_exclude_patterns"</span>:</div><div class="line">	[</div><div class="line">		<span class="string">".git"</span>,</div><div class="line">		<span class="string">"node_modules"</span>,</div><div class="line">		<span class="string">"public/static"</span></div><div class="line">	],</div><div class="line">	<span class="attr">"font_size"</span>: <span class="number">12</span>,</div><div class="line">	<span class="attr">"ignored_packages"</span>:</div><div class="line">	[</div><div class="line">		<span class="string">"Vintage"</span></div><div class="line">	],</div><div class="line">	<span class="attr">"line_padding_bottom"</span>: <span class="number">3</span>,</div><div class="line">	<span class="attr">"line_padding_top"</span>: <span class="number">3</span>,</div><div class="line">	<span class="attr">"material_theme_accent_sky"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_compact_sidebar"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_contrast_mode"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_disable_tree_indicator"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_panel_separator"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_small_statusbar"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_small_tab"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_tabs_autowidth"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_tabs_separator"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_tree_headings"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"overlay_scroll_bars"</span>: <span class="string">"enabled"</span>,</div><div class="line">	<span class="attr">"tab_size"</span>: <span class="number">2</span>,</div><div class="line">	<span class="attr">"theme"</span>: <span class="string">"Material-Theme.sublime-theme"</span>,</div><div class="line">	<span class="attr">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"word_warp"</span>: <span class="string">"auto"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/10/06/晒一晒我的prefernces-sublime-setting/" class="archive-article-date">
+      <a href="/2016/10/06/推荐一个不错的sublime UI界面美化方案/" class="archive-article-date">
   	<time datetime="2016-10-06T15:22:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-06</time>
 </a>
       
@@ -564,7 +611,7 @@
   		
   			<div class="friends-wrap" id="js-friends">
   			
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://leenty.coding.io/">coding博客地址</a>
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty博客地址</a>
   	        
   	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://leenty.github.io/">github博客地址</a>
   	        
