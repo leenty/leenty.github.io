@@ -109,15 +109,12 @@ subnav:
 
 #是否开启友情链接
 #不开启——
-friends: false
+# friends: false
 #开启——
-# friends:
-#   奥巴马的博客: http://localhost:4000/
-#   卡卡的美丽传说: http://localhost:4000/
-#   本泽马的博客: http://localhost:4000/
-#   吉格斯的博客: http://localhost:4000/
-#   习大大大不同: http://localhost:4000/
-#   托蒂的博客: http://localhost:4000/
+friends:
+  leenty博客地址: http://www.leenty.com/
+  github博客地址: https://leenty.github.io/
+  沈雨彬的博客: https://shenyubin.github.io/
 
 #是否开启“关于我”。
 #不开启——
@@ -134,3 +131,6 @@ deploy:
 - type: git
   repo: git@git.coding.net:leenty/leenty.git
   branch: master
+#  - type: git
+#  repo: git@git.oschina.net:leenty/leenty.git
+#  branch: master

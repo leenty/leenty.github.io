@@ -1,9 +1,10 @@
 ---
-title: 晒一晒我的prefernces.sublime-setting
+title: 推荐一个不错的sublime UI界面美化方案
 date: 2016-10-06 23:22:02
 tags:
 ---
-## 推荐正在用的一个不错的sublime UI美化界面
+## 晒一晒我的prefernces.sublime-setting
+界面如图
 ![prefernces-sublime-setting](/img/prefernces-sublime-setting.png)
 
 ### 主题地址

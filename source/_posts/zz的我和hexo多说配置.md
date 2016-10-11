@@ -4,6 +4,7 @@ date: 2016-10-08 00:04:33
 tags:
 ---
 ### 在_config.yml中添加多说的配置：
+**(⚠️注意：_config.yml在根目录和主题根目录都会存在，主题目录下的文件信息将会覆盖根目录的文件信息)**
 ```
 duoshuo: 你站点的short_name
 duoshuo_shortname: 你站点的short_name
