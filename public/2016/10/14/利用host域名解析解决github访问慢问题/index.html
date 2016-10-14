@@ -4,21 +4,23 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>使用原生js以base64读取本地图片文件 | leenty blog</title>
+  <title>利用host域名解析解决github访问慢问题 | leenty blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="起因在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。这里为了备忘，记录下。
-代码1234567File.prototype.convertToBase64 = function(callback)&amp;#123;">
+  <meta name="description" content="起因最近家里访问github数度越来越慢，今天已经是异常的慢了，于是开始寻找解决的办法遇到打不开的网站，本能的搬起‘梯子‘去翻墙，问题就这么解决了。。。不对啊！我去！github什么时候需要翻墙访问啦？
+so我开始寻找不翻墙的方法。先看这张图发现其实github.com的响应速度并不慢，而真正拖慢速度的是assets-cdn.github.com（其中pending的部分）这基本是由dns污染所导">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用原生js以base64读取本地图片文件">
-<meta property="og:url" content="http://baidu.com/2016/10/11/使用原生js以base64读取本地图片文件/index.html">
+<meta property="og:title" content="利用host域名解析解决github访问慢问题">
+<meta property="og:url" content="http://baidu.com/2016/10/14/利用host域名解析解决github访问慢问题/index.html">
 <meta property="og:site_name" content="leenty blog">
-<meta property="og:description" content="起因在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。这里为了备忘，记录下。
-代码1234567File.prototype.convertToBase64 = function(callback)&amp;#123;">
-<meta property="og:updated_time" content="2016-10-10T17:02:02.000Z">
+<meta property="og:description" content="起因最近家里访问github数度越来越慢，今天已经是异常的慢了，于是开始寻找解决的办法遇到打不开的网站，本能的搬起‘梯子‘去翻墙，问题就这么解决了。。。不对啊！我去！github什么时候需要翻墙访问啦？
+so我开始寻找不翻墙的方法。先看这张图发现其实github.com的响应速度并不慢，而真正拖慢速度的是assets-cdn.github.com（其中pending的部分）这基本是由dns污染所导">
+<meta property="og:image" content="http://baidu.com/img/github-network.png">
+<meta property="og:updated_time" content="2016-10-14T15:47:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用原生js以base64读取本地图片文件">
-<meta name="twitter:description" content="起因在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。这里为了备忘，记录下。
-代码1234567File.prototype.convertToBase64 = function(callback)&amp;#123;">
+<meta name="twitter:title" content="利用host域名解析解决github访问慢问题">
+<meta name="twitter:description" content="起因最近家里访问github数度越来越慢，今天已经是异常的慢了，于是开始寻找解决的办法遇到打不开的网站，本能的搬起‘梯子‘去翻墙，问题就这么解决了。。。不对啊！我去！github什么时候需要翻墙访问啦？
+so我开始寻找不翻墙的方法。先看这张图发现其实github.com的响应速度并不慢，而真正拖慢速度的是assets-cdn.github.com（其中pending的部分）这基本是由dns污染所导">
+<meta name="twitter:image" content="http://baidu.com/img/github-network.png">
   
     <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
   
@@ -127,7 +129,7 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-使用原生js以base64读取本地图片文件" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-利用host域名解析解决github访问慢问题" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -137,7 +139,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用原生js以base64读取本地图片文件
+      利用host域名解析解决github访问慢问题
     </h1>
   
 
@@ -145,16 +147,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。<br>这里为了备忘，记录下。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">File.prototype.convertToBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> FR= <span class="keyword">new</span> FileReader();</div><div class="line">    FR.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">         callback(e.target.result)</div><div class="line">    &#125;;       </div><div class="line">    FR.readAsDataURL(<span class="keyword">this</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'[type="file"]'</span>).files[<span class="number">0</span>].convertToBase64(<span class="function"><span class="keyword">function</span>(<span class="params">base64</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(base64);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+        <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>最近家里访问github数度越来越慢，今天已经是异常的慢了，于是开始寻找解决的办法<br>遇到打不开的网站，本能的搬起‘梯子‘去翻墙，问题就这么解决了。。。<br><strong><em>不对啊！我去！</em></strong><br><strong><em>github什么时候需要翻墙访问啦？</em></strong></p>
+<h3 id="so"><a href="#so" class="headerlink" title="so"></a>so</h3><p>我开始寻找不翻墙的方法。<br>先看这张图<br><img src="/img/github-network.png" alt="github-network"><br>发现其实github.com的响应速度并不慢，而真正拖慢速度的是assets-cdn.github.com（其中pending的部分）<br>这基本是由dns污染所导致，所以只要通过host映射到一个畅通的IP上就会变的好起来。<br>进入一个<a href="http://tool.chinaz.com/dns" target="_blank" rel="external">dns域名检测</a>的网站，在其中查询assets-cdn.github.com<br>会搜出一个dns列表，选择其中TTL值最小的一个IP，复制出来<br>命令行工具打开你的hosts文件（这里以macOS为例,如果你使用windows的git命令行工具，操作就是差不多的）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/hosts</div></pre></td></tr></table></figure></p>
+<p>在hosts文件最下方添加刚刚复制出来的IP<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">151.101.xxx.xxx assets-cdn.github.com</div></pre></td></tr></table></figure></p>
+<p><strong>具体vim操作步骤：</strong></p>
+<ol>
+<li>按下<code>shift + g</code>跳至页尾</li>
+<li>按下<code>o</code>创建新的一行</li>
+<li>按下<code>ctrl/command + v</code> 粘贴刚刚复制的IP</li>
+<li>而后打个空格</li>
+<li>接着输入<code>assets-cdn.github.com</code></li>
+<li>按下<code>esc</code>退出编辑模式</li>
+<li>输入<code>:wq</code>保存退出<br>如此就大功告成了。<br>如果还不会用vim，也可以用其他编辑器打开做修改。<br>保存之后，就可以尝试再次访问github了，多刷几遍就能进去。<br>如果还是进不去可以输入命令<code>sudo dscacheutil -flushcache</code>更新dns缓存，这样就可以进入了。</li>
+</ol>
 
       
     </div>
     <div class="article-info article-info-index">
       
-      <a href="/2016/10/11/使用原生js以base64读取本地图片文件/" class="archive-article-date">
-  	<time datetime="2016-10-10T17:01:23.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
+      <a href="/2016/10/14/利用host域名解析解决github访问慢问题/" class="archive-article-date">
+  	<time datetime="2016-10-14T14:57:09.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-14</time>
 </a>
       
       
@@ -167,18 +179,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          用ES6语法写的btnSelect下拉按钮
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/08/zz的我和hexo多说配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">zz的我和hexo多说配置</div>
+    <a href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">用ES6语法写的btnSelect下拉按钮</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -212,7 +215,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="使用原生js以base64读取本地图片文件" data-title="使用原生js以base64读取本地图片文件" data-url="http://baidu.com/2016/10/11/使用原生js以base64读取本地图片文件/"></div>
+	<div class="ds-thread" data-thread-key="利用host域名解析解决github访问慢问题" data-title="利用host域名解析解决github访问慢问题" data-url="http://baidu.com/2016/10/14/利用host域名解析解决github访问慢问题/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

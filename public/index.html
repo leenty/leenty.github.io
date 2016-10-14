@@ -122,6 +122,63 @@
       <div class="body-wrap">
         
   
+    <article id="post-利用host域名解析解决github访问慢问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/14/利用host域名解析解决github访问慢问题/">利用host域名解析解决github访问慢问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>最近家里访问github数度越来越慢，今天已经是异常的慢了，于是开始寻找解决的办法<br>遇到打不开的网站，本能的搬起‘梯子‘去翻墙，问题就这么解决了。。。<br><strong><em>不对啊！我去！</em></strong><br><strong><em>github什么时候需要翻墙访问啦？</em></strong></p>
+<h3 id="so"><a href="#so" class="headerlink" title="so"></a>so</h3><p>我开始寻找不翻墙的方法。<br>先看这张图<br><img src="/img/github-network.png" alt="github-network"><br>发现其实github.com的响应速度并不慢，而真正拖慢速度的是assets-cdn.github.com（其中pending的部分）<br>这基本是由dns污染所导致，所以只要通过host映射到一个畅通的IP上就会变的好起来。<br>进入一个<a href="http://tool.chinaz.com/dns" target="_blank" rel="external">dns域名检测</a>的网站，在其中查询assets-cdn.github.com<br>会搜出一个dns列表，选择其中TTL值最小的一个IP，复制出来<br>命令行工具打开你的hosts文件（这里以macOS为例,如果你使用windows的git命令行工具，操作就是差不多的）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/hosts</div></pre></td></tr></table></figure></p>
+<p>在hosts文件最下方添加刚刚复制出来的IP<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">151.101.xxx.xxx assets-cdn.github.com</div></pre></td></tr></table></figure></p>
+<p><strong>具体vim操作步骤：</strong></p>
+<ol>
+<li>按下<code>shift + g</code>跳至页尾</li>
+<li>按下<code>o</code>创建新的一行</li>
+<li>按下<code>ctrl/command + v</code> 粘贴刚刚复制的IP</li>
+<li>而后打个空格</li>
+<li>接着输入<code>assets-cdn.github.com</code></li>
+<li>按下<code>esc</code>退出编辑模式</li>
+<li>输入<code>:wq</code>保存退出<br>如此就大功告成了。<br>如果还不会用vim，也可以用其他编辑器打开做修改。<br>保存之后，就可以尝试再次访问github了，多刷几遍就能进去。<br>如果还是进不去可以输入命令<code>sudo dscacheutil -flushcache</code>更新dns缓存，这样就可以进入了。</li>
+</ol>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/14/利用host域名解析解决github访问慢问题/" class="archive-article-date">
+  	<time datetime="2016-10-14T14:57:09.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-14</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-用ES6语法写的btnSelect下拉按钮" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -623,7 +680,8 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
-		root: "/"
+		root: "/",
+		innerArchive: true
 	}
 </script>
 
@@ -708,7 +766,7 @@
 
                 <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
 
                 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 
