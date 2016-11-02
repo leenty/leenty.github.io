@@ -121,7 +121,7 @@ friends:
 #不开启——
 #aboutme: false
 #开启——
-aboutme: 这是一只具有捣(xia)鼓(gao)精神的前端
+aboutme: 不会捣(xia)鼓(gao)的前端不是好全栈
 
 # 在归档页面显示所有文章
 # 需要上面安装的 hexo-generator-archive 插件支持

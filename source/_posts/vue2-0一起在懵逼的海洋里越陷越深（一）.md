@@ -9,9 +9,28 @@ tags:
  
 ************
 
+![vue2.0](/img/vue/vue2.0.png)
+
 ** @周星星和江南另外三大才子有佳句流传：**
 山下一群鹅，嘘声赶落河.
 下河捉鹅医肚饿，吃完回家玩...
 呃...玩vue2.0 咳咳咳咳
-(睡觉睡觉半夜两点了。。。明天再写)
+
+** 先看看vue2.0多了哪些好玩的 **
+* virtual-DOM（据说不是普通的Virtual-DOM）
+* Templates || JSX || Hyperscript(现在，你可以选择你喜欢的编写模式进行开发了)
+* 流式服务端渲染（这个听起来很厉害，后面一起研究）
+* 其他（各种性能优化，更多想象发挥空间，更多可能）
+
+** 伴随着vue2.0的更新，vue生态链的其他组件也跟着进行了更新 **
+* vue-router
+* vue-resource
+* vue-cli
+
+### 好，进入正题
+先贴个地址，[我的vue2.0的demo](https://leenty.github.io/vue2.0-demo/)
+这个demo使用vue-cli快速生成还发环境
+加入vue-router做前端路由
+加入vue-resource做ajax
+于demo里目前使用hash模式
 
