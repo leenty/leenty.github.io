@@ -4,21 +4,14 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>使用原生js以base64读取本地图片文件 | leenty blog</title>
+  <title>Tag: sublime | leenty blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="起因在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。这里为了备忘，记录下。
-代码1234567File.prototype.convertToBase64 = function(callback)&amp;#123;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="使用原生js以base64读取本地图片文件">
-<meta property="og:url" content="http://baidu.com/2016/10/11/使用原生js以base64读取本地图片文件/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="leenty blog">
+<meta property="og:url" content="http://baidu.com/tags/sublime/index.html">
 <meta property="og:site_name" content="leenty blog">
-<meta property="og:description" content="起因在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。这里为了备忘，记录下。
-代码1234567File.prototype.convertToBase64 = function(callback)&amp;#123;">
-<meta property="og:updated_time" content="2016-11-06T15:12:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用原生js以base64读取本地图片文件">
-<meta name="twitter:description" content="起因在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。这里为了备忘，记录下。
-代码1234567File.prototype.convertToBase64 = function(callback)&amp;#123;">
+<meta name="twitter:title" content="leenty blog">
   
     <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
   
@@ -130,115 +123,54 @@
 </nav>
 
       <div class="body-wrap">
-        <article id="post-使用原生js以base64读取本地图片文件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      使用原生js以base64读取本地图片文件
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2016/10/06/推荐一个不错的sublime UI界面美化方案/" class="archive-article-date">
+  	<time datetime="2016-10-06T15:22:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-06</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/10/06/推荐一个不错的sublime UI界面美化方案/">推荐一个不错的sublime UI界面美化方案</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。<br>这里为了备忘，记录下。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">File.prototype.convertToBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> FR= <span class="keyword">new</span> FileReader();</div><div class="line">    FR.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">         callback(e.target.result)</div><div class="line">    &#125;;       </div><div class="line">    FR.readAsDataURL(<span class="keyword">this</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'[type="file"]'</span>).files[<span class="number">0</span>].convertToBase64(<span class="function"><span class="keyword">function</span>(<span class="params">base64</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(base64);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/11/使用原生js以base64读取本地图片文件/" class="archive-article-date">
-  	<time datetime="2016-10-10T17:01:23.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
-</a>
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
 	</div>
 
-      
+          
 
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          用ES6语法写的btnSelect下拉按钮
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/10/08/zz的我和hexo多说配置/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">zz的我和hexo多说配置</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-<div class="share_jia">
-	<!-- JiaThis Button BEGIN -->
-	<div class="jiathis_style">
-		<span class="jiathis_txt">Share to: &nbsp; </span>
-		<a class="jiathis_button_facebook"></a> 
-	    <a class="jiathis_button_twitter"></a>
-	    <a class="jiathis_button_plus"></a> 
-	    <a class="jiathis_button_tsina"></a>
-		<a class="jiathis_button_cqq"></a>
-		<a class="jiathis_button_douban"></a>
-		<a class="jiathis_button_weixin"></a>
-		<a class="jiathis_button_tumblr"></a>
-    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	</div>
-	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
-	<!-- JiaThis Button END -->
-</div>
-
-
-
-
-
-
-<div class="duoshuo">
-	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="使用原生js以base64读取本地图片文件" data-title="使用原生js以base64读取本地图片文件" data-url="http://baidu.com/2016/10/11/使用原生js以base64读取本地图片文件/"></div>
-	<!-- 多说评论框 end -->
-	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-	<script type="text/javascript">
-	var duoshuoQuery = {short_name:"leenty-blog"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-	<!-- 多说公共JS代码 end -->
-</div>
-
-
-
+    
 
 
       </div>
@@ -261,9 +193,9 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

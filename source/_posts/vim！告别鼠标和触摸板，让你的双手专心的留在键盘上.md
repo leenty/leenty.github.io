@@ -1,7 +1,7 @@
 ---
 title: vim！告别鼠标和触摸板，让你的双手专心的留在键盘上[未完待续]
 date: 2016-10-15 16:02:50
-tags:
+tags: vim
 ---
 ### vim从懵懂入坑到生无可恋
 ![mengbiboyi](/img/face/mengbiboyi.png)

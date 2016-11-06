@@ -1,7 +1,7 @@
 ---
 title: git入门级--在github创建项目
 date: 2016-06-02 21:42:13
-tags:
+tags: [git,github]
 ---
 ## git分布式版本控制系统
 我第一个接触的版本控制系统是svn，当时觉得版本控制就是这样，直到我遇到了git...
@@ -63,3 +63,4 @@ git push origin master
 ![](/img/git-1/2016-06-02_211908.png)
 ## 补充
 这里使用的bash是[git(戳这里下载)](https://www.baidu.com/link?url=3rT5SSGCqN8J3w0rw8T7fHKvTEZ6NiYfDK5sxYGK5GCTeEp3A0ufmhe8YVi0-zGiMpcEIk2ibq0s1J-z_Ys8x5VLcpDCwbgvNEE7RBVBj6O&wd=&eqid=a85caa0700009e1500000004575021d8)自带的，如果觉得打命令搞不懂，可以试试图形化界面(例如：sourcetree)
+

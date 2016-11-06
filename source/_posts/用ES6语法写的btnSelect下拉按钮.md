@@ -1,7 +1,7 @@
 ---
 title: 用ES6语法写的btnSelect下拉按钮
 date: 2016-10-13 00:43:04
-tags:
+tags: [ES6,js]
 ---
 ### btnSelect下拉按钮
 按钮支持多个按钮关联，带联想功能

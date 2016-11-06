@@ -1,7 +1,7 @@
 ---
 title: hexo 基础操作
 date: 2016-05-07 14:36:28
-tags:
+tags: hexo
 ---
 # 安装hexo
 
@@ -63,3 +63,5 @@ hexo deploy (缩写：hexo D)
 通过```npm run watch```来启动文件观察模式
 通过```npm run deploy```来部署博客
 当然，最最主要的是可以通过```npm run dev```同时开启服务和观察模式
+
+

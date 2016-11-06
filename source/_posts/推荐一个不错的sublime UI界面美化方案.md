@@ -1,7 +1,7 @@
 ---
 title: 推荐一个不错的sublime UI界面美化方案
 date: 2016-10-06 23:22:02
-tags:
+tags: sublime
 ---
 ## 晒一晒我的prefernces.sublime-setting
 界面如图
