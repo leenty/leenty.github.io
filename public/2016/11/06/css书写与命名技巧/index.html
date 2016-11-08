@@ -16,7 +16,7 @@
 <meta property="og:description" content="于日常的项目中，小型项目还好，css即使没怎么规划也不至于特别的乱，但一旦项目里css有一定的基数时，css就会显得混乱起来。于是。。。
 可能就遇到了这种情况:情况1.哎呀！这个地方布局有点问题，我改一下，于是看到了一堆css选择器，当你想要修改某个class时又害怕会影响到其他在使用这个class的组件，于是就很尴尬的又写了一个class加在上面。
 情况2.css命名冲突，你将要命名的class">
-<meta property="og:updated_time" content="2016-11-06T16:47:35.000Z">
+<meta property="og:updated_time" content="2016-11-08T16:40:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css书写与命名技巧">
 <meta name="twitter:description" content="于日常的项目中，小型项目还好，css即使没怎么规划也不至于特别的乱，但一旦项目里css有一定的基数时，css就会显得混乱起来。于是。。。
@@ -156,19 +156,9 @@
 <h4 id="情况2"><a href="#情况2" class="headerlink" title="情况2."></a>情况2.</h4><p>css命名冲突，你将要命名的class命已经被使用，更惨的是其他意思相近的命名单词也被使用了，这下就词穷了🤕</p>
 <h4 id="情况3"><a href="#情况3" class="headerlink" title="情况3."></a>情况3.</h4><p>毫无意义的命名：(写的时候class的意思只有自己和上帝知道，现在只有上帝知道了🙆🏻)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.abc</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>其他前端：一脸懵逼</p>
-<h3 id="针对上面的问题，于是就在命名上开始做出改变，然而却😟"><a href="#针对上面的问题，于是就在命名上开始做出改变，然而却😟" class="headerlink" title="针对上面的问题，于是就在命名上开始做出改变，然而却😟"></a>针对上面的问题，于是就在命名上开始做出改变，然而却😟</h3><h4 id="情况4"><a href="#情况4" class="headerlink" title="情况4."></a>情况4.</h4><p>过于语义化的命名（这里举个略微夸张且有些不恰当的栗子🌰）    </p>
-<pre><code class="css"><span class="selector-class">.navigation-width-full-line</span>{
-    <span class="attribute">width</span>: <span class="number">100%</span>;
-    <span class="attribute">height</span>: <span class="number">50px</span>;
-}
-</code></pre>
-<p>这样是把意义描述清楚了，但是命名却是过长了</p>
-<h4 id="情况5"><a href="#情况5" class="headerlink" title="情况5."></a>情况5.</h4><p>有语义却不够直接简洁的命名    </p>
-<pre><code class="css"><span class="selector-class">.navigation-responsive</span>{
-    <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">1</span> <span class="number">10%</span>;
-}
-</code></pre>
+<h3 id="针对上面的问题，于是就在命名上开始做出改变，然而却😟"><a href="#针对上面的问题，于是就在命名上开始做出改变，然而却😟" class="headerlink" title="针对上面的问题，于是就在命名上开始做出改变，然而却😟"></a>针对上面的问题，于是就在命名上开始做出改变，然而却😟</h3><h4 id="情况4"><a href="#情况4" class="headerlink" title="情况4."></a>情况4.</h4><p>过于语义化的命名（这里举个略微夸张且有些不恰当的栗子🌰）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.navigation-width-full-line</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line">这样是把意义描述清楚了，但是命名却是过长了</div><div class="line">#### 情况5. </div><div class="line">有语义却不够直接简洁的命名    </div><div class="line">```<span class="selector-tag">css</span></div><div class="line"><span class="selector-class">.navigation-responsive</span>&#123;</div><div class="line">    <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">1</span> <span class="number">10%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这样无形中增加了记忆成本</p>
+<h3 id="命名规范-BEM"><a href="#命名规范-BEM" class="headerlink" title="命名规范 BEM"></a>命名规范 BEM</h3><p>BEM是我很喜欢的一个命名规范<br>命名规则简单直接又不至于混乱<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.block &#123;&#125; // 顶级命名，代表了一类元素或者一个模块</div><div class="line">.block__element &#123;&#125; // 次级命名(使用两个英文下划线连接，后跟随次级名称，表示元素或属性)</div><div class="line">.block--modifier &#123;&#125; // 状态命名(使用两个英文中划线连接，后跟随状态名)</div></pre></td></tr></table></figure></p>
 
       
     </div>
