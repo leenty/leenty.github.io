@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>css书写与命名技巧 | leenty blog</title>
+  <title>css书写与命名技巧[未完] | leenty blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="于日常的项目中，小型项目还好，css即使没怎么规划也不至于特别的乱，但一旦项目里css有一定的基数时，css就会显得混乱起来。于是。。。
 可能就遇到了这种情况:情况1.哎呀！这个地方布局有点问题，我改一下，于是看到了一堆css选择器，当你想要修改某个class时又害怕会影响到其他在使用这个class的组件，于是就很尴尬的又写了一个class加在上面。
 情况2.css命名冲突，你将要命名的class">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css书写与命名技巧">
+<meta property="og:title" content="css书写与命名技巧[未完]">
 <meta property="og:url" content="http://baidu.com/2016/11/06/css书写与命名技巧/index.html">
 <meta property="og:site_name" content="leenty blog">
 <meta property="og:description" content="于日常的项目中，小型项目还好，css即使没怎么规划也不至于特别的乱，但一旦项目里css有一定的基数时，css就会显得混乱起来。于是。。。
 可能就遇到了这种情况:情况1.哎呀！这个地方布局有点问题，我改一下，于是看到了一堆css选择器，当你想要修改某个class时又害怕会影响到其他在使用这个class的组件，于是就很尴尬的又写了一个class加在上面。
 情况2.css命名冲突，你将要命名的class">
-<meta property="og:updated_time" content="2016-11-08T16:40:16.000Z">
+<meta property="og:updated_time" content="2016-11-13T15:48:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css书写与命名技巧">
+<meta name="twitter:title" content="css书写与命名技巧[未完]">
 <meta name="twitter:description" content="于日常的项目中，小型项目还好，css即使没怎么规划也不至于特别的乱，但一旦项目里css有一定的基数时，css就会显得混乱起来。于是。。。
 可能就遇到了这种情况:情况1.哎呀！这个地方布局有点问题，我改一下，于是看到了一堆css选择器，当你想要修改某个class时又害怕会影响到其他在使用这个class的组件，于是就很尴尬的又写了一个class加在上面。
 情况2.css命名冲突，你将要命名的class">
@@ -143,7 +143,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      css书写与命名技巧
+      css书写与命名技巧[未完]
     </h1>
   
 
@@ -158,7 +158,8 @@
 <p>其他前端：一脸懵逼</p>
 <h3 id="针对上面的问题，于是就在命名上开始做出改变，然而却😟"><a href="#针对上面的问题，于是就在命名上开始做出改变，然而却😟" class="headerlink" title="针对上面的问题，于是就在命名上开始做出改变，然而却😟"></a>针对上面的问题，于是就在命名上开始做出改变，然而却😟</h3><h4 id="情况4"><a href="#情况4" class="headerlink" title="情况4."></a>情况4.</h4><p>过于语义化的命名（这里举个略微夸张且有些不恰当的栗子🌰）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.navigation-width-full-line</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line">这样是把意义描述清楚了，但是命名却是过长了</div><div class="line">#### 情况5. </div><div class="line">有语义却不够直接简洁的命名    </div><div class="line">```<span class="selector-tag">css</span></div><div class="line"><span class="selector-class">.navigation-responsive</span>&#123;</div><div class="line">    <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">1</span> <span class="number">10%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这样无形中增加了记忆成本</p>
-<h3 id="命名规范-BEM"><a href="#命名规范-BEM" class="headerlink" title="命名规范 BEM"></a>命名规范 BEM</h3><p>BEM是我很喜欢的一个命名规范<br>命名规则简单直接又不至于混乱<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.block &#123;&#125; // 顶级命名，代表了一类元素或者一个模块</div><div class="line">.block__element &#123;&#125; // 次级命名(使用两个英文下划线连接，后跟随次级名称，表示元素或属性)</div><div class="line">.block--modifier &#123;&#125; // 状态命名(使用两个英文中划线连接，后跟随状态名)</div></pre></td></tr></table></figure></p>
+<h3 id="命名规范-BEM"><a href="#命名规范-BEM" class="headerlink" title="命名规范 BEM"></a>命名规范 BEM</h3><p>BEM是我很喜欢的一个命名规范<br>命名规则简单直接又不至于混乱<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.block &#123;&#125; // 顶级命名，代表了一类元素或者一个模块</div><div class="line">.block__element &#123;&#125; // 次级命名(使用两个英文下划线连接，后跟随次级名称，表示次级元素或属性)</div><div class="line">.block--modifier &#123;&#125; // 状态命名(使用两个英文中划线连接，后跟随状态名)</div></pre></td></tr></table></figure></p>
+<p>这样的写法可以的好处是可以避免css的嵌套，可以加快css渲染时的速度<br><strong> 栗子🌰 </strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 旧版命名 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="xml"></span></div><div class="line">    // css选择时需要两个class</div><div class="line">    .person .head &#123;</div><div class="line">        width: 100px;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">styles</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- BEM命名 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person__head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person__body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person__foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug__head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug__body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug__foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="xml"></span></div><div class="line">    // css选择时只要一个class</div><div class="line">    .person__head &#123;</div><div class="line">        width: 100px;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">styles</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -185,7 +186,7 @@
   
   
     <a href="/2016/10/21/vue2-0一起在懵逼的海洋里越陷越深（一）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">vue2.0一起在懵逼的海洋里越陷越深（一）</div>
+      <div class="article-nav-title">vue2.0一起在懵逼的海洋里越陷越深（一）[未完]</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -219,7 +220,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="css书写与命名技巧" data-title="css书写与命名技巧" data-url="http://baidu.com/2016/11/06/css书写与命名技巧/"></div>
+	<div class="ds-thread" data-thread-key="css书写与命名技巧" data-title="css书写与命名技巧[未完]" data-url="http://baidu.com/2016/11/06/css书写与命名技巧/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -310,9 +311,11 @@
   			
   	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty博客地址</a>
   	        
-  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://leenty.github.io/">github博客地址</a>
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet博客地址</a>
   	        
   	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0 Demo地址</a>
   	        
   	        </div>
   		
