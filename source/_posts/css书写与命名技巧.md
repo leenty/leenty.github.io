@@ -1,5 +1,5 @@
 ---
-title: css书写与命名技巧
+title: css书写与命名技巧[未完]
 date: 2016-11-06 23:57:50
 tags: css
 ---
@@ -44,8 +44,46 @@ BEM是我很喜欢的一个命名规范
 命名规则简单直接又不至于混乱
 ```css
 .block {} // 顶级命名，代表了一类元素或者一个模块
-.block__element {} // 次级命名(使用两个英文下划线连接，后跟随次级名称，表示元素或属性)
+.block__element {} // 次级命名(使用两个英文下划线连接，后跟随次级名称，表示次级元素或属性)
 .block--modifier {} // 状态命名(使用两个英文中划线连接，后跟随状态名)
 ```
+这样的写法可以的好处是可以避免css的嵌套，可以加快css渲染时的速度
+** 栗子🌰 **
+```html
+<!-- 旧版命名 -->
+<div class="person">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="foot"></div>
+</div>
+<div class="pug">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="foot"></div>
+</div>
+<style>
+    // css选择时需要两个class
+    .person .head {
+        width: 100px;
+    }
+</styles>
 
+<!-- BEM命名 -->
+<div class="person">
+    <div class="person__head"></div>
+    <div class="person__body"></div>
+    <div class="person__foot"></div>
+</div>
+<div class="pug">
+    <div class="pug__head"></div>
+    <div class="pug__body"></div>
+    <div class="pug__foot"></div>
+</div>
+<style>
+    // css选择时只要一个class
+    .person__head {
+        width: 100px;
+    }
+</styles>
+```
 

@@ -1,5 +1,5 @@
 ---
-title: vue2.0一起在懵逼的海洋里越陷越深（一）
+title: vue2.0一起在懵逼的海洋里越陷越深（一）[未完]
 date: 2016-10-21 01:08:25
 tags: vueJs
 ---
@@ -28,7 +28,7 @@ tags: vueJs
 * vue-cli
 
 ### 好，进入正题
-先贴个地址，[我的vue2.0的demo](https://leenty.github.io/vue2.0-demo/)
+先贴个地址，[我的vue2.0的demo](http://vue2.leenty.com)
 这个demo使用vue-cli快速生成还发环境
 加入vue-router做前端路由
 加入vue-resource做ajax
