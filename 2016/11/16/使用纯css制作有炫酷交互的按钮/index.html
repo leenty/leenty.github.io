@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>使用纯css制作有炫酷交互的按钮 | leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端是一门入门简单，真正精通却不那么容易就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。
+js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速
+这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以移步">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用纯css制作有炫酷交互的按钮">
+<meta property="og:url" content="http://baidu.com/2016/11/16/使用纯css制作有炫酷交互的按钮/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="前端是一门入门简单，真正精通却不那么容易就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。
+js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速
+这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以移步">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-564670324f24a925.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-094b4f13a9f7237d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2016-11-16T16:19:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用纯css制作有炫酷交互的按钮">
+<meta name="twitter:description" content="前端是一门入门简单，真正精通却不那么容易就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。
+js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速
+这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以移步">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2005796-564670324f24a925.gif?imageMogr2/auto-orient/strip">
+  
+    <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/default_avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">leenty</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">leenty</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/default_avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">leenty</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-使用纯css制作有炫酷交互的按钮" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用纯css制作有炫酷交互的按钮
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前端是一门入门简单，真正精通却不那么容易"><a href="#前端是一门入门简单，真正精通却不那么容易" class="headerlink" title="前端是一门入门简单，真正精通却不那么容易"></a>前端是一门入门简单，真正精通却不那么容易</h3><p>就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。</p>
+<p>js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速</p>
+<p>这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状<br>这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了<br>之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以<a href="http://vue2.leenty.com" target="_blank" rel="external">移步到项目地址处视察视察</a></p>
+<p>具体的效果是这样的<br><img src="http://upload-images.jianshu.io/upload_images/2005796-564670324f24a925.gif?imageMogr2/auto-orient/strip" alt="rotate menu button by css"><br><a href="http://codepen.io/leenty/pen/PbGpEg" target="_blank" rel="external">这里是menu按钮的演示地址</a></p>
+<p>写代码要信奉“能偷懒就偷懒”原则，在保证实现效果的基础上，绝不多写一个标签，多写一段代码<br>所以上面的效果咋一看需要至少4个标签才能写完，其实只用了一个标签<br>用button标签做父元素，用两个伪元素做两个横杆<br>问：“那还有一个横杆呢？”<br>是这样，通过观察效果图，发现其实由菜单图标变换到X图标只需要其中的两个横杆。<br>所以第三个横杆我使用了box-shadow属性来模拟，说到底，其实第三个横杆只是第二个横杆的投影而已</p>
+<p>核心使用</p>
+<ul>
+<li>属性：<code>transform-origin</code>, <code>transform</code>, <code>box-shadow</code>, <code>transition</code></li>
+<li>伪元素：<code>:before</code>, <code>:after</code></li>
+</ul>
+<p>代码标签是用pug语法写的，css是stylus语法写的，这两种语法都比较简单，如果会使用css选择器就可以看懂<br>下面也会简单的说明下</p>
+<p>话不多说，上代码<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">button#btn.b-menu</div><div class="line">// pug语法里的'#'和'.'同css里一样'#'为id，'.'为class</div><div class="line">label(for="btn") click</div><div class="line">// 除了id与class以外的属性要如上面的形式写在括号里</div><div class="line">    </div><div class="line">// 这里扩展出来就是</div><div class="line">// &lt;button id="btn" class="b-menu"&gt;&lt;/button&gt;</div><div class="line">// &lt;label for="btn"&gt;click&lt;/label&gt;</div></pre></td></tr></table></figure></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">// stylus是css的预编译器的一种，简化了css的写法，结构更加清晰</div><div class="line">// 这里就不过多的陈述了，有疑问可以下方留言询问</div><div class="line"> </div><div class="line">// 先去除button的默认样式</div><div class="line">button</div><div class="line">  border none</div><div class="line">  outline none</div><div class="line">  box-shadow none</div><div class="line">  background none</div><div class="line">  color currentColor</div><div class="line">  padding 0</div><div class="line">  cursor pointer</div><div class="line"> </div><div class="line">// 关键的部分开始了</div><div class="line">.b-menu</div><div class="line">  width 25px</div><div class="line">  height 25px</div><div class="line">  position relative</div><div class="line">  &amp;:before, // before是第一横杆，after是第二个横杆</div><div class="line">  &amp;:after // stylus里的&amp;表示承接上文的意思,这里也就等同于.b-menu:after</div><div class="line">    content ' '</div><div class="line">    position absolute // 使用绝对定位到目标位置</div><div class="line">    background-color #fff</div><div class="line">    display block</div><div class="line">    width 100%</div><div class="line">    height 3px</div><div class="line">    left 0</div><div class="line">    top 11px</div><div class="line">    border-radius 3px</div><div class="line">    transition all .5s</div><div class="line">    transform-origin 50% 50% // 设置变换中心点，这个很重要，直接影响到后面的效果</div><div class="line">  &amp;:before</div><div class="line">    transform translateY(-6px) // 第一个横杆向上偏移，这里使用transform而不使用top属性是为了方便后面的使用</div><div class="line">  &amp;:after</div><div class="line">    box-shadow 0 6px 0 0 #fff</div><div class="line">  &amp;:focus:before // 通过focus获取焦点，来触发起伪元素的变化</div><div class="line">    transform rotateZ(45deg) translateY(0)</div><div class="line">  &amp;:focus:after</div><div class="line">    box-shadow 0 0 0 0 #fff</div><div class="line">    transform rotateZ(135deg) translateY(0)</div></pre></td></tr></table></figure>
+<h3 id="这个是开关的效果"><a href="#这个是开关的效果" class="headerlink" title="这个是开关的效果"></a>这个是开关的效果</h3><p>效果是这样的（duang!duang!daung!）<br><img src="http://upload-images.jianshu.io/upload_images/2005796-094b4f13a9f7237d.gif?imageMogr2/auto-orient/strip" alt="switch button"><br><a href="http://codepen.io/leenty/pen/jVMmjz/" target="_blank" rel="external">这里是switch button演示地址</a></p>
+<p>开关效果又比之前那个复杂，switch的原理其实就是checkbox，<br>因为input是单标签，所以无法使用伪元素，这里就用到了label</p>
+<p>核心使用</p>
+<ul>
+<li>属性：<code>transform</code>, <code>background-size</code>, <code>border-radius</code>, <code>border-width</code>, <code>transition</code>, <code>cubic-bezier</code></li>
+<li>标签：<code>label</code></li>
+<li>伪元素：<code>:before</code>, <code>:after</code></li>
+</ul>
+<p>代码如下：<br>html<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">input(id=<span class="string">"switch"</span>,type=<span class="string">"checkbox"</span>).b-switchBtn</div><div class="line">label(<span class="keyword">for</span>=<span class="string">"switch"</span>).b-switchLabel</div><div class="line"><span class="comment">// label标签利用for属性与相应id的input标签绑定，从而达到点击label就是点击input的效果</span></div></pre></td></tr></table></figure></p>
+<p>css<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">button,</div><div class="line">input</div><div class="line">  border none</div><div class="line">  outline none</div><div class="line">  box-shadow none</div><div class="line">  background none</div><div class="line">  color currentColor</div><div class="line">  padding 0</div><div class="line">  cursor pointer</div><div class="line">  </div><div class="line">.b-switchLabel</div><div class="line">  position relative</div><div class="line">  display inline-block</div><div class="line">  width 60px</div><div class="line">  height 25px</div><div class="line">  input</div><div class="line">    display none</div><div class="line">  &amp;:before, // before 作为白条</div><div class="line">  &amp;:after // after 作为水滴状开关</div><div class="line">    content ' '</div><div class="line">    display block</div><div class="line">    position absolute</div><div class="line">  &amp;:before</div><div class="line">    width 100%</div><div class="line">    height 4px</div><div class="line">    background-color #fff</div><div class="line">    left 0</div><div class="line">    top 50%</div><div class="line">    border-radius 5px</div><div class="line">    transform translateY(-50%)</div><div class="line">  &amp;:after</div><div class="line">    background-image url('http://upload-images.jianshu.io/upload_images/2005796-fcc62a13bd69f679.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')</div><div class="line">    // 因为css不好写出漂亮的水滴效果，所以这里取巧用了图片</div><div class="line">    background-size cover // 利用这个属性缩放原来太大的图片</div><div class="line">    height 25px</div><div class="line">    width 25px</div><div class="line">    left 23%</div><div class="line">    top 51%</div><div class="line">    border-radius 25px</div><div class="line">    transform-origin center center // 老套路，定下变换中心点</div><div class="line">    transform translate(-50%, -50%) // 矫正left和top的偏移</div><div class="line">    background-clip border-box // 利用border-box属性值来使背景图片在border上也能显示</div><div class="line">    background-position 50% 50%</div><div class="line">    border-style solid</div><div class="line">    border-color transparent // 设置透明border有助于背景的显示</div><div class="line">    border-width 0 3px 0 0</div><div class="line">    transition all .5s cubic-bezier(0.4, -0.95, 0.4, 1.8) // 设置贝塞尔曲线以达到Duang的效果</div><div class="line">.b-switchBtn</div><div class="line">  display none</div><div class="line">  &amp;:checked~.b-switchLabel // 设置开关在被选中时改变状态，配合transition就动了起来</div><div class="line">    &amp;:after</div><div class="line">      left 78%</div><div class="line">      border-width 0 0 0 3px</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/16/使用纯css制作有炫酷交互的按钮/" class="archive-article-date">
+  	<time datetime="2016-11-16T13:19:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-16</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/06/css书写与命名技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用BEM+emmet的css书写与命名技巧[未完]</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="使用纯css制作有炫酷交互的按钮" data-title="使用纯css制作有炫酷交互的按钮" data-url="http://baidu.com/2016/11/16/使用纯css制作有炫酷交互的按钮/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"leenty-blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 leenty
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vueJs/" style="font-size: 10px;">vueJs</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0 Demo地址</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不会捣(xia)鼓(gao)的前端不是好全栈</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
