@@ -26,7 +26,7 @@
     "gulp-shell": "^0.5.2"
   },
   "scripts": {
-    "server": "hexo server -i localhost -p 4000",
+    "server": "hexo server -i localhost -p 4000 --draft",
     "watch": "hexo g -w",
     "deploy": "hexo generate --deploy",
     "dev": "npm run server && npm run watch"

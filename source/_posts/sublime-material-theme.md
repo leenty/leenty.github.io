@@ -4,7 +4,7 @@ date: 2016-10-06 23:22:02
 tags: sublime
 ---
 ## 晒一晒我的prefernces.sublime-setting
-界面如图
+界面如图, 主题名字叫做 Material Theme
 ![prefernces-sublime-setting](/img/prefernces-sublime-setting.png)
 
 ### 主题地址
