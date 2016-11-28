@@ -1,9 +1,9 @@
 ---
 title: vue2.0一起在懵逼的海洋里越陷越深（二）
 date: 2016-11-20 23:41:16
-tags:
+tags: [vueJs, vue-router]
 ---
-承接上文[vue2.0一起在懵逼的海洋里越陷越深（一）](http://www.leenty.com/2016/10/21/vue2-1/)
+承接上文[vue2.0一起在懵逼的海洋里越陷越深（一）](/2016/10/21/vue2-1/)
 ### 说好了一起懵逼，那么我们继续下沉
 在上一篇里已经将vue2.0需要的依赖都装齐了
 那么接下来
@@ -21,7 +21,7 @@ vue + vue-router简直是爽，页面跳转的速度简直是不要不要的
 好的，用自己的小编辑器打开vue项目（我用的是sublime）
 可以看到项目目录是这样子的
 ![files-tree](http://upload-images.jianshu.io/upload_images/2005796-e8d30c83712c89f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-(插一句，如果喜欢这个sublime主题可以[查看这篇文章](http://www.leenty.com/2016/10/06/sublime-material-theme/))
+(插一句，如果喜欢这个sublime主题可以[查看这篇文章](/2016/10/06/sublime-material-theme/))
 与自己的目录对比发现少几个文件，那是没有什么关系的，接下来要做的就是去创建这些文件。
 
 ### 作为一个SPA，首先要有路由
@@ -80,7 +80,7 @@ Vue.use(VueRouter)
 // 实例化router对象
 const router = new VueRouter({
   mode: 'hash', // 设置路由模式 可选值: "hash" | "history" | "abstract"，默认"hash"
-  linkActiveClass: 'u-link--Active', // 这只链接激活时的class
+  linkActiveClass: 'u-link--Active', // 这是链接激活时的class
   // base: '/app/', // 这个是设置根目录路径，一般用不到，默认'/'
   routes // 挂载路由集合 后面会说
 })
@@ -198,3 +198,5 @@ export default routes
 ```
 [地址](https://github.com/leenty/vue2/blob/master/src/App.vue)
 好了，到此为止就完成了路由搭建与使用了。
+
+

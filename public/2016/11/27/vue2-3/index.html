@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>vue2.0一起在懵逼的海洋里越陷越深（三） | leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
+上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由首页以后顶多就展示下大致的新内容，文章页顶多放放文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.0一起在懵逼的海洋里越陷越深（三）">
+<meta property="og:url" content="http://baidu.com/2016/11/27/vue2-3/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
+上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由首页以后顶多就展示下大致的新内容，文章页顶多放放文">
+<meta property="og:image" content="http://baidu.com/img/vue/chiss.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-74c28829c2945707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-ad7396a60ead7e5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-f8f925d9b68e6367.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-11-28T16:24:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.0一起在懵逼的海洋里越陷越深（三）">
+<meta name="twitter:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
+上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由首页以后顶多就展示下大致的新内容，文章页顶多放放文">
+<meta name="twitter:image" content="http://baidu.com/img/vue/chiss.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/default_avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">leenty</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">leenty</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/default_avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">leenty</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-vue2-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue2.0一起在懵逼的海洋里越陷越深（三）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>承接上文<a href="/2016/11/20/vue2-2/">vue2.0一起在懵逼的海洋里越陷越深（二）</a><br>前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔<br><img src="/img/vue/chiss.jpg" alt="vue2.0"></p>
+<h3 id="上回说到-vue-router的基本用法，下面继续深入"><a href="#上回说到-vue-router的基本用法，下面继续深入" class="headerlink" title="上回说到: vue-router的基本用法，下面继续深入"></a>上回说到: vue-router的基本用法，下面继续深入</h3><p>啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈<br>前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由<br>首页以后顶多就展示下大致的新内容，文章页顶多放放文章详情<br>这演示页可就厉害了，接下来的一些演示都会放在这里，具体的布局还没想好，先这么用着吧！</p>
+<h3 id="vue-router的超链接标签“router-link”"><a href="#vue-router的超链接标签“router-link”" class="headerlink" title="vue-router的超链接标签“router-link”"></a>vue-router的超链接标签“router-link”</h3><p>在vue1.0版本的超链接标签还是原来的<code>a</code>标签，链接地址由<code>v-link</code>属性控制(具体的这里也不多说了，vue1.0已经过去啦)<br>而vue2.0版本里超链接标签由<code>a</code>标签被替换成了<code>router-link</code>标签，当然，没有必要不用担心什么，因为最后没有什么特殊的设置的话，<code>router-link</code>标签还是会被渲染成<code>a</code>标签的。<br>至于为什么在vue2.0的时候被替换成了<code>router-link</code>标签呢？<br>大致YY了下，部分情节应该是这样的：</p>
+<ul>
+<li>最主要情况，在上个版本中，链接只能以<code>a</code>标签的形式存在，不能满足一些特殊的要求，比如在列表(<code>ul&gt;li</code>)下，你需要为在里下面再加上一个<code>a</code>链接才能完成点击列表跳转页面，so2.0版本中路由从<code>a</code>标签变成了可以任意渲染成各种元素的<code>router-link</code>标签，如此一来，就可以直接渲染成<code>li</code>标签，省下了<code>a</code>标签(具体怎么做下面会统一说明)</li>
+<li>为什么不直接使用正常<code>a</code>标签写法做链接跳转呢？当点击正常的<code>a</code>链接时，就会感觉到页面跳转时的页面刷新重载的感觉，因为这个<code>a</code>标签并没有被vue-router所监听到事件的触发，所以就会发生正常的页面跳转，所以页面就会重载。那是传统的网页上才会发生的事。使用了vue-router组件所提供的<code>router-link</code>后，页面内的a标签就会被vue所监听，以便在用户点击链接的时候阻止浏览器的默认跳转行为，而转为无刷新加载的方式。当然这只作用于自己的站点内。</li>
+</ul>
+<h3 id="“router-link”标签的属性-Props"><a href="#“router-link”标签的属性-Props" class="headerlink" title="“router-link”标签的属性(Props)"></a>“router-link”标签的属性(Props)</h3><p>没错，只要是标签，多多少少都是有属性的，最次class和id属性也是可以添加的。<br>下面说说<code>router-link</code>标签的各个属性</p>
+<h4 id="“to”属性"><a href="#“to”属性" class="headerlink" title="“to”属性"></a>“to”属性</h4><p><code>to</code>属性最简单的用法就是如<code>a</code>标签里的<code>href</code>属性一样的填写，简单粗暴，想去哪就去哪。<br>其实，<code>to</code>属性的值可以有两种：</p>
+<p><strong> 其一为字符串形式，也就是前面说到的如<code>href</code>一样的用法 </strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 字符串 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/article"</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 渲染结果 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/article"</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong> 其二为对象形式，下面看看to属性的 对象的主要结构 </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 主要结构</span></div><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span></div><div class="line">&#125;</div><div class="line">  <span class="comment">// 或者</span></div><div class="line">&#123;</div><div class="line">  path: <span class="string">'/article'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 二者选其中之一，如果两种都使用，那么vue会选择使用name字段</span></div><div class="line"><span class="comment">// eg</span></div><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span>,</div><div class="line">  path: <span class="string">'/demo'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 实际效果等同于:</span></div><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对于里面的<code>path</code>字段，其实就是就是想去哪就去哪的to属性字符串的对象形式<br>至于<code>name</code>字段，是不是会有些懵逼？这个<code>name</code>其实就是上一篇里说到的<code>routes.js</code>文件里的<code>name</code>字段啦！<br>就是这个！填成一样的就好啦！注意大小写哦<br><img src="http://upload-images.jianshu.io/upload_images/2005796-74c28829c2945707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="routes.js-name字段"></p>
+<p><strong> to属性的 对象的可选结构 </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span>, <span class="comment">// 与path字段二选一</span></div><div class="line">  path: <span class="string">'/article'</span>, <span class="comment">// 与name字段二选一</span></div><div class="line">  params: &#123; <span class="comment">// 可选字段 隐性的传递参数(多用来页面传参)</span></div><div class="line">    userId: <span class="number">123</span> <span class="comment">// 传递的参数demo</span></div><div class="line">  &#125;,</div><div class="line">  query: &#123; <span class="comment">// 可选字段 查询参数，就是url里‘?’之后的部分</span></div><div class="line">    plan: <span class="string">'private'</span> <span class="comment">// 查询参数demo</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以使用chrome插件<a href="https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">vue.js devtools</a>来查看vue的路由的params参数，安装这个插件需要翻墙下载<br>或者可以去<a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">github上下代码编译插件</a>,如果觉得麻烦也可以百度去其他网站下<br>对于可选参数是不是会有些懵，下面贴几张图就明白了<br><img src="http://upload-images.jianshu.io/upload_images/2005796-ad7396a60ead7e5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看路由参数"><br>其中<code>params</code>是隐性传递，<code>query</code>是显性传递。<br><img src="http://upload-images.jianshu.io/upload_images/2005796-f8f925d9b68e6367.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="路由query"><br>红框部分就是传递的<code>query</code>了</p>
+<h4 id="“replace”属性"><a href="#“replace”属性" class="headerlink" title="“replace”属性"></a>“replace”属性</h4><p>顾名思义，replace是替换的意思，所以在<code>router-link</code>标签添加了这个属性后，页面切换时不会留下历史记录<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"&#123; path: '/abc'&#125;"</span> <span class="attr">replace</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="“append”属性"><a href="#“append”属性" class="headerlink" title="“append”属性"></a>“append”属性</h4><p>append会把当前路径设置为相对路径，何为相对路径？比如你当前在<code>vue2.leenty.com/demo</code>下，点击这个链接<code>&lt;router-link :to=&quot;{ path: &#39;article&#39;}&quot; append&gt;&lt;/router-link&gt;</code>,如果没带<code>append</code>属性，那么就会跳到<code>vue2.leenty.com/article</code>下(hash模式下是<code>vue2.leenty.com/#/article</code>)，而现在却是跳到了<code>vue2.leenty.com/demo/article</code>下。这个属性用处不是很大，在特殊情况下才会用到。<br>推荐还是把自己地址写全，不要使用相对地址，这样容易搞错<br>另外加个小技巧，在地址前加<code>/</code>能保证是跳转根目录的</p>
+<h4 id="“tag”属性"><a href="#“tag”属性" class="headerlink" title="“tag”属性"></a>“tag”属性</h4><p>具有<code>tag</code>属性的的<code>router-link</code>标签会被渲染为相应的标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/article"</span> <span class="attr">tag</span>=<span class="string">"li"</span>&gt;</span>article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>将会被渲染为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>article<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这里不需要担心li的跳转问题，vue会自动为其绑定点击事件，并跳转页面</p>
+<h4 id="“active-class”属性"><a href="#“active-class”属性" class="headerlink" title="“active-class”属性"></a>“active-class”属性</h4><p>这个属性如字面意思上说的，是设置激活链接时的<code>class</code>属性<br>即是当前页面所有与当前地址所匹配的链接都会被添加这个<code>class</code>属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/article"</span> <span class="attr">active-class</span>=<span class="string">"u-link--Active"</span>&gt;</span>article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如此，在<code>vue2.leenty.com/article</code>页面下(hash模式下是<code>vue2.leenty.com/#/article</code>)就会被渲染为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/article"</span> <span class="attr">class</span>=<span class="string">"u-link--Active"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><code>active-class</code>属性的默认值是<code>router-link-active</code>,所以如果没有设置，就会被渲染为这个class</p>
+<p>其实在上一章节有说到统一的设置这个active-class属性<br>打开<code>router.js</code>文件就能看到<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  mode: <span class="string">'hash'</span>,</div><div class="line">  linkActiveClass: <span class="string">'u-link--Active'</span>, <span class="comment">// 这是链接激活时的class</span></div><div class="line">  routes</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="“exact”属性"><a href="#“exact”属性" class="headerlink" title="“exact”属性"></a>“exact”属性</h4><p>开启<code>router-link</code>的严格模式<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span> <span class="attr">exact</span>&gt;</span>home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上面这个标签如果不加<code>exact</code>属性，则会在<code>vue2.leenty.com/article</code>页面下也会被匹配到，<br>这却不是我们的本意,在加了这个属性后就会正确的匹配到<code>vue2.leenty.com</code>下</p>
+<p>以上为vue-router的router-link的介绍</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/27/vue2-3/" class="archive-article-date">
+  	<time datetime="2016-11-27T14:51:49.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-27</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/">vue-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/20/vue2-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue2.0一起在懵逼的海洋里越陷越深（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="vue2-3" data-title="vue2.0一起在懵逼的海洋里越陷越深（三）" data-url="http://baidu.com/2016/11/27/vue2-3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"leenty-blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 leenty
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0 Demo地址</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不会捣(xia)鼓(gao)的前端不是好全栈</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
