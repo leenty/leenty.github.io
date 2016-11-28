@@ -171,6 +171,7 @@
 <p>其实在上一章节有说到统一的设置这个active-class属性<br>打开<code>router.js</code>文件就能看到<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  mode: <span class="string">'hash'</span>,</div><div class="line">  linkActiveClass: <span class="string">'u-link--Active'</span>, <span class="comment">// 这是链接激活时的class</span></div><div class="line">  routes</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h4 id="“exact”属性"><a href="#“exact”属性" class="headerlink" title="“exact”属性"></a>“exact”属性</h4><p>开启<code>router-link</code>的严格模式<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span> <span class="attr">exact</span>&gt;</span>home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上面这个标签如果不加<code>exact</code>属性，则会在<code>vue2.leenty.com/article</code>页面下也会被匹配到，<br>这却不是我们的本意,在加了这个属性后就会正确的匹配到<code>vue2.leenty.com</code>下</p>
+<p>以上为vue-router的router-link的介绍</p>
 
       
     </div>

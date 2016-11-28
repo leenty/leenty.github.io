@@ -18,7 +18,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-74c28829c2945707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-ad7396a60ead7e5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-f8f925d9b68e6367.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-11-28T16:17:24.000Z">
+<meta property="og:updated_time" content="2016-11-28T16:24:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.0一起在懵逼的海洋里越陷越深（三）">
 <meta name="twitter:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
@@ -178,6 +178,7 @@
 <p>其实在上一章节有说到统一的设置这个active-class属性<br>打开<code>router.js</code>文件就能看到<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  mode: <span class="string">'hash'</span>,</div><div class="line">  linkActiveClass: <span class="string">'u-link--Active'</span>, <span class="comment">// 这是链接激活时的class</span></div><div class="line">  routes</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <h4 id="“exact”属性"><a href="#“exact”属性" class="headerlink" title="“exact”属性"></a>“exact”属性</h4><p>开启<code>router-link</code>的严格模式<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span> <span class="attr">exact</span>&gt;</span>home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上面这个标签如果不加<code>exact</code>属性，则会在<code>vue2.leenty.com/article</code>页面下也会被匹配到，<br>这却不是我们的本意,在加了这个属性后就会正确的匹配到<code>vue2.leenty.com</code>下</p>
+<p>以上为vue-router的router-link的介绍</p>
 
       
     </div>
