@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>vue2.0一起在懵逼的海洋里越陷越深（四） | leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
+正文OK！先介绍下vuexvuex是vuejs的状态管理方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.0一起在懵逼的海洋里越陷越深（四）">
+<meta property="og:url" content="http://baidu.com/2016/12/04/vue2-4/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
+正文OK！先介绍下vuexvuex是vuejs的状态管理方">
+<meta property="og:image" content="http://baidu.com/img/vue/flow.png">
+<meta property="og:image" content="http://baidu.com/img/face/mengbi3.jpg">
+<meta property="og:image" content="http://baidu.com/img/vue/vuex.png">
+<meta property="og:image" content="http://baidu.com/img/vue/devtools.png">
+<meta property="og:updated_time" content="2016-12-05T15:58:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.0一起在懵逼的海洋里越陷越深（四）">
+<meta name="twitter:description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
+正文OK！先介绍下vuexvuex是vuejs的状态管理方">
+<meta name="twitter:image" content="http://baidu.com/img/vue/flow.png">
+  
+    <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/default_avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">leenty</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">leenty</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/default_avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">leenty</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-vue2-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue2.0一起在懵逼的海洋里越陷越深（四）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>承接上文<a href="/2016/11/27/vue2-3/">vue2.0一起在懵逼的海洋里越陷越深（三）</a><br>前面一篇讲了vue-router的<code>router-link</code>,<br>有读者说希望能先看到vuex的文章<br>其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router<br>想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入<br>好，那么这次就先上vuex吧！</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>OK！先介绍下vuex<br>vuex是vuejs的状态管理方案<br>因为vuex有些复杂，一般应用在较复杂的状态环境下，如果是比较简单的应用就不需要安装vuex了</p>
+<h4 id="vuex单向数据流"><a href="#vuex单向数据流" class="headerlink" title="vuex单向数据流"></a>vuex单向数据流</h4><p><img src="/img/vue/flow.png" alt="vuex单向数据流"><br>如上图所示是vuex单向数据流的流程</p>
+<p><strong> 我知道，如果是第一次接触这玩意，到这就懵逼了，就像我第一次看文档一样 </strong><br><img src="/img/face/mengbi3.jpg" alt="vuex单向数据流"></p>
+<p><strong> 下面解释下<code>State</code> </strong><br>前面说了vuex是vuejs的状态管理方案，这里的状态就是图中的<code>state</code><br>在平时写写前端的过程中，都会涉及到状态的问题，<br>比如你看到了一篇文章写的不错，就想要收藏，<br>然后又对作者有些兴趣，于是又加了关注，当然这些最后都是需要前端来表达出来<br>这里面就涉及了两个状态就是收藏与关注<br>这里的收藏与关注我们可以将其用一个变量来表示，当然如这两种只存在两个相对状态的用布尔值(<code>bool</code>)来表示就可以了</p>
+<p><strong> 然后是<code>view</code> </strong><br><code>view</code>就是视图,也就是前端所写的页面，前面的<code>state</code>就可以在<code>view</code>里面得到体现，即是你看到的是否关注了作者</p>
+<p><strong> 而后是<code>Actions</code> </strong><br><code>Actions</code>是<code>View</code>用来改变<code>State</code>的方法，通过改变<code>State</code>从而改变<code>View</code>的显示</p>
+<p>这么说有些抽象，打个比方<br>假设学生小明生病了<br>小明要向班主任请假(小明就是<code>View</code>，小明想改变自己的显示状态，从上学状态变成请假状态)<br>于是小明口头向班主任请假(请假就是<code>Actions</code>，小明通过请假这一个方法达到请假的目的)<br>班主任批准，小明请假成功(班主任就是<code>State</code>的提供者，小明通过请假方法使班主任改变小明的<code>State</code>状态)<br>着也就解释了为什么要有这个流程，有了这个流程就可以统一管理各个<code>view</code>的各个状态</p>
+<h4 id="vuex多个组件共享状态"><a href="#vuex多个组件共享状态" class="headerlink" title="vuex多个组件共享状态"></a>vuex多个组件共享状态</h4><p>先贴个流程图，懵逼是没啥关系的<br><img src="/img/vue/vuex.png" alt="vuex多个组件共享状态"><br>可以看到这一张图比前面一张复杂了许多，其实里面的实线框就是上图的升级版</p>
+<p>情况是这样，原来小明学校里这段时间许多同学得了流感，于是同学们一窝蜂的要求请假，<br>学校里因为人太多，又没有一个记录，人数清点不过来了，于是班主任要求请假必须提交请假条</p>
+<p>好的，来解释下上图内的实线部分，之前的<code>View</code>在这里改名成了<code>Vue Components</code>,代表了多个组件(这里即是指多个同学)<br>包括小明在内的多个同学<code>Vue Components</code>都得了流感，一起想要请假<code>Actions</code>(他们即将共享一个请假状态)，小明代表多个同学写了一张请假条交给班主任(<code>State</code>提供者)签字同意(签字同意这个动作就是<code>Mutations</code>，触发了<code>State</code>的改变),班主任同意后统一给他们改变了<code>State</code>（请假成功）</p>
+<p>这里的多了一个同步与异步的区别，其中<code>Mutations</code>只受理同步处理，而<code>Actions</code>就是执行异步操作的函数，作为代价，<code>Actions</code>不再能直接触发改变<code>State</code>状态，而是需通过<code>Mutations</code>来触发<code>State</code>的改变</p>
+<p>情况是这样，因为不只是一个班的学生得了流感，请假的人比较多，学校<code>Backend API</code>需要做一个统计，于是请假需要得到学校专门的请假条的并通过学校签字才能生效，这里就有了虚线部分。<br>请假<code>Actions</code>改变<code>State</code>的方法不再是仅仅班主任签字就可以了，而是需要通过学校这个前提，于是<code>Actions</code>就变成了一个异步请求，需要得到学校<code>Backend API</code>的专门的请假条和签字同意后，才能向班主任提交改变<code>State</code>的申请</p>
+<p>这里想要表达的意思就是，<code>Vue Components</code>改变自身状态需要通过<code>Actions</code>（有需要的话要向后端接口<code>Backend API</code>发送请求）来操作<code>Mutations</code>改变<code>State</code>从而改变自身状态。<br>至于图中没有说到的<code>Devtools</code>是一个开发者工具，是一个便于查看和管理vue应用以及vuex状态的浏览器插件。<br>你可以在里面看到你vue对象和vuex每一次的commit，commit后面会说到。还有你当前的应用状态<br><img src="/img/vue/devtools.png" alt="devtools"><br>附上一个<a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">devtools库地址</a></p>
+<h4 id="架构vuex"><a href="#架构vuex" class="headerlink" title="架构vuex"></a>架构vuex</h4><p>项目结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">├── main.js</div><div class="line">├── App.vue</div><div class="line">├── components</div><div class="line">│   ├── Home.vue</div><div class="line">│   └── ...</div><div class="line">└── store</div><div class="line">    ├── index.js          # 组装模块并导出 store 的地方</div><div class="line">    ├── actions.js        # 根级别的 action</div><div class="line">    ├── mutations.js      # 根级别的 mutation</div><div class="line">    ├── types.js          # mutation命名空间</div><div class="line">    └── modules</div><div class="line">        ├── demo.js       # demo模块</div><div class="line">        └── status.js     # 全局应用状态模块</div></pre></td></tr></table></figure></p>
+<p>结构可以根据个人需要进行调整</p>
+<p><strong> 下面开始构建<code>store/index.js</code> </strong><br>当然在这之前，如果没有安装vuex的需要先安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i vuex -S</div></pre></td></tr></table></figure></p>
+<p>由于vuex的内容太多，这里先说基础用法<br>首先为<code>store/index.js</code>编写内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="comment">// 导入vue</span></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="comment">// 导入vuex</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> status <span class="keyword">from</span> <span class="string">'./modules/status'</span></div><div class="line"><span class="comment">// 导入status模块（这是我管理全局应用状态的模块）</span></div><div class="line"><span class="keyword">import</span> demo <span class="keyword">from</span> <span class="string">'./modules/demo'</span></div><div class="line"><span class="comment">// 导入demo模块（这个的部分演示可以在http://vue2.leenty.com/demo/vuex_state/里看到）</span></div><div class="line"></div><div class="line">Vue.use(Vuex)</div><div class="line"><span class="comment">// 告诉vue将要使用vuex</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">'production'</span></div><div class="line"><span class="comment">// env里去获取当前的环境是否需要开启严格模式</span></div><div class="line"><span class="comment">// 在发布环境开启严格模式会造成性能上不必要的损失</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line"><span class="comment">// 默认导出vuex模块</span></div><div class="line">  modules: &#123;</div><div class="line">  <span class="comment">// 导入模块</span></div><div class="line">    status,</div><div class="line">    demo</div><div class="line">  &#125;,</div><div class="line">  strict: debug</div><div class="line">  <span class="comment">// 是否开启严格模式</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong> 构建state模块 </strong><br>这里以<code>demo.js</code>为例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"><span class="comment">// 导入mutations的命名空间</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line"><span class="comment">// 定义state</span></div><div class="line">  demoFollow: <span class="literal">false</span>,</div><div class="line">  <span class="comment">// 这里模拟的是关注的状态，布尔值表示是否关注</span></div><div class="line">  demoFollowPending: <span class="literal">false</span></div><div class="line">  <span class="comment">// 是否在请求中(actions是否在执行异步操作)</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line"><span class="comment">// 定义getters, getters是对state的扩展，可以以state衍生出其他状态</span></div><div class="line">  demoFollowStatus: state =&gt; state.demoFollow ? <span class="string">'已关注'</span> : <span class="string">'未关注'</span></div><div class="line">  <span class="comment">// demoFollowStatus是demoFollow的衍生量，将原来的布尔值映射为'已关注' : '未关注'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line"><span class="comment">// 只有mutations才能操作改变state，mutations是同步执行的</span></div><div class="line"><span class="comment">// 所以有关异步的操作请放在actions里执行</span></div><div class="line">  [types.DEMO__VUEX_FOLLOW] (state, status = <span class="literal">NaN</span>) &#123;</div><div class="line">  <span class="comment">// 使用预定义好的名字来写mutations方法</span></div><div class="line">    state.demoFollow = <span class="built_in">isNaN</span>(status) ? !state.demoFollow : status</div><div class="line">  &#125;,</div><div class="line">  [types.DEMO__VUEX_FOLLOW_PENDING] (state, status = <span class="literal">NaN</span>) &#123;</div><div class="line">  <span class="comment">// 这里对status传值做了审查，如没有传，则对要改变的布尔值进行取反操作</span></div><div class="line">    state.demoFollowPending = <span class="built_in">isNaN</span>(status) ? !state.demoFollowPending : status</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line"><span class="comment">// actions是可以执行异步操作的，操作完毕后触发mutations里的方法去改变state的状态</span></div><div class="line">  demoFollowAjax (&#123;commit&#125;, status) &#123;</div><div class="line">    commit(types.DEMO__VUEX_FOLLOW_PENDING)</div><div class="line">    <span class="comment">// 在异步操作前通过mutations告诉应用，现在正在进行异步操作</span></div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">      <span class="comment">// 利用延时函数模拟异步的ajax操作</span></div><div class="line">      commit(types.DEMO__VUEX_FOLLOW_PENDING)</div><div class="line">      <span class="comment">// commit 是在actions里用来触发mutations的方法</span></div><div class="line">      <span class="comment">// 告诉应用，异步操作结束</span></div><div class="line">      commit(types.DEMO__VUEX_FOLLOW, status)</div><div class="line">      <span class="comment">// 为关注按钮赋予新的状态</span></div><div class="line">    &#125;, <span class="number">2000</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line"><span class="comment">// 导出整个demo模块</span></div><div class="line">  state,</div><div class="line">  getters,</div><div class="line">  actions,</div><div class="line">  mutations</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong> 这里解释下mutations里的方法的奇怪写法，我知道如果对es6于法了解不多这里是会懵逼的 </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">  [types.DEMO__VUEX_FOLLOW] (state, status = <span class="literal">NaN</span>) &#123;</div><div class="line">    state.demoFollow = <span class="built_in">isNaN</span>(status) ? !state.demoFollow : status</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是对象内方法的简化写法，其中<code>types.DEMO__VUEX_FOLLOW</code>是在<code>types.js</code>里预定义的，内容如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> DEMO__VUEX_FOLLOW = <span class="string">'DEMO__VUEX_FOLLOW'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> DEMO__VUEX_FOLLOW_PENDING = <span class="string">'DEMO__VUEX_FOLLOW_PENDING'</span></div><div class="line"><span class="comment">// 其实就是字符串集合，最后用 import * as types from '../types' 方法导入vuex模块里</span></div><div class="line"><span class="comment">// 就变成了一个types对象</span></div></pre></td></tr></table></figure></p>
+<p>上例中全部展开是这样的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">  [types.DEMO__VUEX_FOLLOW]: (state, status = <span class="literal">NaN</span>) =&gt; &#123;</div><div class="line">  <span class="comment">// [types.DEMO__VUEX_FOLLOW]是提取types.DEMO__VUEX_FOLLOW的值的一种方式</span></div><div class="line">  <span class="comment">// 在这里[types.DEMO__VUEX_FOLLOW]提取出来就是types.js里预定义的'DEMO__VUEX_FOLLOW'</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(status)&#123;</div><div class="line">      state.demoFollow = !state.demoFollow</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      state.demoFollow = status</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>好，到此为止，vuex就已经建立好了，下面就说如何使用了</p>
+<h4 id="应用状态的使用与改变"><a href="#应用状态的使用与改变" class="headerlink" title="应用状态的使用与改变"></a>应用状态的使用与改变</h4><p>vuex提供了4个辅助函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapState, mapGetters, mapActions, mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div></pre></td></tr></table></figure></p>
+<p>是分别用来获取<code>State, Getters, Actions, Mutations</code>的map方法<br>在vue Components里面你可以以这样的方式来导入需要使用的方法</p>
+<p>这4个方法拥有统一的参数格式以及一个统一的返回格式<br>可以传入一个数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mapGetters([<span class="string">'demoFollowStatus'</span>])</div><div class="line"><span class="comment">// 此方法导出的是一个Getters对象</span></div><div class="line">mapGetters(&#123;</div><div class="line">  demoFollow: <span class="string">'demoFollowStatus'</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// 可以通过传入对象的形式来改变得到的getters方法名</span></div></pre></td></tr></table></figure></p>
+<p>同理，不同的map方法会导出各自的方法<br>其中<code>mapState, mapGetters</code>将会导出适用于<code>computed</code>的方法<br>而<code>mapMutations, mapActions</code>将会导出适用于<code>methods</code>的方法</p>
+<p>这里以一个demo组件为例<a href="https://github.com/leenty/vue2/blob/master/src/components/DemoVuexState.vue" target="_blank" rel="external">DemoVuexState.vue</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapState, mapGetters, mapMutations, mapActions &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  computed: &#123;</div><div class="line">  <span class="comment">// vue的计算属性，计算属性内方法的私有变量变动会触发这个属性的重新计算</span></div><div class="line">    ...mapState(&#123;</div><div class="line">      mapStateFollow: (&#123;demo&#125;) =&gt; demo.demoFollow,</div><div class="line">      mapStateFollowPending: (&#123;demo&#125;) =&gt; demo.demoFollowPending</div><div class="line">    &#125;),</div><div class="line">    <span class="comment">// mapState()直接读取State里的状态内容</span></div><div class="line">    ...mapGetters([<span class="string">'demoFollowStatus'</span>])</div><div class="line">    <span class="comment">// mapGetters()通过getters转化state从而得到你想要的内容</span></div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">  <span class="comment">// vue的方法，可以是一个事件的方法，也可以是一个vuex的方法，也可以是一个普通函数</span></div><div class="line">    ...mapMutations([<span class="string">'DEMO__VUEX_FOLLOW'</span>]),</div><div class="line">    <span class="comment">// 同步的改变状态</span></div><div class="line">    ...mapActions([<span class="string">'demoFollowAjax'</span>])</div><div class="line">    <span class="comment">// 异步的改变状态</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码是一个demo里的片段，效果大家可以看<a href="http://vue2.leenty.com/demo/vuex_state" target="_blank" rel="external">这个呆萌</a>，如果开心了可以在<a href="https://github.com/leenty/vue2" target="_blank" rel="external">github库里加个星</a>，如果有问题可以评论😀</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/04/vue2-4/" class="archive-article-date">
+  	<time datetime="2016-12-04T12:35:32.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuex/">vuex</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/27/vue2-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue2.0一起在懵逼的海洋里越陷越深（三）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="vue2-4" data-title="vue2.0一起在懵逼的海洋里越陷越深（四）" data-url="http://baidu.com/2016/12/04/vue2-4/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"leenty-blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 leenty
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0 Demo地址</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不会捣(xia)鼓(gao)的前端不是好全栈</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

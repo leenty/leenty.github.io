@@ -128,6 +128,85 @@
       <div class="body-wrap">
         
   
+    <article id="post-vue2-4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/04/vue2-4/">vue2.0一起在懵逼的海洋里越陷越深（四）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>承接上文<a href="/2016/11/27/vue2-3/">vue2.0一起在懵逼的海洋里越陷越深（三）</a><br>前面一篇讲了vue-router的<code>router-link</code>,<br>有读者说希望能先看到vuex的文章<br>其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router<br>想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入<br>好，那么这次就先上vuex吧！</p>
+<h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>OK！先介绍下vuex<br>vuex是vuejs的状态管理方案<br>因为vuex有些复杂，一般应用在较复杂的状态环境下，如果是比较简单的应用就不需要安装vuex了</p>
+<h4 id="vuex单向数据流"><a href="#vuex单向数据流" class="headerlink" title="vuex单向数据流"></a>vuex单向数据流</h4><p><img src="/img/vue/flow.png" alt="vuex单向数据流"><br>如上图所示是vuex单向数据流的流程</p>
+<p><strong> 我知道，如果是第一次接触这玩意，到这就懵逼了，就像我第一次看文档一样 </strong><br><img src="/img/face/mengbi3.jpg" alt="vuex单向数据流"></p>
+<p><strong> 下面解释下<code>State</code> </strong><br>前面说了vuex是vuejs的状态管理方案，这里的状态就是图中的<code>state</code><br>在平时写写前端的过程中，都会涉及到状态的问题，<br>比如你看到了一篇文章写的不错，就想要收藏，<br>然后又对作者有些兴趣，于是又加了关注，当然这些最后都是需要前端来表达出来<br>这里面就涉及了两个状态就是收藏与关注<br>这里的收藏与关注我们可以将其用一个变量来表示，当然如这两种只存在两个相对状态的用布尔值(<code>bool</code>)来表示就可以了</p>
+<p><strong> 然后是<code>view</code> </strong><br><code>view</code>就是视图,也就是前端所写的页面，前面的<code>state</code>就可以在<code>view</code>里面得到体现，即是你看到的是否关注了作者</p>
+<p><strong> 而后是<code>Actions</code> </strong><br><code>Actions</code>是<code>View</code>用来改变<code>State</code>的方法，通过改变<code>State</code>从而改变<code>View</code>的显示</p>
+<p>这么说有些抽象，打个比方<br>假设学生小明生病了<br>小明要向班主任请假(小明就是<code>View</code>，小明想改变自己的显示状态，从上学状态变成请假状态)<br>于是小明口头向班主任请假(请假就是<code>Actions</code>，小明通过请假这一个方法达到请假的目的)<br>班主任批准，小明请假成功(班主任就是<code>State</code>的提供者，小明通过请假方法使班主任改变小明的<code>State</code>状态)<br>着也就解释了为什么要有这个流程，有了这个流程就可以统一管理各个<code>view</code>的各个状态</p>
+<h4 id="vuex多个组件共享状态"><a href="#vuex多个组件共享状态" class="headerlink" title="vuex多个组件共享状态"></a>vuex多个组件共享状态</h4><p>先贴个流程图，懵逼是没啥关系的<br><img src="/img/vue/vuex.png" alt="vuex多个组件共享状态"><br>可以看到这一张图比前面一张复杂了许多，其实里面的实线框就是上图的升级版</p>
+<p>情况是这样，原来小明学校里这段时间许多同学得了流感，于是同学们一窝蜂的要求请假，<br>学校里因为人太多，又没有一个记录，人数清点不过来了，于是班主任要求请假必须提交请假条</p>
+<p>好的，来解释下上图内的实线部分，之前的<code>View</code>在这里改名成了<code>Vue Components</code>,代表了多个组件(这里即是指多个同学)<br>包括小明在内的多个同学<code>Vue Components</code>都得了流感，一起想要请假<code>Actions</code>(他们即将共享一个请假状态)，小明代表多个同学写了一张请假条交给班主任(<code>State</code>提供者)签字同意(签字同意这个动作就是<code>Mutations</code>，触发了<code>State</code>的改变),班主任同意后统一给他们改变了<code>State</code>（请假成功）</p>
+<p>这里的多了一个同步与异步的区别，其中<code>Mutations</code>只受理同步处理，而<code>Actions</code>就是执行异步操作的函数，作为代价，<code>Actions</code>不再能直接触发改变<code>State</code>状态，而是需通过<code>Mutations</code>来触发<code>State</code>的改变</p>
+<p>情况是这样，因为不只是一个班的学生得了流感，请假的人比较多，学校<code>Backend API</code>需要做一个统计，于是请假需要得到学校专门的请假条的并通过学校签字才能生效，这里就有了虚线部分。<br>请假<code>Actions</code>改变<code>State</code>的方法不再是仅仅班主任签字就可以了，而是需要通过学校这个前提，于是<code>Actions</code>就变成了一个异步请求，需要得到学校<code>Backend API</code>的专门的请假条和签字同意后，才能向班主任提交改变<code>State</code>的申请</p>
+<p>这里想要表达的意思就是，<code>Vue Components</code>改变自身状态需要通过<code>Actions</code>（有需要的话要向后端接口<code>Backend API</code>发送请求）来操作<code>Mutations</code>改变<code>State</code>从而改变自身状态。<br>至于图中没有说到的<code>Devtools</code>是一个开发者工具，是一个便于查看和管理vue应用以及vuex状态的浏览器插件。<br>你可以在里面看到你vue对象和vuex每一次的commit，commit后面会说到。还有你当前的应用状态<br><img src="/img/vue/devtools.png" alt="devtools"><br>附上一个<a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">devtools库地址</a></p>
+<h4 id="架构vuex"><a href="#架构vuex" class="headerlink" title="架构vuex"></a>架构vuex</h4><p>项目结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">├── main.js</div><div class="line">├── App.vue</div><div class="line">├── components</div><div class="line">│   ├── Home.vue</div><div class="line">│   └── ...</div><div class="line">└── store</div><div class="line">    ├── index.js          # 组装模块并导出 store 的地方</div><div class="line">    ├── actions.js        # 根级别的 action</div><div class="line">    ├── mutations.js      # 根级别的 mutation</div><div class="line">    ├── types.js          # mutation命名空间</div><div class="line">    └── modules</div><div class="line">        ├── demo.js       # demo模块</div><div class="line">        └── status.js     # 全局应用状态模块</div></pre></td></tr></table></figure></p>
+<p>结构可以根据个人需要进行调整</p>
+<p><strong> 下面开始构建<code>store/index.js</code> </strong><br>当然在这之前，如果没有安装vuex的需要先安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i vuex -S</div></pre></td></tr></table></figure></p>
+<p>由于vuex的内容太多，这里先说基础用法<br>首先为<code>store/index.js</code>编写内容<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="comment">// 导入vue</span></div><div class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="comment">// 导入vuex</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> status <span class="keyword">from</span> <span class="string">'./modules/status'</span></div><div class="line"><span class="comment">// 导入status模块（这是我管理全局应用状态的模块）</span></div><div class="line"><span class="keyword">import</span> demo <span class="keyword">from</span> <span class="string">'./modules/demo'</span></div><div class="line"><span class="comment">// 导入demo模块（这个的部分演示可以在http://vue2.leenty.com/demo/vuex_state/里看到）</span></div><div class="line"></div><div class="line">Vue.use(Vuex)</div><div class="line"><span class="comment">// 告诉vue将要使用vuex</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> debug = process.env.NODE_ENV !== <span class="string">'production'</span></div><div class="line"><span class="comment">// env里去获取当前的环境是否需要开启严格模式</span></div><div class="line"><span class="comment">// 在发布环境开启严格模式会造成性能上不必要的损失</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</div><div class="line"><span class="comment">// 默认导出vuex模块</span></div><div class="line">  modules: &#123;</div><div class="line">  <span class="comment">// 导入模块</span></div><div class="line">    status,</div><div class="line">    demo</div><div class="line">  &#125;,</div><div class="line">  strict: debug</div><div class="line">  <span class="comment">// 是否开启严格模式</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong> 构建state模块 </strong><br>这里以<code>demo.js</code>为例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> types <span class="keyword">from</span> <span class="string">'../types'</span></div><div class="line"><span class="comment">// 导入mutations的命名空间</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> state = &#123;</div><div class="line"><span class="comment">// 定义state</span></div><div class="line">  demoFollow: <span class="literal">false</span>,</div><div class="line">  <span class="comment">// 这里模拟的是关注的状态，布尔值表示是否关注</span></div><div class="line">  demoFollowPending: <span class="literal">false</span></div><div class="line">  <span class="comment">// 是否在请求中(actions是否在执行异步操作)</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> getters = &#123;</div><div class="line"><span class="comment">// 定义getters, getters是对state的扩展，可以以state衍生出其他状态</span></div><div class="line">  demoFollowStatus: state =&gt; state.demoFollow ? <span class="string">'已关注'</span> : <span class="string">'未关注'</span></div><div class="line">  <span class="comment">// demoFollowStatus是demoFollow的衍生量，将原来的布尔值映射为'已关注' : '未关注'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line"><span class="comment">// 只有mutations才能操作改变state，mutations是同步执行的</span></div><div class="line"><span class="comment">// 所以有关异步的操作请放在actions里执行</span></div><div class="line">  [types.DEMO__VUEX_FOLLOW] (state, status = <span class="literal">NaN</span>) &#123;</div><div class="line">  <span class="comment">// 使用预定义好的名字来写mutations方法</span></div><div class="line">    state.demoFollow = <span class="built_in">isNaN</span>(status) ? !state.demoFollow : status</div><div class="line">  &#125;,</div><div class="line">  [types.DEMO__VUEX_FOLLOW_PENDING] (state, status = <span class="literal">NaN</span>) &#123;</div><div class="line">  <span class="comment">// 这里对status传值做了审查，如没有传，则对要改变的布尔值进行取反操作</span></div><div class="line">    state.demoFollowPending = <span class="built_in">isNaN</span>(status) ? !state.demoFollowPending : status</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> actions = &#123;</div><div class="line"><span class="comment">// actions是可以执行异步操作的，操作完毕后触发mutations里的方法去改变state的状态</span></div><div class="line">  demoFollowAjax (&#123;commit&#125;, status) &#123;</div><div class="line">    commit(types.DEMO__VUEX_FOLLOW_PENDING)</div><div class="line">    <span class="comment">// 在异步操作前通过mutations告诉应用，现在正在进行异步操作</span></div><div class="line">    setTimeout(() =&gt; &#123;</div><div class="line">      <span class="comment">// 利用延时函数模拟异步的ajax操作</span></div><div class="line">      commit(types.DEMO__VUEX_FOLLOW_PENDING)</div><div class="line">      <span class="comment">// commit 是在actions里用来触发mutations的方法</span></div><div class="line">      <span class="comment">// 告诉应用，异步操作结束</span></div><div class="line">      commit(types.DEMO__VUEX_FOLLOW, status)</div><div class="line">      <span class="comment">// 为关注按钮赋予新的状态</span></div><div class="line">    &#125;, <span class="number">2000</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line"><span class="comment">// 导出整个demo模块</span></div><div class="line">  state,</div><div class="line">  getters,</div><div class="line">  actions,</div><div class="line">  mutations</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong> 这里解释下mutations里的方法的奇怪写法，我知道如果对es6于法了解不多这里是会懵逼的 </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">  [types.DEMO__VUEX_FOLLOW] (state, status = <span class="literal">NaN</span>) &#123;</div><div class="line">    state.demoFollow = <span class="built_in">isNaN</span>(status) ? !state.demoFollow : status</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这是对象内方法的简化写法，其中<code>types.DEMO__VUEX_FOLLOW</code>是在<code>types.js</code>里预定义的，内容如下<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> DEMO__VUEX_FOLLOW = <span class="string">'DEMO__VUEX_FOLLOW'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> DEMO__VUEX_FOLLOW_PENDING = <span class="string">'DEMO__VUEX_FOLLOW_PENDING'</span></div><div class="line"><span class="comment">// 其实就是字符串集合，最后用 import * as types from '../types' 方法导入vuex模块里</span></div><div class="line"><span class="comment">// 就变成了一个types对象</span></div></pre></td></tr></table></figure></p>
+<p>上例中全部展开是这样的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mutations = &#123;</div><div class="line">  [types.DEMO__VUEX_FOLLOW]: (state, status = <span class="literal">NaN</span>) =&gt; &#123;</div><div class="line">  <span class="comment">// [types.DEMO__VUEX_FOLLOW]是提取types.DEMO__VUEX_FOLLOW的值的一种方式</span></div><div class="line">  <span class="comment">// 在这里[types.DEMO__VUEX_FOLLOW]提取出来就是types.js里预定义的'DEMO__VUEX_FOLLOW'</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">isNaN</span>(status)&#123;</div><div class="line">      state.demoFollow = !state.demoFollow</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      state.demoFollow = status</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>好，到此为止，vuex就已经建立好了，下面就说如何使用了</p>
+<h4 id="应用状态的使用与改变"><a href="#应用状态的使用与改变" class="headerlink" title="应用状态的使用与改变"></a>应用状态的使用与改变</h4><p>vuex提供了4个辅助函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapState, mapGetters, mapActions, mapMutations &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div></pre></td></tr></table></figure></p>
+<p>是分别用来获取<code>State, Getters, Actions, Mutations</code>的map方法<br>在vue Components里面你可以以这样的方式来导入需要使用的方法</p>
+<p>这4个方法拥有统一的参数格式以及一个统一的返回格式<br>可以传入一个数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mapGetters([<span class="string">'demoFollowStatus'</span>])</div><div class="line"><span class="comment">// 此方法导出的是一个Getters对象</span></div><div class="line">mapGetters(&#123;</div><div class="line">  demoFollow: <span class="string">'demoFollowStatus'</span></div><div class="line">&#125;)</div><div class="line"><span class="comment">// 可以通过传入对象的形式来改变得到的getters方法名</span></div></pre></td></tr></table></figure></p>
+<p>同理，不同的map方法会导出各自的方法<br>其中<code>mapState, mapGetters</code>将会导出适用于<code>computed</code>的方法<br>而<code>mapMutations, mapActions</code>将会导出适用于<code>methods</code>的方法</p>
+<p>这里以一个demo组件为例<a href="https://github.com/leenty/vue2/blob/master/src/components/DemoVuexState.vue" target="_blank" rel="external">DemoVuexState.vue</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; mapState, mapGetters, mapMutations, mapActions &#125; <span class="keyword">from</span> <span class="string">'vuex'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  computed: &#123;</div><div class="line">  <span class="comment">// vue的计算属性，计算属性内方法的私有变量变动会触发这个属性的重新计算</span></div><div class="line">    ...mapState(&#123;</div><div class="line">      mapStateFollow: (&#123;demo&#125;) =&gt; demo.demoFollow,</div><div class="line">      mapStateFollowPending: (&#123;demo&#125;) =&gt; demo.demoFollowPending</div><div class="line">    &#125;),</div><div class="line">    <span class="comment">// mapState()直接读取State里的状态内容</span></div><div class="line">    ...mapGetters([<span class="string">'demoFollowStatus'</span>])</div><div class="line">    <span class="comment">// mapGetters()通过getters转化state从而得到你想要的内容</span></div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">  <span class="comment">// vue的方法，可以是一个事件的方法，也可以是一个vuex的方法，也可以是一个普通函数</span></div><div class="line">    ...mapMutations([<span class="string">'DEMO__VUEX_FOLLOW'</span>]),</div><div class="line">    <span class="comment">// 同步的改变状态</span></div><div class="line">    ...mapActions([<span class="string">'demoFollowAjax'</span>])</div><div class="line">    <span class="comment">// 异步的改变状态</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这段代码是一个demo里的片段，效果大家可以看<a href="http://vue2.leenty.com/demo/vuex_state" target="_blank" rel="external">这个呆萌</a>，如果开心了可以在<a href="https://github.com/leenty/vue2" target="_blank" rel="external">github库里加个星</a>，如果有问题可以评论😀</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/04/vue2-4/" class="archive-article-date">
+  	<time datetime="2016-12-04T12:35:32.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-04</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuex/">vuex</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-vue2-3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -146,7 +225,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/related" target="_blank" rel="external"></a><br>承接上文<a href="/2016/11/20/vue2-2/">vue2.0一起在懵逼的海洋里越陷越深（二）</a><br>前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔<br><img src="/img/vue/chiss.jpg" alt="vue2.0"></p>
+        <!-- [](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/related) -->
+<p>承接上文<a href="/2016/11/20/vue2-2/">vue2.0一起在懵逼的海洋里越陷越深（二）</a><br>前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔<br><img src="/img/vue/chiss.jpg" alt="vue2.0"></p>
 <h3 id="上回说到-vue-router的基本用法，下面继续深入"><a href="#上回说到-vue-router的基本用法，下面继续深入" class="headerlink" title="上回说到: vue-router的基本用法，下面继续深入"></a>上回说到: vue-router的基本用法，下面继续深入</h3><p>啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈<br>前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由<br>首页以后顶多就展示下大致的新内容，文章页顶多放放文章详情<br>这演示页可就厉害了，接下来的一些演示都会放在这里，具体的布局还没想好，先这么用着吧！</p>
 <h3 id="vue-router的超链接标签“router-link”"><a href="#vue-router的超链接标签“router-link”" class="headerlink" title="vue-router的超链接标签“router-link”"></a>vue-router的超链接标签“router-link”</h3><p>在vue1.0版本的超链接标签还是原来的<code>a</code>标签，链接地址由<code>v-link</code>属性控制(具体的这里也不多说了，vue1.0已经过去啦)<br>而vue2.0版本里超链接标签由<code>a</code>标签被替换成了<code>router-link</code>标签，当然，没有必要不用担心什么，因为最后没有什么特殊的设置的话，<code>router-link</code>标签还是会被渲染成<code>a</code>标签的。<br>至于为什么在vue2.0的时候被替换成了<code>router-link</code>标签呢？<br>大致YY了下，部分情节应该是这样的：</p>
 <ul>
@@ -155,21 +235,21 @@
 </ul>
 <h3 id="“router-link”标签的属性-Props"><a href="#“router-link”标签的属性-Props" class="headerlink" title="“router-link”标签的属性(Props)"></a>“router-link”标签的属性(Props)</h3><p>没错，只要是标签，多多少少都是有属性的，最次class和id属性也是可以添加的。<br>下面说说<code>router-link</code>标签的各个属性</p>
 <h4 id="“to”属性"><a href="#“to”属性" class="headerlink" title="“to”属性"></a>“to”属性</h4><p><code>to</code>属性最简单的用法就是如<code>a</code>标签里的<code>href</code>属性一样的填写，简单粗暴，想去哪就去哪。<br>其实，<code>to</code>属性的值可以有两种：</p>
-<p><strong> 其一为字符串形式，也就是前面说到的如<code>href</code>一样的用法 </strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 字符串 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/article"</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 渲染结果 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/article"</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p><strong> 其一为字符串形式，也就是前面说到的如<code>href</code>一样的用法 </strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 字符串 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"/article"</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 渲染结果 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/article"</span>&gt;</span>Article<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><strong> 其二为对象形式，下面看看to属性的 对象的主要结构 </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 主要结构</span></div><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span></div><div class="line">&#125;</div><div class="line">  <span class="comment">// 或者</span></div><div class="line">&#123;</div><div class="line">  path: <span class="string">'/article'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 二者选其中之一，如果两种都使用，那么vue会选择使用name字段</span></div><div class="line"><span class="comment">// eg</span></div><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span>,</div><div class="line">  path: <span class="string">'/demo'</span></div><div class="line">&#125;</div><div class="line"><span class="comment">// 实际效果等同于:</span></div><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>对于里面的<code>path</code>字段，其实就是就是想去哪就去哪的to属性字符串的对象形式<br>至于<code>name</code>字段，是不是会有些懵逼？这个<code>name</code>其实就是上一篇里说到的<code>routes.js</code>文件里的<code>name</code>字段啦！<br>就是这个！填成一样的就好啦！注意大小写哦<br><img src="http://upload-images.jianshu.io/upload_images/2005796-74c28829c2945707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="routes.js-name字段"></p>
 <p><strong> to属性的 对象的可选结构 </strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  name: <span class="string">'Article'</span>, <span class="comment">// 与path字段二选一</span></div><div class="line">  path: <span class="string">'/article'</span>, <span class="comment">// 与name字段二选一</span></div><div class="line">  params: &#123; <span class="comment">// 可选字段 隐性的传递参数(多用来页面传参)</span></div><div class="line">    userId: <span class="number">123</span> <span class="comment">// 传递的参数demo</span></div><div class="line">  &#125;,</div><div class="line">  query: &#123; <span class="comment">// 可选字段 查询参数，就是url里‘?’之后的部分</span></div><div class="line">    plan: <span class="string">'private'</span> <span class="comment">// 查询参数demo</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>可以使用chrome插件<a href="https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd" target="_blank" rel="external">vue.js devtools</a>来查看vue的路由的params参数，安装这个插件需要翻墙下载<br>或者可以去<a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="external">github上下代码编译插件</a>,如果觉得麻烦也可以百度去其他网站下<br>对于可选参数是不是会有些懵，下面贴几张图就明白了<br><img src="http://upload-images.jianshu.io/upload_images/2005796-ad7396a60ead7e5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查看路由参数"><br>其中<code>params</code>是隐性传递，<code>query</code>是显性传递。<br><img src="http://upload-images.jianshu.io/upload_images/2005796-f8f925d9b68e6367.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="路由query"><br>红框部分就是传递的<code>query</code>了</p>
 <h4 id="“replace”属性"><a href="#“replace”属性" class="headerlink" title="“replace”属性"></a>“replace”属性</h4><p>顾名思义，replace是替换的意思，所以在<code>router-link</code>标签添加了这个属性后，页面切换时不会留下历史记录<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"&#123; path: '/abc'&#125;"</span> <span class="attr">replace</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <h4 id="“append”属性"><a href="#“append”属性" class="headerlink" title="“append”属性"></a>“append”属性</h4><p>append会把当前路径设置为相对路径，何为相对路径？比如你当前在<code>vue2.leenty.com/demo</code>下，点击这个链接<code>&lt;router-link :to=&quot;{ path: &#39;article&#39;}&quot; append&gt;&lt;/router-link&gt;</code>,如果没带<code>append</code>属性，那么就会跳到<code>vue2.leenty.com/article</code>下(hash模式下是<code>vue2.leenty.com/#/article</code>)，而现在却是跳到了<code>vue2.leenty.com/demo/article</code>下。这个属性用处不是很大，在特殊情况下才会用到。<br>推荐还是把自己地址写全，不要使用相对地址，这样容易搞错<br>另外加个小技巧，在地址前加<code>/</code>能保证是跳转根目录的</p>
-<h4 id="“tag”属性"><a href="#“tag”属性" class="headerlink" title="“tag”属性"></a>“tag”属性</h4><p>具有<code>tag</code>属性的的<code>router-link</code>标签会被渲染为相应的标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/article"</span> <span class="attr">tag</span>=<span class="string">"li"</span>&gt;</span>article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="“tag”属性"><a href="#“tag”属性" class="headerlink" title="“tag”属性"></a>“tag”属性</h4><p>具有<code>tag</code>属性的的<code>router-link</code>标签会被渲染为相应的标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"/article"</span> <span class="attr">tag</span>=<span class="string">"li"</span>&gt;</span>article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>将会被渲染为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>article<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里不需要担心li的跳转问题，vue会自动为其绑定点击事件，并跳转页面</p>
-<h4 id="“active-class”属性"><a href="#“active-class”属性" class="headerlink" title="“active-class”属性"></a>“active-class”属性</h4><p>这个属性如字面意思上说的，是设置激活链接时的<code>class</code>属性<br>即是当前页面所有与当前地址所匹配的链接都会被添加这个<code>class</code>属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/article"</span> <span class="attr">active-class</span>=<span class="string">"u-link--Active"</span>&gt;</span>article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="“active-class”属性"><a href="#“active-class”属性" class="headerlink" title="“active-class”属性"></a>“active-class”属性</h4><p>这个属性如字面意思上说的，是设置激活链接时的<code>class</code>属性<br>即是当前页面所有与当前地址所匹配的链接都会被添加这个<code>class</code>属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"/article"</span> <span class="attr">active-class</span>=<span class="string">"u-link--Active"</span>&gt;</span>article<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>如此，在<code>vue2.leenty.com/article</code>页面下(hash模式下是<code>vue2.leenty.com/#/article</code>)就会被渲染为<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/article"</span> <span class="attr">class</span>=<span class="string">"u-link--Active"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p><code>active-class</code>属性的默认值是<code>router-link-active</code>,所以如果没有设置，就会被渲染为这个class</p>
 <p>其实在上一章节有说到统一的设置这个active-class属性<br>打开<code>router.js</code>文件就能看到<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</div><div class="line">  mode: <span class="string">'hash'</span>,</div><div class="line">  linkActiveClass: <span class="string">'u-link--Active'</span>, <span class="comment">// 这是链接激活时的class</span></div><div class="line">  routes</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<h4 id="“exact”属性"><a href="#“exact”属性" class="headerlink" title="“exact”属性"></a>“exact”属性</h4><p>开启<code>router-link</code>的严格模式<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/"</span> <span class="attr">exact</span>&gt;</span>home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="“exact”属性"><a href="#“exact”属性" class="headerlink" title="“exact”属性"></a>“exact”属性</h4><p>开启<code>router-link</code>的严格模式<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"/"</span> <span class="attr">exact</span>&gt;</span>home<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上面这个标签如果不加<code>exact</code>属性，则会在<code>vue2.leenty.com/article</code>页面下也会被匹配到，<br>这却不是我们的本意,在加了这个属性后就会正确的匹配到<code>vue2.leenty.com</code>下</p>
 <p>以上为vue-router的router-link的介绍</p>
 
@@ -410,483 +490,9 @@
 
 
   
-    <article id="post-vue2-1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/21/vue2-1/">vue2.0一起在懵逼的海洋里越陷越深（一）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="就在今年的10月份，Vue2-0发布啦，来懵逼的海洋里一起下沉吧！"><a href="#就在今年的10月份，Vue2-0发布啦，来懵逼的海洋里一起下沉吧！" class="headerlink" title="就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！"></a>就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！</h3><p>前段阵子都没有发随笔，一方面要准备一场考试，另一方面是在研究vue2.0，又一方面一时也不知道写点什么好。<br><strong><em>（而其实最大的方面是自己找到了偷懒不写随笔的理由了。。。）</em></strong></p>
-<hr>
-<p><img src="/img/vue/vue2.0.png" alt="vue2.0"></p>
-<p><strong> @周星星和江南另外三大才子有佳句流传：</strong><br>山下一群鹅，嘘声赶落河.<br>下河捉鹅医肚饿，吃完回家玩…<br>呃…玩vue2.0 咳咳咳咳</p>
-<p><strong> 先看看vue2.0多了哪些好玩的 </strong></p>
-<ul>
-<li>virtual-DOM（据说不是普通的Virtual-DOM）</li>
-<li>Templates || JSX || Hyperscript(现在，你可以选择你喜欢的编写模式进行开发了)</li>
-<li>流式服务端渲染（这个听起来很厉害，后面一起研究）</li>
-<li>其他（各种性能优化，更多想象发挥空间，更多可能）</li>
-</ul>
-<p><strong> 伴随着vue2.0的更新，vue生态链的其他组件也跟着进行了更新 </strong></p>
-<ul>
-<li>vue-router</li>
-<li>vue-resource</li>
-<li>vue-cli</li>
-</ul>
-<h3 id="好，进入正题"><a href="#好，进入正题" class="headerlink" title="好，进入正题"></a>好，进入正题</h3><p>先贴个地址，<a href="http://vue2.leenty.com" target="_blank" rel="external">我的vue2.0的demo</a><br>这个demo使用vue-cli快速生成还发环境<br>加入vue-router做前端路由<br>加入vue-resource做ajax<br>加入vuex做状态管理<br>demo里目前使用hash模式<br>具体的会在接下来一一介绍</p>
-<p><strong> 具体细节 </strong></p>
-<p>好的，现在打开你的终端，开始开车啦！🚌</p>
-<ul>
-<li><p>安装vue-cli</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g vue-cli</div></pre></td></tr></table></figure>
-</li>
-<li><p>创建vue项目<br>语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init &lt;template-name&gt; &lt;project-name&gt;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里我选择使用webpack来创建（可以参考<a href="/2016/06/02/git入门级-在github创建项目/">git入门级-在github创建项目</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack app</div></pre></td></tr></table></figure></p>
-<p>之后vue-cli就会询问Project name，你可以输入你的工程名，或者直接回车就会默认使用之前的名称<br>之后还会有一系列询问，你可以一路回车下来，这样就创建好了一个<br>大概会是这样子<br><img src="/img/vue/vue-cli.png" alt="vue-cli"></p>
-<ul>
-<li>安装依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>当完成这一步步骤后就可以使用命令启动vue应用了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
-<ul>
-<li>接下来就安装其他需要的组件，vue-router,vue-resource,vuex<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install vue-router vue-resource vuex --save</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>到这一步，vue项目的骨架已经好了。</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/21/vue2-1/" class="archive-article-date">
-  	<time datetime="2016-10-20T17:08:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-21</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vim！告别鼠标和触摸板，让你的双手专心的留在键盘上" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/15/vim！告别鼠标和触摸板，让你的双手专心的留在键盘上/">vim！告别鼠标和触摸板，让你的双手专心的留在键盘上[未完]</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="vim从懵懂入坑到生无可恋"><a href="#vim从懵懂入坑到生无可恋" class="headerlink" title="vim从懵懂入坑到生无可恋"></a>vim从懵懂入坑到生无可恋</h3><p><img src="/img/face/mengbiboyi.png" alt="mengbiboyi"></p>
-<p>曾经，作为一名前端，也许不用太多在意去刻意的玩bash/shell什么的，毕竟之前的前端不会涉及这方面的需求。</p>
-<p>随着node的流行，随着git的流行，各种模块管理器、任务管理器、打包工具的盛行，前端渐渐的也开始接触命令行一类的东西。<br>在使用git处理文件冲突的时候，如果不是用GUI的话，那么就需要使用vim打开冲突的文件进行解决了。</p>
-<hr>
-<p>vim有3种模式，但常见的也只有两种，即Insert模式和Normal模式<br>其中</p>
-<ul>
-<li>Insert模式是我们正常的可以输入文本的状态</li>
-<li>Normal模式是输入命令的状态<h4 id="模式切换"><a href="#模式切换" class="headerlink" title="模式切换"></a>模式切换</h4><strong>进入Insert模式：</strong></li>
-<li>按下<code>I</code>键,即：在当前字符前插入文本</li>
-<li>按下<code>shift</code>+<code>I</code>,即：在当前行前插入文本</li>
-<li>按下<code>A</code>键,即：在当前字符后追加文本</li>
-<li>按下<code>shift</code>+<code>A</code>,即：在当前行后追加文本<br><strong>进入Normal模式(退出Insert模式)：</strong></li>
-<li>按下<code>esc</code>键<h4 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h4>vim的快捷键基本是在Normal模式下才起作用(废话！Insert模式输快捷键就是输入文本)</li>
-</ul>
-<p><strong>光标操作</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">键位</th>
-<th>效果</th>
-<th><code>shift</code>+当前键位时的效果</th>
-<th>数字键+当前键位时的效果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>H</code></td>
-<td>光标左移</td>
-<td>光标移到到当前屏幕第一行</td>
-<td>光标移到到当前屏幕第n行</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>J</code></td>
-<td>光标下移</td>
-<td>合并当前行及下一行</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>K</code></td>
-<td>光标上移</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>L</code></td>
-<td>光标右移</td>
-<td>光标移动到当前屏幕最后一行</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>w</code></td>
-<td>光标向后移动到单词头部</td>
-<td>光标移动到下一句文本头部</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>B</code></td>
-<td>光标向前移动到单词头部</td>
-<td>光标移动到上一句文本头部</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>E</code></td>
-<td>光标向后移动到单词尾部</td>
-<td>光标移动到当前句或者下一句文本尾部</td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>^</code></td>
-<td>移动光标到行首</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>$</code></td>
-<td>移动光标到行尾</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>ctrl</code>+<code>F</code></td>
-<td>下一页</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>ctrl</code>+<code>B</code></td>
-<td>上一页</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>G</code></td>
-<td></td>
-<td>移动到末行</td>
-<td>移动到第n行</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>G</code>+<code>G</code></td>
-<td>移动到首行</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>)</code></td>
-<td>移动到下一句</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td style="text-align:center"><code>(</code></td>
-<td>移动到上一句</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/15/vim！告别鼠标和触摸板，让你的双手专心的留在键盘上/" class="archive-article-date">
-  	<time datetime="2016-10-15T08:02:50.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-15</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-利用host域名解析解决github访问慢问题" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/14/利用host域名解析解决github访问慢问题/">利用host域名解析解决github访问慢问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>最近家里访问github速度越来越慢，今天已经是异常的慢了，于是开始寻找解决的办法<br>遇到打不开的网站，本能的搬起‘梯子‘去翻墙，问题就这么解决了。。。<br><strong><em>不对啊！我去！</em></strong><br><strong><em>github什么时候需要翻墙访问啦？</em></strong></p>
-<h3 id="so"><a href="#so" class="headerlink" title="so"></a>so</h3><p>我开始寻找不翻墙的方法。<br>先看这张图<br><img src="/img/github-network.png" alt="github-network"><br>发现其实github.com的响应速度并不慢，而真正拖慢速度的是assets-cdn.github.com（其中pending的部分）<br>这基本是由dns污染所导致，所以只要通过host映射到一个畅通的IP上就会变的好起来。<br>进入一个<a href="http://tool.chinaz.com/dns" target="_blank" rel="external">dns域名检测</a>的网站，在其中查询assets-cdn.github.com<br>会搜出一个dns列表，选择其中TTL值最小的一个IP，复制出来<br>命令行工具打开你的hosts文件（这里以macOS为例,如果你使用windows的git命令行工具，操作就是差不多的）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/hosts</div></pre></td></tr></table></figure></p>
-<p>在hosts文件最下方添加刚刚复制出来的IP<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">151.101.xxx.xxx assets-cdn.github.com</div></pre></td></tr></table></figure></p>
-<p><strong>具体vim操作步骤：</strong></p>
-<ol>
-<li>按下<code>shift + g</code>跳至页尾</li>
-<li>按下<code>o</code>创建新的一行</li>
-<li>按下<code>ctrl/command + v</code> 粘贴刚刚复制的IP</li>
-<li>而后打个空格</li>
-<li>接着输入<code>assets-cdn.github.com</code></li>
-<li>按下<code>esc</code>退出编辑模式</li>
-<li>输入<code>:wq</code>保存退出<br>如此就大功告成了。<br>如果还不会用vim，也可以用其他编辑器打开做修改。<br>保存之后，就可以尝试再次访问github了，多刷几遍就能进去。<br>如果还是进不去可以输入命令<code>sudo dscacheutil -flushcache</code>更新dns缓存，这样就可以进入了。</li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/14/利用host域名解析解决github访问慢问题/" class="archive-article-date">
-  	<time datetime="2016-10-14T14:57:09.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-14</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/">other</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-用ES6语法写的btnSelect下拉按钮" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/">用ES6语法写的btnSelect下拉按钮</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="btnSelect下拉按钮"><a href="#btnSelect下拉按钮" class="headerlink" title="btnSelect下拉按钮"></a>btnSelect下拉按钮</h3><p>按钮支持多个按钮关联，带联想功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 下拉选择按钮 btnSelect</span></div><div class="line"><span class="comment">/* 暴露btnSelect类，假定全局存在jQuery */</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">btnSelect</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span> () &#123;</div><div class="line">    <span class="keyword">this</span>.btnSelectClass = <span class="string">".btn__select"</span></div><div class="line">  &#125;</div><div class="line">  init () &#123;</div><div class="line">    <span class="keyword">var</span> btnSelectList = &#123;&#125;</div><div class="line">    $(<span class="keyword">this</span>.btnSelectClass).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      <span class="keyword">var</span> name = $(<span class="keyword">this</span>).children(<span class="string">'input[type="hidden"]'</span>).attr(<span class="string">"name"</span>);</div><div class="line">      <span class="keyword">var</span> btnSelect = <span class="keyword">new</span> btnSelectClass($(<span class="keyword">this</span>))</div><div class="line">      btnSelectList[name] = btnSelect</div><div class="line">      btnSelect.init()</div><div class="line">    &#125;)</div><div class="line">    <span class="built_in">window</span>.btnSelectList = btnSelectList</div><div class="line">    <span class="keyword">var</span> btnSelectRelations = <span class="keyword">new</span> btnSelectRelation([<span class="string">"province"</span>,<span class="string">"city"</span>])</div><div class="line">    btnSelectRelations.init()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 注册的组件放在window.btnSelectList下 取input[type='hidden']的name值为键名</div><div class="line">    &lt;span class="btn__select"&gt;</div><div class="line">      &lt;input type="text" placeholder="专业"&gt;</div><div class="line">      &lt;input type="hidden" name="qwe"&gt;</div><div class="line">      &lt;button type="button"&gt;&lt;/button&gt;</div><div class="line">      &lt;ul&gt;</div><div class="line">        &lt;li name="caa"&gt;123&lt;/li&gt;</div><div class="line">        &lt;li name="tafa"&gt;456&lt;/li&gt;</div><div class="line">        &lt;li name="xafa"&gt;789&lt;/li&gt;</div><div class="line">      &lt;/ul&gt;</div><div class="line">    &lt;/span&gt;</div><div class="line"> *</div><div class="line"> * 简写 在实例化的时候会补全，不过这样是没有初始数据的</div><div class="line">    &lt;span class="btn__select"&gt;</div><div class="line">      &lt;input type="text" placeholder="专业"&gt;</div><div class="line">      &lt;input type="hidden" name="qwe"&gt;</div><div class="line">    &lt;/span&gt;</div><div class="line"> * </div><div class="line"> * 导入数据</div><div class="line">    window.btnSelectList.qwe.set(&#123;</div><div class="line">      caa: "中国美术学院",</div><div class="line">      tafa: "天津美术学院",</div><div class="line">      xafa: "西安美术学院"</div><div class="line">    &#125;)</div><div class="line"> *</div><div class="line"> * 获取</div><div class="line">    window.btnSelectList.qwe.get()</div><div class="line"> *   </div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">btnSelectClass</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span> (element, data = null)&#123;</div><div class="line">    <span class="keyword">this</span>.btn__select = element</div><div class="line">    <span class="keyword">this</span>.data = data</div><div class="line">    <span class="keyword">this</span>.preText = <span class="string">""</span></div><div class="line">    <span class="keyword">this</span>.name = <span class="literal">undefined</span></div><div class="line">    <span class="keyword">this</span>.btnSelectRelation = <span class="literal">null</span></div><div class="line">    <span class="keyword">this</span>.set = data =&gt; &#123;</div><div class="line">      <span class="keyword">this</span>.data = data</div><div class="line">      <span class="keyword">this</span>.reBuildDom(data)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.get = () =&gt; <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='hidden']"</span>).val()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  init () &#123;</div><div class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></div><div class="line">    <span class="keyword">this</span>.data == <span class="literal">null</span> &amp;&amp; <span class="keyword">this</span>.buildBtnSelect()</div><div class="line">    <span class="comment">// 选择 取值</span></div><div class="line">    <span class="keyword">this</span>.btn__select.on(<span class="string">"click"</span>,<span class="string">"li"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">      _this.setValue($(<span class="keyword">this</span>).attr(<span class="string">"name"</span>), $(<span class="keyword">this</span>).text())</div><div class="line">      <span class="keyword">typeof</span> _this.btnSelectRelation === <span class="string">"function"</span> &amp;&amp; _this.btnSelectRelation(_this.name,$(<span class="keyword">this</span>).attr(<span class="string">"name"</span>))</div><div class="line">    &#125;)</div><div class="line">    <span class="comment">// 监听输入动作，触发搜索功能</span></div><div class="line">    <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='text']"</span>).keyup(e =&gt; &#123;</div><div class="line">      <span class="keyword">var</span> val = $(e.target).val()</div><div class="line">      val !== <span class="keyword">this</span>.preText &amp;&amp; <span class="keyword">this</span>.search(val)</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">this</span>.setName()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setValue (name, value) &#123;</div><div class="line">    <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='text']"</span>).val(value)</div><div class="line">    <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='hidden']"</span>).val(name)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setName () &#123;</div><div class="line">    <span class="keyword">this</span>.name = <span class="keyword">this</span>.btn__select.children(<span class="string">'input[type="hidden"]'</span>).attr(<span class="string">"name"</span>)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  buildBtnSelect () &#123;</div><div class="line">    <span class="keyword">var</span> ul = <span class="keyword">this</span>.btn__select.children(<span class="string">"ul"</span>)</div><div class="line">    <span class="keyword">var</span> button = <span class="keyword">this</span>.btn__select.children(<span class="string">"button"</span>)</div><div class="line">    button.length == <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='hidden']"</span>).after(<span class="string">'&lt;button type="button"&gt;&lt;/button&gt;'</span>)</div><div class="line">    <span class="keyword">if</span>(ul.length == <span class="number">0</span>)&#123;</div><div class="line">      <span class="keyword">this</span>.btn__select.append(<span class="string">"&lt;ul&gt;&lt;/ul&gt;"</span>)</div><div class="line">      <span class="keyword">this</span>.data = &#123;&#125;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">      <span class="keyword">var</span> data = &#123;&#125;</div><div class="line">      <span class="keyword">var</span> items = <span class="keyword">this</span>.btn__select.find(<span class="string">"li"</span>)</div><div class="line">      items.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        data[$(<span class="keyword">this</span>).attr(<span class="string">"name"</span>)] = $(<span class="keyword">this</span>).text()</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">this</span>.data = data</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  reBuildDom (data) &#123;</div><div class="line">    <span class="keyword">var</span> ul = <span class="keyword">this</span>.btn__select.children(<span class="string">"ul"</span>)</div><div class="line">    ul.empty()</div><div class="line">    <span class="keyword">var</span> items = <span class="string">""</span></div><div class="line">    $.each(data, <span class="function"><span class="keyword">function</span> (<span class="params">k,v</span>) </span>&#123;</div><div class="line">      items += <span class="string">`&lt;li name="<span class="subst">$&#123;k&#125;</span>"&gt;<span class="subst">$&#123;v&#125;</span>&lt;/li&gt;`</span></div><div class="line">    &#125;)</div><div class="line">    ul.append(items)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  search (val) &#123;</div><div class="line">    <span class="keyword">this</span>.preText = val</div><div class="line">    <span class="keyword">var</span> data = &#123;&#125;</div><div class="line">    <span class="keyword">if</span>(val != <span class="string">""</span>)&#123;</div><div class="line">      $.each(<span class="keyword">this</span>.data,(k, v) =&gt; &#123;</div><div class="line">        (v.indexOf(val) &gt; <span class="number">-1</span>) &amp;&amp; (data[k] = v)</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">this</span>.reBuildDom(data)</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">      <span class="keyword">this</span>.reBuildDom(<span class="keyword">this</span>.data)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*["province","city"]*/</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * btnSelect关联器</div><div class="line"> * 在btnSelect初始化之后 才能 将关联器调用初始化</div><div class="line"> *</div><div class="line"> * 在实例化关联器是传入与关联按钮的name数组，按关联顺序排序</div><div class="line"> * 如下：province的下一级是city</div><div class="line"> * </div><div class="line"> * 关于初始化的板栗：</div><div class="line">    var btnSelectRelations = new btnSelectRelation(["province","city"])</div><div class="line">    btnSelectRelations.init()</div><div class="line"> *</div><div class="line"> * 设置数据:</div><div class="line">    window.btnSelectList.province.setSource(&#123;</div><div class="line">      zj: "浙江省",</div><div class="line">      hn: "湖南省",</div><div class="line">      sc: "四川省"</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    window.btnSelectList.city.setSource(&#123;</div><div class="line">      zj: &#123;</div><div class="line">        hz:"杭州市",</div><div class="line">        sx:"绍兴市",</div><div class="line">        jh:"金华市"</div><div class="line">      &#125;,</div><div class="line">      hn: &#123;</div><div class="line">        cs:"长沙市",</div><div class="line">        yy:"岳阳市",</div><div class="line">        cd:"常德市"</div><div class="line">      &#125;,</div><div class="line">      sc: &#123;</div><div class="line">        cd:"成都市",</div><div class="line">        my:"绵阳市",</div><div class="line">        dy:"德阳市"</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line"> * </div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">btnSelectRelation</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span> (relationType) &#123;</div><div class="line">    <span class="keyword">this</span>.relationType = relationType</div><div class="line">    <span class="keyword">this</span>.relationData = []</div><div class="line">    <span class="keyword">this</span>.set = (childName, data) =&gt; &#123;</div><div class="line">      <span class="keyword">var</span> index = <span class="keyword">this</span>.getChildIndex(childName)</div><div class="line">      <span class="keyword">this</span>.relationData[index] = data</div><div class="line">      index == <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>.setChildData(index, data)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  init () &#123;</div><div class="line">    $.each(<span class="keyword">this</span>.relationType,(k, v) =&gt; &#123;</div><div class="line">      <span class="built_in">window</span>.btnSelectList[v].setSource = data =&gt; &#123;</div><div class="line">        <span class="keyword">var</span> name = v</div><div class="line">        <span class="keyword">this</span>.set(name,data)</div><div class="line">      &#125;</div><div class="line">      <span class="built_in">window</span>.btnSelectList[v].btnSelectRelation = (btnName,key) =&gt; &#123;</div><div class="line">        <span class="keyword">var</span> index = <span class="keyword">this</span>.getChildIndex(btnName) + <span class="number">1</span></div><div class="line">        index &gt; <span class="number">0</span> &amp;&amp; index &lt; <span class="keyword">this</span>.relationData.length &amp;&amp; <span class="keyword">this</span>.filter(index, key)</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  getChildIndex (childName) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.relationType.indexOf(childName)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  filter (index, key) &#123;</div><div class="line">    <span class="keyword">this</span>.setChildData(index, <span class="keyword">this</span>.relationData[index][key])</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  setChildData (index, data) &#123;</div><div class="line">    <span class="built_in">window</span>.btnSelectList[<span class="keyword">this</span>.relationType[index]].set(data)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="补上css-这里是用stylus语法"><a href="#补上css-这里是用stylus语法" class="headerlink" title="补上css,这里是用stylus语法"></a>补上css,这里是用stylus语法</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">/* 清除按钮样式 */</div><div class="line">btn-clean()</div><div class="line">  border none</div><div class="line">  outline none</div><div class="line">  box-shadow none</div><div class="line">  background none</div><div class="line"></div><div class="line">/* 下拉按钮样式 */</div><div class="line">dropDown()</div><div class="line">  padding 0</div><div class="line">  border-left 6px solid transparent</div><div class="line">  border-right 6px solid transparent</div><div class="line">  border-top 10px solid mt-orange</div><div class="line"></div><div class="line">.btn__select</div><div class="line">  btn-clean()</div><div class="line">  border 1px solid #ccc</div><div class="line">  border-radius 2px</div><div class="line">  font-size 14px</div><div class="line">  color gray-a7</div><div class="line">  padding 0.5em 0.7em</div><div class="line">  position relative</div><div class="line">  input,</div><div class="line">  button</div><div class="line">    btn-clean()</div><div class="line">    &amp;:focus~ul</div><div class="line">      display block</div><div class="line">  button</div><div class="line">    dropDown()</div><div class="line">  ul</div><div class="line">    position absolute</div><div class="line">    top 100%</div><div class="line">    left 0</div><div class="line">    width 100%</div><div class="line">    border-radius 0 0 2px 2px</div><div class="line">    box-shadow 0 2px 2px rgba(0,0,0,.3)</div><div class="line">    display none</div><div class="line">    &amp;:hover</div><div class="line">      display block</div><div class="line">  li</div><div class="line">    padding 0.5em 0.3em</div><div class="line">    border 1px solid #ccc</div><div class="line">    &amp;:not(:last-child)</div><div class="line">      border-bottom none</div><div class="line">    &amp;:last-child</div><div class="line">      border-radius 0 0 2px 2px</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/" class="archive-article-date">
-  	<time datetime="2016-10-12T16:43:04.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-使用原生js以base64读取本地图片文件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/11/使用原生js以base64读取本地图片文件/">使用原生js以base64读取本地图片文件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。<br>这里为了备忘，记录下。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">File.prototype.convertToBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> FR= <span class="keyword">new</span> FileReader();</div><div class="line">    FR.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">         callback(e.target.result)</div><div class="line">    &#125;;       </div><div class="line">    FR.readAsDataURL(<span class="keyword">this</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'[type="file"]'</span>).files[<span class="number">0</span>].convertToBase64(<span class="function"><span class="keyword">function</span>(<span class="params">base64</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(base64);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/11/使用原生js以base64读取本地图片文件/" class="archive-article-date">
-  	<time datetime="2016-10-10T17:01:23.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-zz的我和hexo多说配置" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/08/zz的我和hexo多说配置/">zz的我和hexo多说配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="在-config-yml中添加多说的配置："><a href="#在-config-yml中添加多说的配置：" class="headerlink" title="在_config.yml中添加多说的配置："></a>在_config.yml中添加多说的配置：</h3><p><strong>(⚠️注意：_config.yml在根目录和主题根目录都会存在，主题目录下的文件信息将会覆盖根目录的文件信息)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">duoshuo: 你站点的short_name</div><div class="line">duoshuo_shortname: 你站点的short_name</div></pre></td></tr></table></figure></p>
-<p>修改<code>themes\landscape\layout\_partial\article.ejs</code>模板<br><strong>把</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</div><div class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</div><div class="line">    &lt;div id=<span class="string">"disqus_thread"</span>&gt;</div><div class="line">      &lt;noscript&gt;Please <span class="built_in">enable</span> JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
-<p><strong>改为</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</div><div class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</div><div class="line">    &lt;!-- 多说评论框 start --&gt;</div><div class="line">    &lt;div class=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;"</span> data-title=<span class="string">"&lt;%= post.title %&gt;"</span> data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- 多说评论框 end --&gt;</div><div class="line">    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    var duoshuoQuery = &#123;short_name:<span class="string">'&lt;%= config.duoshuo_shortname %&gt;'</span>&#125;;</div><div class="line">      (<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ds = document.createElement(<span class="string">'script'</span>);</div><div class="line">        ds.type = <span class="string">'text/javascript'</span>;</div><div class="line">        ds.async = <span class="literal">true</span>;</div><div class="line">        ds.src = (document.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</div><div class="line">        ds.charset = <span class="string">'UTF-8'</span>;</div><div class="line">        (document.getElementsByTagName(<span class="string">'head'</span>)[0] </div><div class="line">         || document.getElementsByTagName(<span class="string">'body'</span>)[0]).appendChild(ds);</div><div class="line">      &#125;)();</div><div class="line">      &lt;/script&gt;</div><div class="line">    &lt;!-- 多说公共JS代码 end --&gt;</div><div class="line">  &lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="同时使用多个deployer"><a href="#同时使用多个deployer" class="headerlink" title="同时使用多个deployer"></a>同时使用多个deployer</h3><p>单个deployer的时候的 _config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:leenty/leenty.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>而换成多个deployer的时候需要在前面加<code>-</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@github.com:demo/demo.github.io.git</div><div class="line">  branch: master</div><div class="line">- type: git</div><div class="line">  repo: git@git.coding.net:demo/demo.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/08/zz的我和hexo多说配置/" class="archive-article-date">
-  	<time datetime="2016-10-07T16:04:33.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -949,7 +555,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a>
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
     			</div>
     	</section>
     
