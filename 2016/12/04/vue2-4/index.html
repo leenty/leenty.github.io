@@ -6,23 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>vue2.0一起在懵逼的海洋里越陷越深（四） | leenty blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
-正文OK！先介绍下vuexvuex是vuejs的状态管理方">
+  <meta name="description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里已经在使用了想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
+正文OK！先介绍下vuexvuex是vuejs的状态管理方案因为vuex有些复杂，一般应用在较">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue2.0一起在懵逼的海洋里越陷越深（四）">
 <meta property="og:url" content="http://baidu.com/2016/12/04/vue2-4/index.html">
 <meta property="og:site_name" content="leenty blog">
-<meta property="og:description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
-正文OK！先介绍下vuexvuex是vuejs的状态管理方">
+<meta property="og:description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里已经在使用了想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
+正文OK！先介绍下vuexvuex是vuejs的状态管理方案因为vuex有些复杂，一般应用在较">
 <meta property="og:image" content="http://baidu.com/img/vue/flow.png">
 <meta property="og:image" content="http://baidu.com/img/face/mengbi3.jpg">
 <meta property="og:image" content="http://baidu.com/img/vue/vuex.png">
 <meta property="og:image" content="http://baidu.com/img/vue/devtools.png">
-<meta property="og:updated_time" content="2016-12-05T15:58:11.000Z">
+<meta property="og:updated_time" content="2016-12-06T01:56:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.0一起在懵逼的海洋里越陷越深（四）">
-<meta name="twitter:description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
-正文OK！先介绍下vuexvuex是vuejs的状态管理方">
+<meta name="twitter:description" content="前言承接上文vue2.0一起在懵逼的海洋里越陷越深（三）前面一篇讲了vue-router的router-link,有读者说希望能先看到vuex的文章其实vuex在我的vue2.0的demo里已经在使用了想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入好，那么这次就先上vuex吧！
+正文OK！先介绍下vuexvuex是vuejs的状态管理方案因为vuex有些复杂，一般应用在较">
 <meta name="twitter:image" content="http://baidu.com/img/vue/flow.png">
   
     <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
@@ -153,7 +153,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>承接上文<a href="/2016/11/27/vue2-3/">vue2.0一起在懵逼的海洋里越陷越深（三）</a><br>前面一篇讲了vue-router的<code>router-link</code>,<br>有读者说希望能先看到vuex的文章<br>其实vuex在我的vue2.0的demo里早已经在使用了，只是想先写完vue-router<br>想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入<br>好，那么这次就先上vuex吧！</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>承接上文<a href="/2016/11/27/vue2-3/">vue2.0一起在懵逼的海洋里越陷越深（三）</a><br>前面一篇讲了vue-router的<code>router-link</code>,<br>有读者说希望能先看到vuex的文章<br>其实vuex在我的vue2.0的demo里已经在使用了<br>想想确实应该先来点vuex的了，因为有些有关的状态管理急需vuex的加入<br>好，那么这次就先上vuex吧！</p>
 <h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>OK！先介绍下vuex<br>vuex是vuejs的状态管理方案<br>因为vuex有些复杂，一般应用在较复杂的状态环境下，如果是比较简单的应用就不需要安装vuex了</p>
 <h4 id="vuex单向数据流"><a href="#vuex单向数据流" class="headerlink" title="vuex单向数据流"></a>vuex单向数据流</h4><p><img src="/img/vue/flow.png" alt="vuex单向数据流"><br>如上图所示是vuex单向数据流的流程</p>
 <p><strong> 我知道，如果是第一次接触这玩意，到这就懵逼了，就像我第一次看文档一样 </strong><br><img src="/img/face/mengbi3.jpg" alt="vuex单向数据流"></p>
