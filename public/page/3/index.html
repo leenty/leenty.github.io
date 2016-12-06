@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="leenty 不会捣(xia)鼓(gao)的前端不是好全栈">
+<meta property="og:type" content="website">
+<meta property="og:title" content="leenty blog">
+<meta property="og:url" content="http://baidu.com/page/3/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="leenty 不会捣(xia)鼓(gao)的前端不是好全栈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leenty blog">
+<meta name="twitter:description" content="leenty 不会捣(xia)鼓(gao)的前端不是好全栈">
+  
+    <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/default_avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">leenty</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">leenty</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/default_avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">leenty</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        
+  
+    <article id="post-zz的我和hexo多说配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/zz的我和hexo多说配置/">zz的我和hexo多说配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在-config-yml中添加多说的配置："><a href="#在-config-yml中添加多说的配置：" class="headerlink" title="在_config.yml中添加多说的配置："></a>在_config.yml中添加多说的配置：</h3><p><strong>(⚠️注意：_config.yml在根目录和主题根目录都会存在，主题目录下的文件信息将会覆盖根目录的文件信息)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">duoshuo: 你站点的short_name</div><div class="line">duoshuo_shortname: 你站点的short_name</div></pre></td></tr></table></figure></p>
+<p>修改<code>themes\landscape\layout\_partial\article.ejs</code>模板<br><strong>把</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</div><div class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</div><div class="line">    &lt;div id=<span class="string">"disqus_thread"</span>&gt;</div><div class="line">      &lt;noscript&gt;Please <span class="built_in">enable</span> JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>改为</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</div><div class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</div><div class="line">    &lt;!-- 多说评论框 start --&gt;</div><div class="line">    &lt;div class=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;"</span> data-title=<span class="string">"&lt;%= post.title %&gt;"</span> data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;/div&gt;</div><div class="line">    &lt;!-- 多说评论框 end --&gt;</div><div class="line">    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    var duoshuoQuery = &#123;short_name:<span class="string">'&lt;%= config.duoshuo_shortname %&gt;'</span>&#125;;</div><div class="line">      (<span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">        var ds = document.createElement(<span class="string">'script'</span>);</div><div class="line">        ds.type = <span class="string">'text/javascript'</span>;</div><div class="line">        ds.async = <span class="literal">true</span>;</div><div class="line">        ds.src = (document.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</div><div class="line">        ds.charset = <span class="string">'UTF-8'</span>;</div><div class="line">        (document.getElementsByTagName(<span class="string">'head'</span>)[0] </div><div class="line">         || document.getElementsByTagName(<span class="string">'body'</span>)[0]).appendChild(ds);</div><div class="line">      &#125;)();</div><div class="line">      &lt;/script&gt;</div><div class="line">    &lt;!-- 多说公共JS代码 end --&gt;</div><div class="line">  &lt;/section&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="同时使用多个deployer"><a href="#同时使用多个deployer" class="headerlink" title="同时使用多个deployer"></a>同时使用多个deployer</h3><p>单个deployer的时候的 _config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:leenty/leenty.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>而换成多个deployer的时候需要在前面加<code>-</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@github.com:demo/demo.github.io.git</div><div class="line">  branch: master</div><div class="line">- type: git</div><div class="line">  repo: git@git.coding.net:demo/demo.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/08/zz的我和hexo多说配置/" class="archive-article-date">
+  	<time datetime="2016-10-07T16:04:33.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-sublime-material-theme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/06/sublime-material-theme/">推荐一个不错的sublime UI界面美化方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="晒一晒我的prefernces-sublime-setting"><a href="#晒一晒我的prefernces-sublime-setting" class="headerlink" title="晒一晒我的prefernces.sublime-setting"></a>晒一晒我的prefernces.sublime-setting</h2><p>界面如图, 主题名字叫做 Material Theme<br><img src="/img/prefernces-sublime-setting.png" alt="prefernces-sublime-setting"></p>
+<h3 id="主题地址"><a href="#主题地址" class="headerlink" title="主题地址"></a>主题地址</h3><p><a href="https://github.com/equinusocio/material-theme" target="_blank" rel="external">equinusocio/material-theme</a><br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">	<span class="attr">"always_show_minimap_viewport"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"color_scheme"</span>: <span class="string">"Packages/Material Theme/schemes/Material-Theme.tmTheme"</span>,</div><div class="line">	<span class="attr">"file_exclude_patterns"</span>:</div><div class="line">	[</div><div class="line">		<span class="string">".DS_Store"</span></div><div class="line">	],</div><div class="line">	<span class="attr">"folder_exclude_patterns"</span>:</div><div class="line">	[</div><div class="line">		<span class="string">".git"</span>,</div><div class="line">		<span class="string">"node_modules"</span>,</div><div class="line">		<span class="string">"public/static"</span></div><div class="line">	],</div><div class="line">	<span class="attr">"font_size"</span>: <span class="number">12</span>,</div><div class="line">	<span class="attr">"ignored_packages"</span>:</div><div class="line">	[</div><div class="line">		<span class="string">"Vintage"</span></div><div class="line">	],</div><div class="line">	<span class="attr">"line_padding_bottom"</span>: <span class="number">3</span>,</div><div class="line">	<span class="attr">"line_padding_top"</span>: <span class="number">3</span>,</div><div class="line">	<span class="attr">"material_theme_accent_sky"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_compact_sidebar"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_contrast_mode"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_disable_tree_indicator"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_panel_separator"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_small_statusbar"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_small_tab"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_tabs_autowidth"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_tabs_separator"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"material_theme_tree_headings"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"overlay_scroll_bars"</span>: <span class="string">"enabled"</span>,</div><div class="line">	<span class="attr">"tab_size"</span>: <span class="number">2</span>,</div><div class="line">	<span class="attr">"theme"</span>: <span class="string">"Material-Theme.sublime-theme"</span>,</div><div class="line">	<span class="attr">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,</div><div class="line">	<span class="attr">"word_warp"</span>: <span class="string">"auto"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/06/sublime-material-theme/" class="archive-article-date">
+  	<time datetime="2016-10-06T15:22:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-06</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/30/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/08/30/hello-world/" class="archive-article-date">
+  	<time datetime="2016-08-30T15:49:24.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-08-30</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-git入门级-在github创建项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/02/git入门级-在github创建项目/">git入门级--在github创建项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git分布式版本控制系统"><a href="#git分布式版本控制系统" class="headerlink" title="git分布式版本控制系统"></a>git分布式版本控制系统</h2><p>我第一个接触的版本控制系统是svn，当时觉得版本控制就是这样，直到我遇到了git…<br>git是分布式版本控制系统，合适分布式开发，强调个体。速度快、灵活，代码冲突了也比较好解决，最让我喜欢的还是git的分支切换。</p>
+<h2 id="在github上创建一个空项目"><a href="#在github上创建一个空项目" class="headerlink" title="在github上创建一个空项目"></a>在github上创建一个空项目</h2><p>我这里git的远程仓库选择<a href="https://github.com/" target="_blank" rel="external">github</a>，github是全球最大的代码托管库，在国内也有许多类似的站点可以选用（比如：<a href="https://coding.net" target="_blank" rel="external">coding</a>）。</p>
+<ul>
+<li><p>这里假定已经有了github账号。登录github点击右上角的加号，选择new repository选项新建一个项目。<br><img src="/img/git-1/2016-06-02_201840.png" alt="新建项目"></p>
+</li>
+<li><p>填写新项目的基本信息：<br>新的项目名称，描述，其他默认，然后点击create repository按钮新建项目<br><img src="/img/git-1/2016-06-02_202425.png" alt="填写新项目基本信息"></p>
+</li>
+<li><p>克隆新项目至本地<br>点击README按钮，去编辑README文件。<br><img src="/img/git-1/2016-06-02_203556.png" alt="新建README文件"><br>写下hello world，然后到页面最下方点击commit new file按钮。<br><img src="/img/git-1/2016-06-02_204015.png" alt="hello world"><br>点击use https 然后点复制按钮<br><img src="/img/git-1/2016-06-02_204340.png" alt="复制"><br>去你的本地文件夹，打开git bash。输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> &lt;刚才复制的项目地址&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="/img/git-1/2005796-ec0fa26bc9843e66.png" alt="git bash"><br>如果还没安装git，可以自行百度<a href="https://www.baidu.com/link?url=3rT5SSGCqN8J3w0rw8T7fHKvTEZ6NiYfDK5sxYGK5GCTeEp3A0ufmhe8YVi0-zGiMpcEIk2ibq0s1J-z_Ys8x5VLcpDCwbgvNEE7RBVBj6O&amp;wd=&amp;eqid=a85caa0700009e1500000004575021d8" target="_blank" rel="external">下载git</a>，安装无脑，一路下一步就好。<br>到此为止，新的项目就好了。<br><img src="/img/git-1/2016-06-02_205620.png" alt="Paste_Image.png"></p>
+<h2 id="提交-commit"><a href="#提交-commit" class="headerlink" title="提交 (commit)"></a>提交 (commit)</h2><p>进入新建的项目文件夹，就可以开始你的代码了。<br><img src="/img/git-1/2016-06-02_210116.png" alt="demo文件夹"><br>这里为了方便，假定已经在项目里写了一段代码。准备提交至远端代码仓库。进入项目文件夹，输入命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure></p>
+<p><img src="/img/git-1/2016-06-02_210744.png" alt="git status"><br>添加更改的代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git add .</div></pre></td></tr></table></figure></p>
+<p><img src="/img/git-1/2016-06-02_211044.png" alt="git add ."><br>提交代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit -m <span class="string">"提交代码"</span></div></pre></td></tr></table></figure></p>
+<p><img src="/img/git-1/2016-06-02_211323.png" alt="提交代码"><br>log命令可以查看提交历史<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span></div></pre></td></tr></table></figure></p>
+<p><img src="/img/git-1/2016-06-02_211555.png" alt="Paste_Image.png"></p>
+<h2 id="推送提交至远程分支push"><a href="#推送提交至远程分支push" class="headerlink" title="推送提交至远程分支push"></a>推送提交至远程分支push</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push origin master</div></pre></td></tr></table></figure>
+<p><img src="/img/git-1/2016-06-02_211758.png" alt="push"><br>至此就完成了git的首次提交<br><img src="/img/git-1/2016-06-02_211908.png" alt=""></p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>这里使用的bash是<a href="https://www.baidu.com/link?url=3rT5SSGCqN8J3w0rw8T7fHKvTEZ6NiYfDK5sxYGK5GCTeEp3A0ufmhe8YVi0-zGiMpcEIk2ibq0s1J-z_Ys8x5VLcpDCwbgvNEE7RBVBj6O&amp;wd=&amp;eqid=a85caa0700009e1500000004575021d8" target="_blank" rel="external">git(戳这里下载)</a>自带的，如果觉得打命令搞不懂，可以试试图形化界面(例如：sourcetree)</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/06/02/git入门级-在github创建项目/" class="archive-article-date">
+  	<time datetime="2016-06-02T13:42:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-06-02</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-gulp实现hexoMarkDown同步编译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/14/gulp实现hexoMarkDown同步编译/">gulp实现hexoMarkDown同步编译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>作为一个前端，作为一个具有捣(zhuang)鼓(bi)精神的前端，心想着得有一个可以写写技术文章的地方呀！于是就开始玩起了hexo。</strong></p>
+<p>虽然说Markdown设计之初就是为了方便作者快捷的写作。但是作为一个有强迫症的前端，写了一段总想看看写成了什么样子，但无奈看一眼得切到命令行bash输入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment">//缩写 hexo g</span></div></pre></td></tr></table></figure></p>
+<p>在hexo编译完成后又切到浏览器刷新查看。心想，这不行啊，这样子怎么对得起捣(zhuang)鼓(bi)精神。于是就想着在里面加入gulp的想法。话不多说，下面就上代码。</p>
+<h2 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h2><p>和hexo一样gulp也是需要全局安装的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i gulp -g</div></pre></td></tr></table></figure></p>
+<h2 id="安装gulp-shell"><a href="#安装gulp-shell" class="headerlink" title="安装gulp-shell"></a>安装gulp-shell</h2><p>gulp并没有hexo的组件，所以这里选择使用gulp-shell来实现。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -D gulp-shell</div></pre></td></tr></table></figure></p>
+<h2 id="编写gulpfile-js文件"><a href="#编写gulpfile-js文件" class="headerlink" title="编写gulpfile.js文件"></a>编写gulpfile.js文件</h2><p>新建并打开gulpfile.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim gulpfile.js</div></pre></td></tr></table></figure></p>
+<p>编写gulp代码,引入gulp、gulp-shell和gulp-notify<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> shell = <span class="built_in">require</span>(<span class="string">'gulp-shell'</span>);<span class="comment">//bash输入</span></div><div class="line"><span class="keyword">var</span> notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>);<span class="comment">//系统通知</span></div></pre></td></tr></table></figure></p>
+<p>编写默认任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">"default"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.src(<span class="string">"./public/index.html"</span>)</div><div class="line">    .pipe(shell([</div><div class="line">      <span class="string">'hexo g'</span></div><div class="line">    ]))</div><div class="line">    .pipe(notify(<span class="string">'hexo编译完成！'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>可以在bash里使用<code>gulp</code>来启动默认任务</p>
+<p>之前有用过gulp的同学可能会发现我gulp的src方法获取的地址只是一个文件，而且也没有指向source文件夹下的.md文件，这是因为这里根本不需要src方法来得到文件流。这里需要的只是其后的pipe方法来运行shell方法。<br>然而gulp-shell还提供了另一种方法来执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'default'</span>, shell.task([</div><div class="line">  <span class="string">'hexo g'</span></div><div class="line">]));</div></pre></td></tr></table></figure></p>
+<p>只是这样的方法却是不能接pipe方法也就不能使用notify的系统通知了。权衡之下，我选择了前者。</p>
+<h2 id="编写watch任务"><a href="#编写watch任务" class="headerlink" title="编写watch任务"></a>编写watch任务</h2><p>watch任务会监听指定文件的变更来触发默认任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.watch(<span class="string">"./source/*/*md"</span>,[<span class="string">'default'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>在bash里使用<code>gulp watch</code>来启动watch任务<br>在编写完watch任务后，尽管已经解决了自动构建，但是本地调试却需要另一个bash界面来开启hexo的服务。<br>于是，我还需要一个server任务来启动服务</p>
+<h2 id="编写server任务"><a href="#编写server任务" class="headerlink" title="编写server任务"></a>编写server任务</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'server'</span>,shell.task([</div><div class="line">  <span class="string">'hexo server'</span></div><div class="line">]));</div></pre></td></tr></table></figure>
+<p>在bash里使用 <code>gulp server</code>来启动server任务<br>于是这里就可以改写watch任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.start(<span class="string">'server'</span>);</div><div class="line">  gulp.watch(<span class="string">"./source/*/*md"</span>,[<span class="string">'default'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>这样就可以在启动watch任务的时候也开启本地服务了。<br>到了这一步，就可以在bash命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp watch</div></pre></td></tr></table></figure></p>
+<p>回车后就可以开始边写边看了</p>
+<p><strong>这里还缺少了自动刷新的功能，这个功能使用我之前的方法并不能起到作用，还需要再思考思考</strong></p>
+<p>好了，我的第一篇技术文章就这么结束了，哈哈。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/14/gulp实现hexoMarkDown同步编译/" class="archive-article-date">
+  	<time datetime="2016-05-14T09:02:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 leenty
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet博客地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0 Demo地址</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不会捣(xia)鼓(gao)的前端不是好全栈</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

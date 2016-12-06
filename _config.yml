@@ -6,6 +6,7 @@
 title: leenty blog
 subtitle:
 description: leenty 不会捣(xia)鼓(gao)的前端不是好全栈
+keywords: "前端,vuejs,vue-router,vuex,vue-cli,javascript,js,mvvm,css3,html5,git,github"
 author: leenty
 language: zh-CN
 timezone:
@@ -79,7 +80,7 @@ time_format: HH:mm:ss
 
 # Pagination
 ## Set per_page to 0 to disable pagination
-per_page: 10
+per_page: 5
 pagination_dir: page
 
 # Extensions
@@ -144,3 +145,7 @@ deploy:
 #  - type: git
 #  repo: git@git.oschina.net:leenty/leenty.git
 #  branch: master
+#
+
+# 文章太长，截断按钮文字
+excerpt_link: more

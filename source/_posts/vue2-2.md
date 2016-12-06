@@ -135,7 +135,7 @@ vue模板是html结构的，这也是对界面编写最友好的方式
 ```shell
 npm i pug stylus stylus-loader -D
 ```
-里面的css的class(`.l-ta--c`)看着有点懵逼的，可以看看[使用BEM+emmet的css书写与命名技巧](http://www.leenty.com/2016/11/06/css书写与命名技巧/#main)
+里面的css的class(`.l-ta--c`)看着有点懵逼的，可以看看[使用BEM+emmet的css书写与命名技巧](http://www.leenty.com/2016/11/06/css/#main)
 好的，模板不需要太复杂，只要有字能显示就好了，至于`Article.vue`也是一样的，这里就不贴了
 
 Tips：模板里推荐有一个根元素，就像这里的`.home`就是根元素，这样不容易混乱，结构会清晰

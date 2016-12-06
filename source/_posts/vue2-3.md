@@ -3,6 +3,7 @@ title: vue2.0一起在懵逼的海洋里越陷越深（三）
 date: 2016-11-27 22:51:49
 tags: [vueJs, vue-router]
 ---
+<!-- [](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/related) -->
 承接上文[vue2.0一起在懵逼的海洋里越陷越深（二）](/2016/11/20/vue2-2/)
 前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
 ![vue2.0](/img/vue/chiss.jpg)
@@ -33,7 +34,7 @@ tags: [vueJs, vue-router]
 ** 其一为字符串形式，也就是前面说到的如`href`一样的用法 **
 ```html
 <!-- 字符串 -->
-<router-link to="/article">Article</router-link>
+<router-link :to="/article">Article</router-link>
 <!-- 渲染结果 -->
 <a href="/article">Article</a>
 ```
@@ -99,7 +100,7 @@ append会把当前路径设置为相对路径，何为相对路径？比如你�
 #### “tag”属性
 具有`tag`属性的的`router-link`标签会被渲染为相应的标签
 ```html
-<router-link to="/article" tag="li">article</router-link>
+<router-link :to="/article" tag="li">article</router-link>
 ```
 将会被渲染为
 ```html
@@ -111,7 +112,7 @@ append会把当前路径设置为相对路径，何为相对路径？比如你�
 这个属性如字面意思上说的，是设置激活链接时的`class`属性
 即是当前页面所有与当前地址所匹配的链接都会被添加这个`class`属性
 ```html
-<router-link to="/article" active-class="u-link--Active">article</router-link>
+<router-link :to="/article" active-class="u-link--Active">article</router-link>
 ```
 如此，在`vue2.leenty.com/article`页面下(hash模式下是`vue2.leenty.com/#/article`)就会被渲染为
 ```html
@@ -132,7 +133,7 @@ const router = new VueRouter({
 #### “exact”属性
 开启`router-link`的严格模式
 ```html
-<router-link to="/" exact>home</router-link>
+<router-link :to="/" exact>home</router-link>
 ```
 上面这个标签如果不加`exact`属性，则会在`vue2.leenty.com/article`页面下也会被匹配到，
 这却不是我们的本意,在加了这个属性后就会正确的匹配到`vue2.leenty.com`下
