@@ -147,7 +147,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>本文章系列：<a href="http://leenty.com/tags/vuejs/" target="_blank" rel="external">vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)</a><br>之前的几篇文章的说了<code>vue-router</code>以及<code>vuex</code>的简单使用，这次就开始组合这两者进行实际应用。<br>场地呢就在我的<a href="http://vue2.leenty.com" target="_blank" rel="external">vue2.0Demo</a>,这是<a href="https://github.com/leenty/vue2" target="_blank" rel="external">源码地址</a>,觉得靠谱的话欢迎加星跟随,有问题欢迎评论和指正😃<br>OK交代完毕，说下这回要完成的内容。<br>这回要做的是一个带缩放功能的滑动菜单(就是一个侧拉栏)和文章列表，以及文章的展示路由<br>使用<code>vuex</code>做状态管理控制<code>css</code>完成动画过度效果以及使用<code>vue-router</code>的嵌套路由功能。</p>
-<p><strong> 滴滴滴！上车请刷卡！</strong><br><img src="/img/vue/shangche.jpg" alt=""></p>
+<p><strong> 滴滴滴！上车请刷卡！</strong><br><img src="http://leenty.com/img/vue/shangche.jpg" alt=""></p>
 <h3 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h3><p>首先，我们先把核心功能完成，也就是<code>vue-router</code>的嵌套路由功能 </p>
 <h4 id="嵌套路由功能"><a href="#嵌套路由功能" class="headerlink" title="嵌套路由功能"></a>嵌套路由功能</h4><p>有些时候我们会遇到一个模板重复使用的情况，注意我说的并不是一个子模板在其父模板上的重复，而是多个页面之间的使用到相同的父模板。<br>就好比有这么几个路径</p>
 <ul>
