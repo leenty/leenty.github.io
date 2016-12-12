@@ -1,15 +1,16 @@
 ---
 title: vue2.0一起在懵逼的海洋里越陷越深（一）
 date: 2016-10-21 01:08:25
-tags: vueJs
+tags: vuejs
 ---
+本文章系列：[vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)](http://leenty.com/tags/vuejs/)
 ### 就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！
 前段阵子都没有发随笔，一方面要准备一场考试，另一方面是在研究vue2.0，又一方面一时也不知道写点什么好。
 ***（而其实最大的方面是自己找到了偷懒不写随笔的理由了。。。）***
  
 ************
 
-![vue2.0](/img/vue/vue2.0.png)
+![vue2.0](http://leenty.com/img/vue/vue2.0.png)
 
 ** @周星星和江南另外三大才子有佳句流传：**
 山下一群鹅，嘘声赶落河.
@@ -48,14 +49,14 @@ npm install -g vue-cli
 ```shell
 vue init <template-name> <project-name>
 ```
-这里我选择使用webpack来创建（可以参考[git入门级-在github创建项目](/2016/06/02/git入门级-在github创建项目/)）
+这里我选择使用webpack来创建（可以参考[git入门级-在github创建项目](http://leenty.com/2016/06/02/git入门级-在github创建项目/)）
 ```shell
 vue init webpack app
 ```
 之后vue-cli就会询问Project name，你可以输入你的工程名，或者直接回车就会默认使用之前的名称
 之后还会有一系列询问，你可以一路回车下来，这样就创建好了一个
 大概会是这样子
-![vue-cli](/img/vue/vue-cli.png)
+![vue-cli](http://leenty.com/img/vue/vue-cli.png)
 * 安装依赖
 ```shell
 npm i

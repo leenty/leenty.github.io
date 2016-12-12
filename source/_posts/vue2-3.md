@@ -1,12 +1,12 @@
 ---
 title: vue2.0一起在懵逼的海洋里越陷越深（三）
 date: 2016-11-27 22:51:49
-tags: [vueJs, vue-router]
+tags: [vuejs, vue-router]
 ---
 <!-- [](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/related) -->
-承接上文[vue2.0一起在懵逼的海洋里越陷越深（二）](/2016/11/20/vue2-2/)
+本文章系列：[vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)](http://leenty.com/tags/vuejs/)
 前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
-![vue2.0](/img/vue/chiss.jpg)
+![vue2.0](http://leenty.com/img/vue/chiss.jpg)
 
 ### 上回说到: vue-router的基本用法，下面继续深入
 啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈

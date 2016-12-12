@@ -1,9 +1,9 @@
 ---
 title: vue2.0一起在懵逼的海洋里越陷越深（二）
 date: 2016-11-20 23:41:16
-tags: [vueJs, vue-router]
+tags: [vuejs, vue-router]
 ---
-承接上文[vue2.0一起在懵逼的海洋里越陷越深（一）](/2016/10/21/vue2-1/)
+本文章系列：[vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)](http://leenty.com/tags/vuejs/)
 ### 说好了一起懵逼，那么我们继续下沉
 在上一篇里已经将vue2.0需要的依赖都装齐了
 那么接下来
@@ -21,7 +21,7 @@ vue + vue-router简直是爽，页面跳转的速度简直是不要不要的
 好的，用自己的小编辑器打开vue项目（我用的是sublime）
 可以看到项目目录是这样子的
 ![files-tree](http://upload-images.jianshu.io/upload_images/2005796-e8d30c83712c89f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-(插一句，如果喜欢这个sublime主题可以[查看这篇文章](/2016/10/06/sublime-material-theme/))
+(插一句，如果喜欢这个sublime主题可以[查看这篇文章](http://leenty.com/2016/10/06/sublime-material-theme/))
 与自己的目录对比发现少几个文件，那是没有什么关系的，接下来要做的就是去创建这些文件。
 
 ### 作为一个SPA，首先要有路由

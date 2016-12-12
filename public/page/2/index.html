@@ -128,6 +128,76 @@
       <div class="body-wrap">
         
   
+    <article id="post-css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/06/css/">使用BEM+emmet的css书写与命名技巧[未完]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>于日常的项目中，小型项目还好，css即使没怎么规划也不至于特别的乱，但一旦项目里css有一定的基数时，css就会显得混乱起来。<br>于是。。。（以下是案例，可以直接跳至<a href="#main">[正文]有关css命名的部分</a>）</p>
+<h3 id="可能就遇到了这种情况"><a href="#可能就遇到了这种情况" class="headerlink" title="可能就遇到了这种情况:"></a>可能就遇到了这种情况:</h3><h4 id="情况1"><a href="#情况1" class="headerlink" title="情况1."></a>情况1.</h4><p>哎呀！这个地方布局有点问题，我改一下，于是看到了一堆css选择器，当你想要修改某个class时又害怕会影响到其他在使用这个class的组件，于是就很尴尬的又写了一个class加在上面。</p>
+<h4 id="情况2"><a href="#情况2" class="headerlink" title="情况2."></a>情况2.</h4><p>css命名冲突，你将要命名的class命已经被使用，更惨的是其他意思相近的命名单词也被使用了，这下就词穷了🤕</p>
+<h4 id="情况3"><a href="#情况3" class="headerlink" title="情况3."></a>情况3.</h4><p>毫无意义的命名：(写的时候class的意思只有自己和上帝知道，现在只有上帝知道了🙆🏻)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.abc</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其他前端：一脸懵逼</p>
+<h3 id="针对上面的问题，于是就在命名上开始做出改变，然而却😟"><a href="#针对上面的问题，于是就在命名上开始做出改变，然而却😟" class="headerlink" title="针对上面的问题，于是就在命名上开始做出改变，然而却😟"></a>针对上面的问题，于是就在命名上开始做出改变，然而却😟</h3><h4 id="情况4"><a href="#情况4" class="headerlink" title="情况4."></a>情况4.</h4><p>过于语义化的命名（这里举个略微夸张且有些不恰当的栗子🌰）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.navigation-width-full-line</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">&#125;</div><div class="line">``` </div><div class="line">这样是把意义描述清楚了，但是命名却是过长了</div><div class="line">#### 情况5. </div><div class="line">有语义却不够直接简洁的命名    </div><div class="line">```<span class="selector-tag">css</span></div><div class="line"><span class="selector-class">.navigation-responsive</span>&#123;</div><div class="line">    <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">1</span> <span class="number">10%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样无形中增加了记忆成本</p>
+<h3 id="命名规范-BEM"><a href="#命名规范-BEM" class="headerlink" title="命名规范 BEM"></a>命名规范 BEM</h3><p>BEM是我很喜欢的一个命名规范<br>命名规则简单直接又不至于混乱<br>BEM的意思就是块（block）、元素（element）、修饰符（modifier）<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.block &#123;&#125; // 顶级命名，代表了一类元素块或者一个模块</div><div class="line">.block__element &#123;&#125; // 次级命名(使用两个英文下划线连接，后跟随次级名称，表示次级元素或属性)</div><div class="line">.block--modifier &#123;&#125; // 状态命名(使用两个英文中划线连接，后跟随修饰符或状态名)</div></pre></td></tr></table></figure></p>
+<p>这样的写法可以的好处是可以避免css的嵌套，可以加快css渲染时的速度<br><strong> 栗子🌰 </strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 旧版命名 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="xml"></span></div><div class="line">    // css选择时需要两个class</div><div class="line">    .person .head &#123;</div><div class="line">        width: 100px;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">styles</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- BEM命名 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person__head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person__body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"person__foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug__head"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug__body"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pug__foot"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="xml"></span></div><div class="line">    // css选择时只要一个class</div><div class="line">    .person__head &#123;</div><div class="line">        width: 100px;</div><div class="line">    &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">styles</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="BEM-emmet"><a href="#BEM-emmet" class="headerlink" title="BEM+emmet"></a>BEM+emmet</h3><p>相信很多同学有用过emmet,其前身就是大名鼎鼎的Zen coding<br>想了解的同学可以google一下emmet<br>而emmet对于BEM命名规范其实是有一套快速生成标签的规则的<br>发个栗子🌰<br>在emmet下这段代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">form.search-form&gt;input.-username+input.-password[type=password]+button.-submit--active|bem</div></pre></td></tr></table></figure></p>
+<p>按下<code>Tab</code>后会生成<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"search-form"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"search-form__username"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"search-form__password"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"J_Submit"</span> <span class="attr">class</span>=<span class="string">"search-form__submit--active"</span>&gt;</span><span class="tag">&lt;/<span class="name">button</span>&gt;</span> <span class="tag">&lt;<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>如果仔细看第一段代码与第二段之间的区别就可以看出其中的奥义：</p>
+<ul>
+<li>首个元素的class选择器会被作为BEM规则的头，后面的每一个以<code>.-</code>开头子元素编译后的class属性都将以这个头为开头</li>
+<li>子元素可以以<code>.-</code>开头来代替父元素的class名，省去了重复书写的麻烦(即：<code>.-username</code>被编译成了<code>.search-form__username</code>)</li>
+<li>子元素可以跟上<code>--</code>加修饰符来编译(即：<code>.-submit--active</code>被编译成了<code>.search-form__submit--active</code>)</li>
+</ul>
+<p>这是一种快速生成标签的形式，方便的没话说<br>而有一部分同学已经不再直接写html标签了，而是使用了模板引擎了<br>我用的是pug（也就是之前的jade，现在已经更名为pug了）<br>模板引擎的好处是使整个结构看起来更加清晰有条理，也加快了编写页面的速度，<br>在使用模板引擎后就不在需要emmet了<br>but！<br>虽然不需要了，但是emmet的那种化繁为简的精神是可以继续存在滴，我特别喜欢这样的语法，<br>于是就开始了尝试在css命名上做研究</p>
+<p><span id="main"> </span></p>
+<h3 id="以下是我vue2-0Demo项目内有关css命名的部分"><a href="#以下是我vue2-0Demo项目内有关css命名的部分" class="headerlink" title="以下是我vue2.0Demo项目内有关css命名的部分"></a>以下是我vue2.0Demo项目内有关css命名的部分</h3><p>一开始看可能会有点懵逼，但是当看完以下6个小点再回头看之前的案例就会明白了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * css命名使用 BEM+emmet 风格作为命名规范</div><div class="line"> * </div><div class="line"> * 约定[分类名称][属性|组件名称]与[属性名]使用小写</div><div class="line"> * 约定[描述]与[状态]使用首字母大写</div><div class="line"> * [eg]:</div><div class="line"> *  .[分类名称]-[属性|组件名称][描述]--[属性值|状态]</div><div class="line"> *    =&gt; .l-flexV--c</div><div class="line"> *    =&gt; .b-base--Active</div><div class="line"> * </div><div class="line"> *  1.约定 [分类名称] 缩写:</div><div class="line"> *    • .layout =&gt; .l- (布局部分)</div><div class="line"> *    • .utils =&gt; .u- (工具部分)</div><div class="line"> *    • .button =&gt; .b- (按钮部分)</div><div class="line"> *    </div><div class="line"> *  2.约定通用 [属性] 缩写:(以emmet联想风格为缩写)</div><div class="line"> *    • width =&gt; w</div><div class="line"> *    • height =&gt; h</div><div class="line"> *    • color =&gt; c</div><div class="line"> *    • background =&gt; bg</div><div class="line"> *    • margin =&gt; m</div><div class="line"> *    • padding =&gt; p</div><div class="line"> *    • border =&gt; bd</div><div class="line"> *    </div><div class="line"> *  3.约定通用 [组件名称]:(这里不使用缩写，</div><div class="line"> *    因为组件名可以自定义，缩写易混淆，会增加记忆成本)</div><div class="line"> *    • flex =&gt; flex (这里所指的是弹性盒子)</div><div class="line"> *    </div><div class="line"> *  4.约定通用 [描述] 缩写:(以大写)</div><div class="line"> *    • horizontal =&gt; H</div><div class="line"> *    • vertical =&gt; V</div><div class="line"> *    • normal =&gt; N</div><div class="line"> *    </div><div class="line"> *  5.约定通用 [属性值] 缩写:(以属性前缀 '--' + emmet联想风格为缩写)</div><div class="line"> *    • center =&gt; --c</div><div class="line"> *    • middle =&gt; --m</div><div class="line"> *    • space-around =&gt; --sa</div><div class="line"> *    </div><div class="line"> *  6.约定通用 [状态] 缩写:(以属性前缀 '--' + 状态首字母大写，</div><div class="line"> *    这里不使用缩写，因为状态名可以自定义，缩写易混淆，会增加记忆成本)</div><div class="line"> *    • active =&gt; --Active</div><div class="line"> */</div></pre></td></tr></table></figure></p>
+<p>因为是一边写vue2.0-demo项目一边写文字，所以以上是暂定的部分，后续有更新会及时在这里更新</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/06/css/" class="archive-article-date">
+  	<time datetime="2016-11-06T15:57:50.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-06</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-vue2-1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -146,9 +216,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="就在今年的10月份，Vue2-0发布啦，来懵逼的海洋里一起下沉吧！"><a href="#就在今年的10月份，Vue2-0发布啦，来懵逼的海洋里一起下沉吧！" class="headerlink" title="就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！"></a>就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！</h3><p>前段阵子都没有发随笔，一方面要准备一场考试，另一方面是在研究vue2.0，又一方面一时也不知道写点什么好。<br><strong><em>（而其实最大的方面是自己找到了偷懒不写随笔的理由了。。。）</em></strong></p>
+        <p>本文章系列：<a href="http://leenty.com/tags/vuejs/" target="_blank" rel="external">vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)</a></p>
+<h3 id="就在今年的10月份，Vue2-0发布啦，来懵逼的海洋里一起下沉吧！"><a href="#就在今年的10月份，Vue2-0发布啦，来懵逼的海洋里一起下沉吧！" class="headerlink" title="就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！"></a>就在今年的10月份，Vue2.0发布啦，来懵逼的海洋里一起下沉吧！</h3><p>前段阵子都没有发随笔，一方面要准备一场考试，另一方面是在研究vue2.0，又一方面一时也不知道写点什么好。<br><strong><em>（而其实最大的方面是自己找到了偷懒不写随笔的理由了。。。）</em></strong></p>
 <hr>
-<p><img src="/img/vue/vue2.0.png" alt="vue2.0"></p>
+<p><img src="http://leenty.com/img/vue/vue2.0.png" alt="vue2.0"></p>
 <p><strong> @周星星和江南另外三大才子有佳句流传：</strong><br>山下一群鹅，嘘声赶落河.<br>下河捉鹅医肚饿，吃完回家玩…<br>呃…玩vue2.0 咳咳咳咳</p>
 <p><strong> 先看看vue2.0多了哪些好玩的 </strong></p>
 <ul>
@@ -174,8 +245,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init &lt;template-name&gt; &lt;project-name&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>这里我选择使用webpack来创建（可以参考<a href="/2016/06/02/git入门级-在github创建项目/">git入门级-在github创建项目</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack app</div></pre></td></tr></table></figure></p>
-<p>之后vue-cli就会询问Project name，你可以输入你的工程名，或者直接回车就会默认使用之前的名称<br>之后还会有一系列询问，你可以一路回车下来，这样就创建好了一个<br>大概会是这样子<br><img src="/img/vue/vue-cli.png" alt="vue-cli"></p>
+<p>这里我选择使用webpack来创建（可以参考<a href="http://leenty.com/2016/06/02/git入门级-在github创建项目/" target="_blank" rel="external">git入门级-在github创建项目</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vue init webpack app</div></pre></td></tr></table></figure></p>
+<p>之后vue-cli就会询问Project name，你可以输入你的工程名，或者直接回车就会默认使用之前的名称<br>之后还会有一系列询问，你可以一路回车下来，这样就创建好了一个<br>大概会是这样子<br><img src="http://leenty.com/img/vue/vue-cli.png" alt="vue-cli"></p>
 <ul>
 <li>安装依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i</div></pre></td></tr></table></figure>
 </li>
@@ -197,7 +268,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li></ul>
 	</div>
 
       
@@ -496,58 +567,6 @@
 
 
   
-    <article id="post-使用原生js以base64读取本地图片文件" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/11/使用原生js以base64读取本地图片文件/">使用原生js以base64读取本地图片文件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。<br>这里为了备忘，记录下。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">File.prototype.convertToBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> FR= <span class="keyword">new</span> FileReader();</div><div class="line">    FR.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">         callback(e.target.result)</div><div class="line">    &#125;;       </div><div class="line">    FR.readAsDataURL(<span class="keyword">this</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'[type="file"]'</span>).files[<span class="number">0</span>].convertToBase64(<span class="function"><span class="keyword">function</span>(<span class="params">base64</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(base64);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/11/使用原生js以base64读取本地图片文件/" class="archive-article-date">
-  	<time datetime="2016-10-10T17:01:23.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -613,7 +632,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 16.67px;">vue-router</a> <a href="/tags/vuejs/" style="font-size: 20px;">vuejs</a> <a href="/tags/vuex/" style="font-size: 13.33px;">vuex</a>
     			</div>
     	</section>
     

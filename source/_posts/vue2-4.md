@@ -1,10 +1,10 @@
 ---
 title: vue2.0一起在懵逼的海洋里越陷越深（四）
 date: 2016-12-04 20:35:32
-tags: [vueJs, vuex]
+tags: [vuejs, vuex]
 ---
 ### 前言
-承接上文[vue2.0一起在懵逼的海洋里越陷越深（三）](/2016/11/27/vue2-3/)
+本文章系列：[vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)](http://leenty.com/tags/vuejs/)
 前面一篇讲了vue-router的`router-link`,
 有读者说希望能先看到vuex的文章
 其实vuex在我的vue2.0的demo里已经在使用了
@@ -16,11 +16,11 @@ OK！先介绍下vuex
 vuex是vuejs的状态管理方案
 因为vuex有些复杂，一般应用在较复杂的状态环境下，如果是比较简单的应用就不需要安装vuex了
 #### vuex单向数据流
-![vuex单向数据流](/img/vue/flow.png)
+![vuex单向数据流](http://leenty.com/img/vue/flow.png)
 如上图所示是vuex单向数据流的流程
 
 ** 我知道，如果是第一次接触这玩意，到这就懵逼了，就像我第一次看文档一样 **
-![vuex单向数据流](/img/face/mengbi3.jpg)
+![vuex单向数据流](http://leenty.com/img/face/mengbi3.jpg)
 
 ** 下面解释下`State` **
 前面说了vuex是vuejs的状态管理方案，这里的状态就是图中的`state`
@@ -45,7 +45,7 @@ vuex是vuejs的状态管理方案
 
 #### vuex多个组件共享状态
 先贴个流程图，懵逼是没啥关系的
-![vuex多个组件共享状态](/img/vue/vuex.png)
+![vuex多个组件共享状态](http://leenty.com/img/vue/vuex.png)
 可以看到这一张图比前面一张复杂了许多，其实里面的实线框就是上图的升级版
 
 情况是这样，原来小明学校里这段时间许多同学得了流感，于是同学们一窝蜂的要求请假，
@@ -62,7 +62,7 @@ vuex是vuejs的状态管理方案
 这里想要表达的意思就是，`Vue Components`改变自身状态需要通过`Actions`（有需要的话要向后端接口`Backend API`发送请求）来操作`Mutations`改变`State`从而改变自身状态。
 至于图中没有说到的`Devtools`是一个开发者工具，是一个便于查看和管理vue应用以及vuex状态的浏览器插件。
 你可以在里面看到你vue对象和vuex每一次的commit，commit后面会说到。还有你当前的应用状态
-![devtools](/img/vue/devtools.png)
+![devtools](http://leenty.com/img/vue/devtools.png)
 附上一个[devtools库地址](https://github.com/vuejs/vue-devtools)
 
 #### 架构vuex
@@ -259,15 +259,4 @@ export default {
   }
 }
 ```
-这段代码是一个demo里的片段，效果大家可以看[这个呆萌](http://vue2.leenty.com/demo/vuex_state)，如果开心了可以在[github库里加个星](https://github.com/leenty/vue2)，如果有问题可以评论😀
-
-
-
-
-
-
-
-
-
-
-
+这段代码是一个demo里的片段，效果大家可以看[这个呆萌](http://vue2.leenty.com/demo/vuex_state)，如果开心了可以在[github库里加个星](https://github.com/leenty/vue2)，如果有问题可以在下方评论里讨论讨论😀

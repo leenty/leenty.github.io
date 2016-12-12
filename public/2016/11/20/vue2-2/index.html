@@ -6,26 +6,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>vue2.0一起在懵逼的海洋里越陷越深（二） | leenty blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（一）
-说好了一起懵逼，那么我们继续下沉在上一篇里已经将vue2.0需要的依赖都装齐了那么接下来因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个vue2.0 demo的项目地址，大爷有兴趣可进去看看演示，开心了就加个星)，其实却是个SPA(单页面应用)没错！就是一个SPA
-作为一个">
+  <meta name="description" content="本文章系列：vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)
+说好了一起懵逼，那么我们继续下沉在上一篇里已经将vue2.0需要的依赖都装齐了那么接下来因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个vue2.0 demo的项目地址，大爷有兴趣可进去看看演示，开心了就加个星)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue2.0一起在懵逼的海洋里越陷越深（二）">
 <meta property="og:url" content="http://baidu.com/2016/11/20/vue2-2/index.html">
 <meta property="og:site_name" content="leenty blog">
-<meta property="og:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（一）
-说好了一起懵逼，那么我们继续下沉在上一篇里已经将vue2.0需要的依赖都装齐了那么接下来因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个vue2.0 demo的项目地址，大爷有兴趣可进去看看演示，开心了就加个星)，其实却是个SPA(单页面应用)没错！就是一个SPA
-作为一个">
+<meta property="og:description" content="本文章系列：vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)
+说好了一起懵逼，那么我们继续下沉在上一篇里已经将vue2.0需要的依赖都装齐了那么接下来因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个vue2.0 demo的项目地址，大爷有兴趣可进去看看演示，开心了就加个星)">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-3fc063c8fb0b1fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-e8d30c83712c89f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-ebc26fa935c8cf9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-e8d30c83712c89f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-11-29T03:14:05.000Z">
+<meta property="og:updated_time" content="2016-12-12T13:57:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.0一起在懵逼的海洋里越陷越深（二）">
-<meta name="twitter:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（一）
-说好了一起懵逼，那么我们继续下沉在上一篇里已经将vue2.0需要的依赖都装齐了那么接下来因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个vue2.0 demo的项目地址，大爷有兴趣可进去看看演示，开心了就加个星)，其实却是个SPA(单页面应用)没错！就是一个SPA
-作为一个">
+<meta name="twitter:description" content="本文章系列：vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)
+说好了一起懵逼，那么我们继续下沉在上一篇里已经将vue2.0需要的依赖都装齐了那么接下来因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个vue2.0 demo的项目地址，大爷有兴趣可进去看看演示，开心了就加个星)">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2005796-3fc063c8fb0b1fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
@@ -156,10 +153,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>承接上文<a href="/2016/10/21/vue2-1/">vue2.0一起在懵逼的海洋里越陷越深（一）</a></p>
+        <p>本文章系列：<a href="http://leenty.com/tags/vuejs/" target="_blank" rel="external">vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)</a></p>
 <h3 id="说好了一起懵逼，那么我们继续下沉"><a href="#说好了一起懵逼，那么我们继续下沉" class="headerlink" title="说好了一起懵逼，那么我们继续下沉"></a>说好了一起懵逼，那么我们继续下沉</h3><p>在上一篇里已经将vue2.0需要的依赖都装齐了<br>那么接下来<br><img src="http://upload-images.jianshu.io/upload_images/2005796-3fc063c8fb0b1fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个<a href="https://github.com/leenty/vue2" target="_blank" rel="external">vue2.0 demo的项目地址</a>，大爷有兴趣可进去看看演示，开心了就加个星)，其实却是个SPA(单页面应用)<br>没错！就是一个SPA</p>
 <h3 id="作为一个SPA，当然有不同的地方"><a href="#作为一个SPA，当然有不同的地方" class="headerlink" title="作为一个SPA，当然有不同的地方"></a>作为一个SPA，当然有不同的地方</h3><p>SPA与传统网页区别的地方是SPA具有前端路由来模拟页面跳转，当然这是众多不同之一，这篇只说前端路由。<br>上一篇中有安装vue-router组件，这个就是vue的前端路由<br>vue + vue-router简直是爽，页面跳转的速度简直是不要不要的<br>不光是用户体验上的提升，作为一名开发者，在使用了如vue，react等这类MVVM框架后，就不会再想回到jQuery的时代了。</p>
-<h3 id="前面搞了半天，现在要开始coding啦！"><a href="#前面搞了半天，现在要开始coding啦！" class="headerlink" title="前面搞了半天，现在要开始coding啦！"></a>前面搞了半天，现在要开始coding啦！</h3><p>好的，用自己的小编辑器打开vue项目（我用的是sublime）<br>可以看到项目目录是这样子的<br><img src="http://upload-images.jianshu.io/upload_images/2005796-e8d30c83712c89f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="files-tree"><br>(插一句，如果喜欢这个sublime主题可以<a href="/2016/10/06/sublime-material-theme/">查看这篇文章</a>)<br>与自己的目录对比发现少几个文件，那是没有什么关系的，接下来要做的就是去创建这些文件。</p>
+<h3 id="前面搞了半天，现在要开始coding啦！"><a href="#前面搞了半天，现在要开始coding啦！" class="headerlink" title="前面搞了半天，现在要开始coding啦！"></a>前面搞了半天，现在要开始coding啦！</h3><p>好的，用自己的小编辑器打开vue项目（我用的是sublime）<br>可以看到项目目录是这样子的<br><img src="http://upload-images.jianshu.io/upload_images/2005796-e8d30c83712c89f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="files-tree"><br>(插一句，如果喜欢这个sublime主题可以<a href="http://leenty.com/2016/10/06/sublime-material-theme/" target="_blank" rel="external">查看这篇文章</a>)<br>与自己的目录对比发现少几个文件，那是没有什么关系的，接下来要做的就是去创建这些文件。</p>
 <h3 id="作为一个SPA，首先要有路由"><a href="#作为一个SPA，首先要有路由" class="headerlink" title="作为一个SPA，首先要有路由"></a>作为一个SPA，首先要有路由</h3><p>从目录图片里可以看到<code>main.js</code>这个文件，没错这个就是程序的入口<br>这个文件的内容是这样的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line"></div><div class="line"><span class="comment">/* eslint-disable no-new */</span></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">  router,</div><div class="line">  render: h =&gt; h(App)</div><div class="line">&#125;).$mount(<span class="string">'#app'</span>)</div></pre></td></tr></table></figure></p>
 <p><a href="https://github.com/leenty/vue2/blob/master/src/main.js" target="_blank" rel="external"><code>main.js</code>地址</a><br>这里用的是ES6的语法，使用<code>import</code>来导入包<br>这里导入了vue包，还有两个文件，分别是<code>router.js</code>和<code>App.vue</code><br><code>.js</code>后缀是可以省略的(毕竟是亲生的，你不说导入什么类型的文件，肯定是自家人毕竟亲呀)<br>其实<code>.vue</code>后缀也是可以省略的，我建议还是写一下，如果遇到两个同名文件就尴尬了。</p>
 <p>好的，这个<code>router.js</code>就是路由的输出口啦，<br><code>App.vue</code>就是目录里已经存在的那个模板文件啦，你的界面就从这里开始啦。<br>引入了包就可以开始设置路由和挂载模板了</p>
@@ -188,7 +185,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/">vue-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/">vue-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li></ul>
 	</div>
 
       
@@ -325,7 +322,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 16.67px;">vue-router</a> <a href="/tags/vuejs/" style="font-size: 20px;">vuejs</a> <a href="/tags/vuex/" style="font-size: 13.33px;">vuex</a>
     			</div>
     	</section>
     

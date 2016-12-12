@@ -128,6 +128,74 @@
       <div class="body-wrap">
         
   
+    <article id="post-gulp实现hexoMarkDown同步编译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/14/gulp实现hexoMarkDown同步编译/">gulp实现hexoMarkDown同步编译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>作为一个前端，作为一个具有捣(zhuang)鼓(bi)精神的前端，心想着得有一个可以写写技术文章的地方呀！于是就开始玩起了hexo。</strong></p>
+<p>虽然说Markdown设计之初就是为了方便作者快捷的写作。但是作为一个有强迫症的前端，写了一段总想看看写成了什么样子，但无奈看一眼得切到命令行bash输入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment">//缩写 hexo g</span></div></pre></td></tr></table></figure></p>
+<p>在hexo编译完成后又切到浏览器刷新查看。心想，这不行啊，这样子怎么对得起捣(zhuang)鼓(bi)精神。于是就想着在里面加入gulp的想法。话不多说，下面就上代码。</p>
+<h2 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h2><p>和hexo一样gulp也是需要全局安装的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i gulp -g</div></pre></td></tr></table></figure></p>
+<h2 id="安装gulp-shell"><a href="#安装gulp-shell" class="headerlink" title="安装gulp-shell"></a>安装gulp-shell</h2><p>gulp并没有hexo的组件，所以这里选择使用gulp-shell来实现。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -D gulp-shell</div></pre></td></tr></table></figure></p>
+<h2 id="编写gulpfile-js文件"><a href="#编写gulpfile-js文件" class="headerlink" title="编写gulpfile.js文件"></a>编写gulpfile.js文件</h2><p>新建并打开gulpfile.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim gulpfile.js</div></pre></td></tr></table></figure></p>
+<p>编写gulp代码,引入gulp、gulp-shell和gulp-notify<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</div><div class="line"><span class="keyword">var</span> shell = <span class="built_in">require</span>(<span class="string">'gulp-shell'</span>);<span class="comment">//bash输入</span></div><div class="line"><span class="keyword">var</span> notify = <span class="built_in">require</span>(<span class="string">'gulp-notify'</span>);<span class="comment">//系统通知</span></div></pre></td></tr></table></figure></p>
+<p>编写默认任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">"default"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.src(<span class="string">"./public/index.html"</span>)</div><div class="line">    .pipe(shell([</div><div class="line">      <span class="string">'hexo g'</span></div><div class="line">    ]))</div><div class="line">    .pipe(notify(<span class="string">'hexo编译完成！'</span>));</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>可以在bash里使用<code>gulp</code>来启动默认任务</p>
+<p>之前有用过gulp的同学可能会发现我gulp的src方法获取的地址只是一个文件，而且也没有指向source文件夹下的.md文件，这是因为这里根本不需要src方法来得到文件流。这里需要的只是其后的pipe方法来运行shell方法。<br>然而gulp-shell还提供了另一种方法来执行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'default'</span>, shell.task([</div><div class="line">  <span class="string">'hexo g'</span></div><div class="line">]));</div></pre></td></tr></table></figure></p>
+<p>只是这样的方法却是不能接pipe方法也就不能使用notify的系统通知了。权衡之下，我选择了前者。</p>
+<h2 id="编写watch任务"><a href="#编写watch任务" class="headerlink" title="编写watch任务"></a>编写watch任务</h2><p>watch任务会监听指定文件的变更来触发默认任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.watch(<span class="string">"./source/*/*md"</span>,[<span class="string">'default'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>在bash里使用<code>gulp watch</code>来启动watch任务<br>在编写完watch任务后，尽管已经解决了自动构建，但是本地调试却需要另一个bash界面来开启hexo的服务。<br>于是，我还需要一个server任务来启动服务</p>
+<h2 id="编写server任务"><a href="#编写server任务" class="headerlink" title="编写server任务"></a>编写server任务</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'server'</span>,shell.task([</div><div class="line">  <span class="string">'hexo server'</span></div><div class="line">]));</div></pre></td></tr></table></figure>
+<p>在bash里使用 <code>gulp server</code>来启动server任务<br>于是这里就可以改写watch任务<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">gulp.task(<span class="string">'watch'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  gulp.start(<span class="string">'server'</span>);</div><div class="line">  gulp.watch(<span class="string">"./source/*/*md"</span>,[<span class="string">'default'</span>]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>这样就可以在启动watch任务的时候也开启本地服务了。<br>到了这一步，就可以在bash命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp watch</div></pre></td></tr></table></figure></p>
+<p>回车后就可以开始边写边看了</p>
+<p><strong>这里还缺少了自动刷新的功能，这个功能使用我之前的方法并不能起到作用，还需要再思考思考</strong></p>
+<p>好了，我的第一篇技术文章就这么结束了，哈哈。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/05/14/gulp实现hexoMarkDown同步编译/" class="archive-article-date">
+  	<time datetime="2016-05-14T09:02:07.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-05-14</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gulp/">gulp</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hexo-基础操作" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -303,7 +371,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 16.67px;">vue-router</a> <a href="/tags/vuejs/" style="font-size: 20px;">vuejs</a> <a href="/tags/vuex/" style="font-size: 13.33px;">vuex</a>
     			</div>
     	</section>
     
