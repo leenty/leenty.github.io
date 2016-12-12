@@ -6,24 +6,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>vue2.0一起在懵逼的海洋里越陷越深（三） | leenty blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
-上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由首页以后顶多就展示下大致的新内容，文章页顶多放放">
+  <meta name="description" content="本文章系列：vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
+上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue2.0一起在懵逼的海洋里越陷越深（三）">
 <meta property="og:url" content="http://baidu.com/2016/11/27/vue2-3/index.html">
 <meta property="og:site_name" content="leenty blog">
-<meta property="og:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
-上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由首页以后顶多就展示下大致的新内容，文章页顶多放放">
-<meta property="og:image" content="http://baidu.com/img/vue/chiss.jpg">
+<meta property="og:description" content="本文章系列：vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
+上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一">
+<meta property="og:image" content="http://leenty.com/img/vue/chiss.jpg">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-74c28829c2945707.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-ad7396a60ead7e5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-f8f925d9b68e6367.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-12-04T14:07:51.000Z">
+<meta property="og:updated_time" content="2016-12-11T15:49:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue2.0一起在懵逼的海洋里越陷越深（三）">
-<meta name="twitter:description" content="承接上文vue2.0一起在懵逼的海洋里越陷越深（二）前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
-上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由首页以后顶多就展示下大致的新内容，文章页顶多放放">
-<meta name="twitter:image" content="http://baidu.com/img/vue/chiss.jpg">
+<meta name="twitter:description" content="本文章系列：vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
+上回说到: vue-router的基本用法，下面继续深入啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一">
+<meta name="twitter:image" content="http://leenty.com/img/vue/chiss.jpg">
   
     <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
   
@@ -154,7 +154,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <!-- [](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/related) -->
-<p>承接上文<a href="/2016/11/20/vue2-2/">vue2.0一起在懵逼的海洋里越陷越深（二）</a><br>前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔<br><img src="/img/vue/chiss.jpg" alt="vue2.0"></p>
+<p>本文章系列：<a href="http://leenty.com/tags/vuejs/" target="_blank" rel="external">vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)</a><br>前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔<br><img src="http://leenty.com/img/vue/chiss.jpg" alt="vue2.0"></p>
 <h3 id="上回说到-vue-router的基本用法，下面继续深入"><a href="#上回说到-vue-router的基本用法，下面继续深入" class="headerlink" title="上回说到: vue-router的基本用法，下面继续深入"></a>上回说到: vue-router的基本用法，下面继续深入</h3><p>啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈<br>前面已经设置了两个路由，一个是首页，一个是文章页，现在在开一个演示页的路由<br>首页以后顶多就展示下大致的新内容，文章页顶多放放文章详情<br>这演示页可就厉害了，接下来的一些演示都会放在这里，具体的布局还没想好，先这么用着吧！</p>
 <h3 id="vue-router的超链接标签“router-link”"><a href="#vue-router的超链接标签“router-link”" class="headerlink" title="vue-router的超链接标签“router-link”"></a>vue-router的超链接标签“router-link”</h3><p>在vue1.0版本的超链接标签还是原来的<code>a</code>标签，链接地址由<code>v-link</code>属性控制(具体的这里也不多说了，vue1.0已经过去啦)<br>而vue2.0版本里超链接标签由<code>a</code>标签被替换成了<code>router-link</code>标签，当然，没有必要不用担心什么，因为最后没有什么特殊的设置的话，<code>router-link</code>标签还是会被渲染成<code>a</code>标签的。<br>至于为什么在vue2.0的时候被替换成了<code>router-link</code>标签呢？<br>大致YY了下，部分情节应该是这样的：</p>
 <ul>
@@ -191,7 +191,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/">vue-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vueJs/">vueJs</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue-router/">vue-router</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li></ul>
 	</div>
 
       
@@ -328,7 +328,7 @@
     
     	<section class="tools-section tools-section-tag">
     			<div class="widget tagcloud" id="js-tagcloud">
-    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 15px;">vue-router</a> <a href="/tags/vueJs/" style="font-size: 20px;">vueJs</a> <a href="/tags/vuex/" style="font-size: 10px;">vuex</a>
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 16.67px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 16.67px;">vue-router</a> <a href="/tags/vuejs/" style="font-size: 20px;">vuejs</a> <a href="/tags/vuex/" style="font-size: 13.33px;">vuex</a>
     			</div>
     	</section>
     
