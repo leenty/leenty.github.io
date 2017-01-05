@@ -11,8 +11,7 @@ tags: [vuejs, vue-router]
 就是在路由跳转的过程中需要更新你SPA应用的`title` ，
 这一节不说其他，就展示如何使用`vue-router`的**导航钩子**去解决这么一个问题。
 接下来就愉快的去玩耍啦！
-<!-- ![红红火火恍恍惚惚](http://vue2.leenty.com/img/vue/huaji_ld.jpg) -->
-![去吧孩子](/img/vue/huaji_ld.jpg)
+![红红火火恍恍惚惚](http://www.leenty.com/img/vue/huaji_ld.jpg)
 
 ### 正文
 好的，介绍下背景，我有这么一个[博客的demo](http://vue2.leenty.com)，里面有多个版块，每个版块有着不同的名称(`title`)
@@ -103,8 +102,7 @@ export default routes
 
 其实是这样的，后缀如果一个个加也是可以的，但为什么不用语句帮我们加上去呢？
 这样就一劳永逸啦，再也不用自己一个个打后缀了，哈哈哈，真TM机智！
-<!-- ![mdzz](http://vue2.leenty.com/img/vue/mdzz.jpg) -->
-![mdzz](/img/vue/mdzz.jpg)
+![mdzz](http://www.leenty.com/img/vue/mdzz.jpg)
 
 #### 路由导航钩子介绍
 讲一讲这个所谓的全局导航钩子，听起来玄不愣登的。。。
