@@ -114,16 +114,20 @@ subnav:
 # friends: false
 #开启——
 friends:
-  leenty博客地址: http://www.leenty.com/
-  whqet博客地址: https://whqet.github.io/
+  vue2.0演示地址: http://vue2.leenty.com
+  leenty的博客: http://www.leenty.com/
+  whqet的博客: https://whqet.github.io/
   沈雨彬的博客: https://shenyubin.github.io/
-  vue2.0 Demo地址: http://vue2.leenty.com
+  Deboy的博客: http://www.deboy.cn
 
 #是否开启“关于我”。
 #不开启——
 #aboutme: false
 #开启——
 aboutme: 不会捣(xia)鼓(gao)的前端不是好全栈
+
+# 百度统计
+baidu_tongji: true
 
 # 在归档页面显示所有文章
 # 需要上面安装的 hexo-generator-archive 插件支持
