@@ -143,12 +143,12 @@ deploy:
 - type: git
   repo: git@github.com:leenty/leenty.github.io.git
   branch: master
-- type: git
-  repo: git@git.coding.net:leenty/leenty.git
-  branch: master
-#  - type: git
-#  repo: git@git.oschina.net:leenty/leenty.git
+# - type: git
+#  repo: git@git.coding.net:leenty/leenty.git
 #  branch: master
+- type: git
+  repo: git@git.oschina.net:leenty/leenty.git
+  branch: master
 #
 
 # 文章太长，截断按钮文字
