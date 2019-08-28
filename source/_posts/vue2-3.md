@@ -6,7 +6,7 @@ tags: [vuejs, vue-router]
 <!-- [](https://chrome.google.com/webstore/detail/markdown-here/elifhakcjgalahccnjkneoccemfahfoa/related) -->
 本文章系列：[vue2.0一起在懵逼的海洋里越陷越深 (http://leenty.com/tags/vuejs/)](http://leenty.com/tags/vuejs/)
 前面写了vue-router组件的初步用法，原来这次想写vuex的，但是想想还是先继续把vue-router写完吧🤔
-![vue2.0](http://leenty.com/img/vue/chiss.jpg)
+![vue2.0](/img/vue/chiss.jpg)
 
 ### 上回说到: vue-router的基本用法，下面继续深入
 啊不！是继续向着懵逼海洋的海底继续下沉，哈哈哈哈
@@ -63,7 +63,7 @@ tags: [vuejs, vue-router]
 对于里面的`path`字段，其实就是就是想去哪就去哪的to属性字符串的对象形式
 至于`name`字段，是不是会有些懵逼？这个`name`其实就是上一篇里说到的`routes.js`文件里的`name`字段啦！
 就是这个！填成一样的就好啦！注意大小写哦
-![routes.js-name字段](http://leenty.com/img/vue/name-routes.js.png)
+![routes.js-name字段](/img/vue/name-routes.js.png)
 
 ** to属性的 对象的可选结构 **
 ```js
@@ -81,9 +81,9 @@ tags: [vuejs, vue-router]
 可以使用chrome插件[vue.js devtools](https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd)来查看vue的路由的params参数，安装这个插件需要翻墙下载
 或者可以去[github上下代码编译插件](https://github.com/vuejs/vue-devtools),如果觉得麻烦也可以百度去其他网站下
 对于可选参数是不是会有些懵，下面贴几张图就明白了
-![查看路由参数](http://leenty.com/img/vue/show-router-param.png)
+![查看路由参数](/img/vue/show-router-param.png)
 其中`params`是隐性传递，`query`是显性传递。
-![路由query](http://leenty.com/img/vue/router-query.png)
+![路由query](/img/vue/router-query.png)
 红框部分就是传递的`query`了
 
 #### “replace”属性

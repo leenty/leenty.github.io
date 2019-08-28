@@ -7,7 +7,7 @@ tags: [vuejs, vue-router]
 ### 说好了一起懵逼，那么我们继续下沉
 在上一篇里已经将vue2.0需要的依赖都装齐了
 那么接下来
-![vue2.0](http://leenty.com/img/vue/vue2-2.png)
+![vue2.0](/img/vue/vue2-2.png)
 因为vue最后生成的页面看似静态页面(对于静态页面这里有些偷鸡用法，不管你怎样，反正我已经露出了诡异的微笑😏，再贴一个[vue2.0 demo的项目地址](https://github.com/leenty/vue2)，大爷有兴趣可进去看看演示，开心了就加个星)，其实却是个SPA(单页面应用)
 没错！就是一个SPA
 
@@ -20,7 +20,7 @@ vue + vue-router简直是爽，页面跳转的速度简直是不要不要的
 ### 前面搞了半天，现在要开始coding啦！
 好的，用自己的小编辑器打开vue项目（我用的是sublime）
 可以看到项目目录是这样子的
-![files-tree](http://leenty.com/img/vue/files-tree.png)
+![files-tree](/img/vue/files-tree.png)
 (插一句，如果喜欢这个sublime主题可以[查看这篇文章](http://leenty.com/2016/10/06/sublime-material-theme/))
 与自己的目录对比发现少几个文件，那是没有什么关系的，接下来要做的就是去创建这些文件。
 
@@ -91,7 +91,7 @@ export default router
 这里引入了两个包`vue`,`vue-router`和一个包含路由集合的`routes.js`文件
 整个文件的逻辑就是，使用`Vue.use()`方法告诉vue我们使用了路由
 然后就大大方方的导出路由对象
-![main.js router](http://leenty.com/img/vue/router-main.js.png)
+![main.js router](/img/vue/router-main.js.png)
 这个时候`main.js`里就可以接受到这里导出的路由对象，并挂载到vue对象上
 
 ### 在src目录下创建`routes.js`文件
@@ -101,7 +101,7 @@ export default router
 所以这里推荐单独写出来。
 同时呢也可以创建路由所对应的模板文件(`.vue`文件，我把它称为模板文件)，`Article.vue`和`Home.vue`
 模板文件叫什么名由自己决定，于是就能看到这张图里所有文件都齐了
-![files-tree](http://leenty.com/img/vue/files-tree.png)
+![files-tree](/img/vue/files-tree.png)
 
 那么在编写`routes.js`文件之前，需要先写好两个模板的内容(不然一会有没有成功都不清楚了，23333)
 
