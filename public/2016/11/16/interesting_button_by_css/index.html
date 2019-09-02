@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>使用纯css制作有炫酷交互的按钮 | leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前端入门简单，真正精通却不那么容易就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。 js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速 这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以移步到项目">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用纯css制作有炫酷交互的按钮">
+<meta property="og:url" content="http://baidu.com/2016/11/16/interesting_button_by_css/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="前端入门简单，真正精通却不那么容易就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。 js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速 这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以移步到项目">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-564670324f24a925.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2005796-094b4f13a9f7237d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2016-11-17T17:24:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用纯css制作有炫酷交互的按钮">
+<meta name="twitter:description" content="前端入门简单，真正精通却不那么容易就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。 js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速 这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以移步到项目">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2005796-564670324f24a925.gif?imageMogr2/auto-orient/strip">
+  
+    <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+  
+<!-- baidu_tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5bae4c35e53fde3bf2526312c3edaf1d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu_tongji -->
+
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/default_avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">leenty</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">leenty</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/default_avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">leenty</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-interesting_button_by_css" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用纯css制作有炫酷交互的按钮
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前端入门简单，真正精通却不那么容易"><a href="#前端入门简单，真正精通却不那么容易" class="headerlink" title="前端入门简单，真正精通却不那么容易"></a>前端入门简单，真正精通却不那么容易</h3><p>就css来说，会使用css做页面布局也只是第一步，css远比想象中的要强大。</p>
+<p>js很多效果都可以利用css各种属性和伪元素，制作出来，而且比起js还要方便快速</p>
+<p>这是一个菜单按钮的效果，成为焦点后会变成一把叉，在焦点移除后会还原会菜单形状<br>这时就可以配合js做状态管理写出一个完整的下拉菜单或者侧拉菜单了<br>之后也会使用在我的vue2.0项目中，如果爷您有兴趣可以<a href="http://vue2.leenty.com" target="_blank" rel="noopener">移步到项目地址处视察视察</a>，如果爷开心了就加个星</p>
+<p>具体的效果是这样的<br><img src="http://upload-images.jianshu.io/upload_images/2005796-564670324f24a925.gif?imageMogr2/auto-orient/strip" alt="rotate menu button by css"></p>
+<iframe height="265" scrolling="no" title="rotate menu button by css" src="//codepen.io/leenty/embed/PbGpEg/?height=265&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/leenty/pen/PbGpEg/" target="_blank" rel="noopener">rotate menu button by css</a> by leenty (<a href="http://codepen.io/leenty" target="_blank" rel="noopener">@leenty</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe><br><a href="http://codepen.io/leenty/pen/PbGpEg" target="_blank" rel="noopener">这里是menu按钮的演示地址</a><br><br>写代码要信奉“能偷懒就偷懒”原则，在保证实现效果的基础上，绝不多写一个标签，多写一段代码<br>所以上面的效果咋一看需要至少4个标签才能写完，其实只用了一个标签<br>用button标签做父元素，用两个伪元素做两个横杆<br>问：“那还有一个横杆呢？”<br>是这样，通过观察效果图，发现其实由菜单图标变换到X图标只需要其中的两个横杆。<br>所以第三个横杆我使用了box-shadow属性来模拟，说到底，其实第三个横杆只是第二个横杆的投影而已<br><br>核心使用<br><em> 属性：<code>transform-origin</code>, <code>transform</code>, <code>box-shadow</code>, <code>transition</code>
+</em> 伪元素：<code>:before</code>, <code>:after</code><br><br>代码标签是用pug语法写的，css是stylus语法写的，这两种语法都比较简单，如果会使用css选择器就可以看懂<br>下面也会简单的说明下<br><br>话不多说，上代码<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button#btn.b-menu</span><br><span class="line"><span class="comment">// pug语法里的'#'和'.'同css里一样'#'为id，'.'为class</span></span><br><span class="line">label(<span class="keyword">for</span>=<span class="string">"btn"</span>) click</span><br><span class="line"><span class="comment">// 除了id与class以外的属性要如上面的形式写在括号里</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// 这里扩展出来就是</span></span><br><span class="line"><span class="comment">// &lt;button id="btn" class="b-menu"&gt;&lt;/button&gt;</span></span><br><span class="line"><span class="comment">// &lt;label for="btn"&gt;click&lt;/label&gt;</span></span><br></pre></td></tr></table></figure><br><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">// stylus是css的预编译器的一种，简化了css的写法，结构更加清晰</span><br><span class="line">// 这里就不过多的陈述了，有疑问可以下方留言询问</span><br><span class="line"> </span><br><span class="line">// 先去除button的默认样式</span><br><span class="line"><span class="selector-tag">button</span></span><br><span class="line">  <span class="selector-tag">border</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">outline</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">box-shadow</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">background</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">color</span> <span class="selector-tag">currentColor</span></span><br><span class="line">  <span class="selector-tag">padding</span> 0</span><br><span class="line">  <span class="selector-tag">cursor</span> <span class="selector-tag">pointer</span></span><br><span class="line"> </span><br><span class="line">// 关键的部分开始了</span><br><span class="line"><span class="selector-class">.b-menu</span></span><br><span class="line">  <span class="selector-tag">width</span> 25<span class="selector-tag">px</span></span><br><span class="line">  <span class="selector-tag">height</span> 25<span class="selector-tag">px</span></span><br><span class="line">  <span class="selector-tag">position</span> <span class="selector-tag">relative</span></span><br><span class="line">  &amp;:before, // before是第一横杆，after是第二个横杆</span><br><span class="line">  &amp;:after // stylus里的&amp;表示承接上文的意思,这里也就等同于.b-menu:after</span><br><span class="line">    content ' '</span><br><span class="line">    position absolute // 使用绝对定位到目标位置</span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#fff</span></span><br><span class="line">    <span class="selector-tag">display</span> <span class="selector-tag">block</span></span><br><span class="line">    <span class="selector-tag">width</span> 100%</span><br><span class="line">    <span class="selector-tag">height</span> 3<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">left</span> 0</span><br><span class="line">    <span class="selector-tag">top</span> 11<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">border-radius</span> 3<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">transition</span> <span class="selector-tag">all</span> <span class="selector-class">.5s</span></span><br><span class="line">    transform-origin 50% 50% // 设置变换中心点，这个很重要，直接影响到后面的效果</span><br><span class="line">  &amp;<span class="selector-pseudo">:before</span></span><br><span class="line">    transform translateY(-6px) // 第一个横杆向上偏移，这里使用transform而不使用top属性是为了方便后面的使用</span><br><span class="line">  &amp;<span class="selector-pseudo">:after</span></span><br><span class="line">    <span class="selector-tag">box-shadow</span> 0 6<span class="selector-tag">px</span> 0 0 <span class="selector-id">#fff</span></span><br><span class="line">  &amp;:focus:before // 通过focus获取焦点，来触发起伪元素的变化</span><br><span class="line">    <span class="selector-tag">transform</span> <span class="selector-tag">rotateZ</span>(45<span class="selector-tag">deg</span>) <span class="selector-tag">translateY</span>(0)</span><br><span class="line">  &amp;<span class="selector-pseudo">:focus</span><span class="selector-pseudo">:after</span></span><br><span class="line">    <span class="selector-tag">box-shadow</span> 0 0 0 0 <span class="selector-id">#fff</span></span><br><span class="line">    <span class="selector-tag">transform</span> <span class="selector-tag">rotateZ</span>(135<span class="selector-tag">deg</span>) <span class="selector-tag">translateY</span>(0)</span><br></pre></td></tr></table></figure><br><br>### 这个是开关的效果<br>效果是这样的（duang!duang!daung!）<br><img src="http://upload-images.jianshu.io/upload_images/2005796-094b4f13a9f7237d.gif?imageMogr2/auto-orient/strip" alt="switch button"><br><br><iframe height="265" scrolling="no" title="switch button" src="//codepen.io/leenty/embed/jVMmjz/?height=265&theme-id=0&default-tab=css,result&embed-version=2" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;">See the Pen <a href="http://codepen.io/leenty/pen/jVMmjz/" target="_blank" rel="noopener">switch button</a> by leenty (<a href="http://codepen.io/leenty" target="_blank" rel="noopener">@leenty</a>) on <a href="http://codepen.io" target="_blank" rel="noopener">CodePen</a>.<br></iframe>
+
+<p><a href="http://codepen.io/leenty/pen/jVMmjz/" target="_blank" rel="noopener">这里是switch button演示地址</a></p>
+<p>开关效果又比之前那个复杂，switch的原理其实就是checkbox，<br>因为input是单标签，所以无法使用伪元素，这里就用到了label</p>
+<p>核心使用</p>
+<ul>
+<li>属性：<code>transform</code>, <code>background-size</code>, <code>border-radius</code>, <code>border-width</code>, <code>transition</code>, <code>cubic-bezier</code></li>
+<li>标签：<code>label</code></li>
+<li>伪元素：<code>:before</code>, <code>:after</code></li>
+</ul>
+<p>代码如下：<br>html<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">input(id=<span class="string">"switch"</span>,type=<span class="string">"checkbox"</span>).b-switchBtn</span><br><span class="line">label(<span class="keyword">for</span>=<span class="string">"switch"</span>).b-switchLabel</span><br><span class="line"><span class="comment">// label标签利用for属性与相应id的input标签绑定，从而达到点击label就是点击input的效果</span></span><br></pre></td></tr></table></figure></p>
+<p>css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">button</span>,</span><br><span class="line"><span class="selector-tag">input</span></span><br><span class="line">  <span class="selector-tag">border</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">outline</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">box-shadow</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">background</span> <span class="selector-tag">none</span></span><br><span class="line">  <span class="selector-tag">color</span> <span class="selector-tag">currentColor</span></span><br><span class="line">  <span class="selector-tag">padding</span> 0</span><br><span class="line">  <span class="selector-tag">cursor</span> <span class="selector-tag">pointer</span></span><br><span class="line">  </span><br><span class="line"><span class="selector-class">.b-switchLabel</span></span><br><span class="line">  <span class="selector-tag">position</span> <span class="selector-tag">relative</span></span><br><span class="line">  <span class="selector-tag">display</span> <span class="selector-tag">inline-block</span></span><br><span class="line">  <span class="selector-tag">width</span> 60<span class="selector-tag">px</span></span><br><span class="line">  <span class="selector-tag">height</span> 25<span class="selector-tag">px</span></span><br><span class="line">  <span class="selector-tag">input</span></span><br><span class="line">    <span class="selector-tag">display</span> <span class="selector-tag">none</span></span><br><span class="line">  &amp;:before, // before 作为白条</span><br><span class="line">  &amp;:after // after 作为水滴状开关</span><br><span class="line">    content ' '</span><br><span class="line">    <span class="selector-tag">display</span> <span class="selector-tag">block</span></span><br><span class="line">    <span class="selector-tag">position</span> <span class="selector-tag">absolute</span></span><br><span class="line">  &amp;<span class="selector-pseudo">:before</span></span><br><span class="line">    <span class="selector-tag">width</span> 100%</span><br><span class="line">    <span class="selector-tag">height</span> 4<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">background-color</span> <span class="selector-id">#fff</span></span><br><span class="line">    <span class="selector-tag">left</span> 0</span><br><span class="line">    <span class="selector-tag">top</span> 50%</span><br><span class="line">    <span class="selector-tag">border-radius</span> 5<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">transform</span> <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%)</span><br><span class="line">  &amp;<span class="selector-pseudo">:after</span></span><br><span class="line">    background-image url('http://upload-images.jianshu.io/upload_images/2005796-fcc62a13bd69f679.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240')</span><br><span class="line">    // 因为css不好写出漂亮的水滴效果，所以这里取巧用了图片</span><br><span class="line">    background-size cover // 利用这个属性缩放原来太大的图片</span><br><span class="line">    <span class="selector-tag">height</span> 25<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">width</span> 25<span class="selector-tag">px</span></span><br><span class="line">    <span class="selector-tag">left</span> 23%</span><br><span class="line">    <span class="selector-tag">top</span> 51%</span><br><span class="line">    <span class="selector-tag">border-radius</span> 25<span class="selector-tag">px</span></span><br><span class="line">    transform-origin center center // 老套路，定下变换中心点</span><br><span class="line">    transform translate(-50%, -50%) // 矫正left和top的偏移</span><br><span class="line">    background-clip border-box // 利用border-box属性值来使背景图片在border上也能显示</span><br><span class="line">    <span class="selector-tag">background-position</span> 50% 50%</span><br><span class="line">    <span class="selector-tag">border-style</span> <span class="selector-tag">solid</span></span><br><span class="line">    border-color transparent // 设置透明border有助于背景的显示</span><br><span class="line">    <span class="selector-tag">border-width</span> 0 3<span class="selector-tag">px</span> 0 0</span><br><span class="line">    transition all .5s cubic-bezier(0.4, -0.95, 0.4, 1.8) // 设置贝塞尔曲线以达到Duang的效果</span><br><span class="line"><span class="selector-class">.b-switchBtn</span></span><br><span class="line">  <span class="selector-tag">display</span> <span class="selector-tag">none</span></span><br><span class="line">  &amp;:checked~.b-switchLabel // 设置开关在被选中时改变状态，配合transition就动了起来</span><br><span class="line">    &amp;<span class="selector-pseudo">:after</span></span><br><span class="line">      <span class="selector-tag">left</span> 78%</span><br><span class="line">      <span class="selector-tag">border-width</span> 0 0 0 3<span class="selector-tag">px</span></span><br></pre></td></tr></table></figure></p>
+<p>有疑问的或者有建议的可以在下方留言</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/11/16/interesting_button_by_css/" class="archive-article-date">
+  	<time datetime="2016-11-16T13:19:16.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-11-16</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2016/11/20/vue2-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          vue2.0一起在懵逼的海洋里越陷越深（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/06/css/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用BEM+emmet的css书写与命名技巧[未完]</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="interesting_button_by_css" data-title="使用纯css制作有炫酷交互的按钮" data-url="http://baidu.com/2016/11/16/interesting_button_by_css/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"leenty-blog"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2019 leenty
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 17.5px;">vue-router</a> <a href="/tags/vuejs/" style="font-size: 20px;">vuejs</a> <a href="/tags/vuex/" style="font-size: 12.5px;">vuex</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0演示地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.deboy.cn">Deboy的博客</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不会捣(xia)鼓(gao)的前端不是好全栈</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

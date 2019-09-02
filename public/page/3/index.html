@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>leenty blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="leenty 不会捣(xia)鼓(gao)的前端不是好全栈">
+<meta name="keywords" content="前端,vuejs,vue-router,vuex,vue-cli,javascript,js,mvvm,css3,html5,git,github">
+<meta property="og:type" content="website">
+<meta property="og:title" content="leenty blog">
+<meta property="og:url" content="http://baidu.com/page/3/index.html">
+<meta property="og:site_name" content="leenty blog">
+<meta property="og:description" content="leenty 不会捣(xia)鼓(gao)的前端不是好全栈">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leenty blog">
+<meta name="twitter:description" content="leenty 不会捣(xia)鼓(gao)的前端不是好全栈">
+  
+    <link rel="alternative" href="/atom.xml" title="leenty blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <script src="/style.js"></script>
+  
+
+  
+<!-- baidu_tongji -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?5bae4c35e53fde3bf2526312c3edaf1d";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!-- End baidu_tongji -->
+
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/default_avatar.png" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">leenty</a></h1>
+		</hgroup>
+
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">友链</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="3" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">leenty</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/img/default_avatar.png" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">leenty</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/leenty" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        
+  
+    <article id="post-用ES6语法写的btnSelect下拉按钮" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/">用ES6语法写的btnSelect下拉按钮</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="btnSelect下拉按钮"><a href="#btnSelect下拉按钮" class="headerlink" title="btnSelect下拉按钮"></a>btnSelect下拉按钮</h3><p>按钮支持多个按钮关联，带联想功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下拉选择按钮 btnSelect</span></span><br><span class="line"><span class="comment">/* 暴露btnSelect类，假定全局存在jQuery */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">btnSelect</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> () &#123;</span><br><span class="line">    <span class="keyword">this</span>.btnSelectClass = <span class="string">".btn__select"</span></span><br><span class="line">  &#125;</span><br><span class="line">  init () &#123;</span><br><span class="line">    <span class="keyword">var</span> btnSelectList = &#123;&#125;</span><br><span class="line">    $(<span class="keyword">this</span>.btnSelectClass).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> name = $(<span class="keyword">this</span>).children(<span class="string">'input[type="hidden"]'</span>).attr(<span class="string">"name"</span>);</span><br><span class="line">      <span class="keyword">var</span> btnSelect = <span class="keyword">new</span> btnSelectClass($(<span class="keyword">this</span>))</span><br><span class="line">      btnSelectList[name] = btnSelect</span><br><span class="line">      btnSelect.init()</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">window</span>.btnSelectList = btnSelectList</span><br><span class="line">    <span class="keyword">var</span> btnSelectRelations = <span class="keyword">new</span> btnSelectRelation([<span class="string">"province"</span>,<span class="string">"city"</span>])</span><br><span class="line">    btnSelectRelations.init()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 注册的组件放在window.btnSelectList下 取input[type='hidden']的name值为键名</span></span><br><span class="line"><span class="comment">    &lt;span class="btn__select"&gt;</span></span><br><span class="line"><span class="comment">      &lt;input type="text" placeholder="专业"&gt;</span></span><br><span class="line"><span class="comment">      &lt;input type="hidden" name="qwe"&gt;</span></span><br><span class="line"><span class="comment">      &lt;button type="button"&gt;&lt;/button&gt;</span></span><br><span class="line"><span class="comment">      &lt;ul&gt;</span></span><br><span class="line"><span class="comment">        &lt;li name="caa"&gt;123&lt;/li&gt;</span></span><br><span class="line"><span class="comment">        &lt;li name="tafa"&gt;456&lt;/li&gt;</span></span><br><span class="line"><span class="comment">        &lt;li name="xafa"&gt;789&lt;/li&gt;</span></span><br><span class="line"><span class="comment">      &lt;/ul&gt;</span></span><br><span class="line"><span class="comment">    &lt;/span&gt;</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 简写 在实例化的时候会补全，不过这样是没有初始数据的</span></span><br><span class="line"><span class="comment">    &lt;span class="btn__select"&gt;</span></span><br><span class="line"><span class="comment">      &lt;input type="text" placeholder="专业"&gt;</span></span><br><span class="line"><span class="comment">      &lt;input type="hidden" name="qwe"&gt;</span></span><br><span class="line"><span class="comment">    &lt;/span&gt;</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 导入数据</span></span><br><span class="line"><span class="comment">    window.btnSelectList.qwe.set(&#123;</span></span><br><span class="line"><span class="comment">      caa: "中国美术学院",</span></span><br><span class="line"><span class="comment">      tafa: "天津美术学院",</span></span><br><span class="line"><span class="comment">      xafa: "西安美术学院"</span></span><br><span class="line"><span class="comment">    &#125;)</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 获取</span></span><br><span class="line"><span class="comment">    window.btnSelectList.qwe.get()</span></span><br><span class="line"><span class="comment"> *   </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">btnSelectClass</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (element, data = null)&#123;</span><br><span class="line">    <span class="keyword">this</span>.btn__select = element</span><br><span class="line">    <span class="keyword">this</span>.data = data</span><br><span class="line">    <span class="keyword">this</span>.preText = <span class="string">""</span></span><br><span class="line">    <span class="keyword">this</span>.name = <span class="literal">undefined</span></span><br><span class="line">    <span class="keyword">this</span>.btnSelectRelation = <span class="literal">null</span></span><br><span class="line">    <span class="keyword">this</span>.set = <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.data = data</span><br><span class="line">      <span class="keyword">this</span>.reBuildDom(data)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.get = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='hidden']"</span>).val()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  init () &#123;</span><br><span class="line">    <span class="keyword">var</span> _this = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">this</span>.data == <span class="literal">null</span> &amp;&amp; <span class="keyword">this</span>.buildBtnSelect()</span><br><span class="line">    <span class="comment">// 选择 取值</span></span><br><span class="line">    <span class="keyword">this</span>.btn__select.on(<span class="string">"click"</span>,<span class="string">"li"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      _this.setValue($(<span class="keyword">this</span>).attr(<span class="string">"name"</span>), $(<span class="keyword">this</span>).text())</span><br><span class="line">      <span class="keyword">typeof</span> _this.btnSelectRelation === <span class="string">"function"</span> &amp;&amp; _this.btnSelectRelation(_this.name,$(<span class="keyword">this</span>).attr(<span class="string">"name"</span>))</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="comment">// 监听输入动作，触发搜索功能</span></span><br><span class="line">    <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='text']"</span>).keyup(<span class="function"><span class="params">e</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> val = $(e.target).val()</span><br><span class="line">      val !== <span class="keyword">this</span>.preText &amp;&amp; <span class="keyword">this</span>.search(val)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">this</span>.setName()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setValue (name, value) &#123;</span><br><span class="line">    <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='text']"</span>).val(value)</span><br><span class="line">    <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='hidden']"</span>).val(name)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setName () &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="keyword">this</span>.btn__select.children(<span class="string">'input[type="hidden"]'</span>).attr(<span class="string">"name"</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  buildBtnSelect () &#123;</span><br><span class="line">    <span class="keyword">var</span> ul = <span class="keyword">this</span>.btn__select.children(<span class="string">"ul"</span>)</span><br><span class="line">    <span class="keyword">var</span> button = <span class="keyword">this</span>.btn__select.children(<span class="string">"button"</span>)</span><br><span class="line">    button.length == <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>.btn__select.children(<span class="string">"input[type='hidden']"</span>).after(<span class="string">'&lt;button type="button"&gt;&lt;/button&gt;'</span>)</span><br><span class="line">    <span class="keyword">if</span>(ul.length == <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="keyword">this</span>.btn__select.append(<span class="string">"&lt;ul&gt;&lt;/ul&gt;"</span>)</span><br><span class="line">      <span class="keyword">this</span>.data = &#123;&#125;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> data = &#123;&#125;</span><br><span class="line">      <span class="keyword">var</span> items = <span class="keyword">this</span>.btn__select.find(<span class="string">"li"</span>)</span><br><span class="line">      items.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        data[$(<span class="keyword">this</span>).attr(<span class="string">"name"</span>)] = $(<span class="keyword">this</span>).text()</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">this</span>.data = data</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  reBuildDom (data) &#123;</span><br><span class="line">    <span class="keyword">var</span> ul = <span class="keyword">this</span>.btn__select.children(<span class="string">"ul"</span>)</span><br><span class="line">    ul.empty()</span><br><span class="line">    <span class="keyword">var</span> items = <span class="string">""</span></span><br><span class="line">    $.each(data, <span class="function"><span class="keyword">function</span> (<span class="params">k,v</span>) </span>&#123;</span><br><span class="line">      items += <span class="string">`&lt;li name="<span class="subst">$&#123;k&#125;</span>"&gt;<span class="subst">$&#123;v&#125;</span>&lt;/li&gt;`</span></span><br><span class="line">    &#125;)</span><br><span class="line">    ul.append(items)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  search (val) &#123;</span><br><span class="line">    <span class="keyword">this</span>.preText = val</span><br><span class="line">    <span class="keyword">var</span> data = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span>(val != <span class="string">""</span>)&#123;</span><br><span class="line">      $.each(<span class="keyword">this</span>.data,(k, v) =&gt; &#123;</span><br><span class="line">        (v.indexOf(val) &gt; <span class="number">-1</span>) &amp;&amp; (data[k] = v)</span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">this</span>.reBuildDom(data)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.reBuildDom(<span class="keyword">this</span>.data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*["province","city"]*/</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * btnSelect关联器</span></span><br><span class="line"><span class="comment"> * 在btnSelect初始化之后 才能 将关联器调用初始化</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 在实例化关联器是传入与关联按钮的name数组，按关联顺序排序</span></span><br><span class="line"><span class="comment"> * 如下：province的下一级是city</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 关于初始化的板栗：</span></span><br><span class="line"><span class="comment">    var btnSelectRelations = new btnSelectRelation(["province","city"])</span></span><br><span class="line"><span class="comment">    btnSelectRelations.init()</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 设置数据:</span></span><br><span class="line"><span class="comment">    window.btnSelectList.province.setSource(&#123;</span></span><br><span class="line"><span class="comment">      zj: "浙江省",</span></span><br><span class="line"><span class="comment">      hn: "湖南省",</span></span><br><span class="line"><span class="comment">      sc: "四川省"</span></span><br><span class="line"><span class="comment">    &#125;)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    window.btnSelectList.city.setSource(&#123;</span></span><br><span class="line"><span class="comment">      zj: &#123;</span></span><br><span class="line"><span class="comment">        hz:"杭州市",</span></span><br><span class="line"><span class="comment">        sx:"绍兴市",</span></span><br><span class="line"><span class="comment">        jh:"金华市"</span></span><br><span class="line"><span class="comment">      &#125;,</span></span><br><span class="line"><span class="comment">      hn: &#123;</span></span><br><span class="line"><span class="comment">        cs:"长沙市",</span></span><br><span class="line"><span class="comment">        yy:"岳阳市",</span></span><br><span class="line"><span class="comment">        cd:"常德市"</span></span><br><span class="line"><span class="comment">      &#125;,</span></span><br><span class="line"><span class="comment">      sc: &#123;</span></span><br><span class="line"><span class="comment">        cd:"成都市",</span></span><br><span class="line"><span class="comment">        my:"绵阳市",</span></span><br><span class="line"><span class="comment">        dy:"德阳市"</span></span><br><span class="line"><span class="comment">      &#125;</span></span><br><span class="line"><span class="comment">    &#125;)</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">btnSelectRelation</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span> (relationType) &#123;</span><br><span class="line">    <span class="keyword">this</span>.relationType = relationType</span><br><span class="line">    <span class="keyword">this</span>.relationData = []</span><br><span class="line">    <span class="keyword">this</span>.set = <span class="function">(<span class="params">childName, data</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">var</span> index = <span class="keyword">this</span>.getChildIndex(childName)</span><br><span class="line">      <span class="keyword">this</span>.relationData[index] = data</span><br><span class="line">      index == <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>.setChildData(index, data)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  init () &#123;</span><br><span class="line">    $.each(<span class="keyword">this</span>.relationType,(k, v) =&gt; &#123;</span><br><span class="line">      <span class="built_in">window</span>.btnSelectList[v].setSource = <span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> name = v</span><br><span class="line">        <span class="keyword">this</span>.set(name,data)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">window</span>.btnSelectList[v].btnSelectRelation = <span class="function">(<span class="params">btnName,key</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> index = <span class="keyword">this</span>.getChildIndex(btnName) + <span class="number">1</span></span><br><span class="line">        index &gt; <span class="number">0</span> &amp;&amp; index &lt; <span class="keyword">this</span>.relationData.length &amp;&amp; <span class="keyword">this</span>.filter(index, key)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  getChildIndex (childName) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.relationType.indexOf(childName)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  filter (index, key) &#123;</span><br><span class="line">    <span class="keyword">this</span>.setChildData(index, <span class="keyword">this</span>.relationData[index][key])</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  setChildData (index, data) &#123;</span><br><span class="line">    <span class="built_in">window</span>.btnSelectList[<span class="keyword">this</span>.relationType[index]].set(data)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="补上css-这里是用stylus语法"><a href="#补上css-这里是用stylus语法" class="headerlink" title="补上css,这里是用stylus语法"></a>补上css,这里是用stylus语法</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 清除按钮样式 */</span></span><br><span class="line"><span class="function"><span class="title">btn-clean</span><span class="params">()</span></span></span><br><span class="line">  <span class="attribute">border</span> none</span><br><span class="line">  <span class="attribute">outline</span> none</span><br><span class="line">  <span class="attribute">box-shadow</span> none</span><br><span class="line">  <span class="attribute">background</span> none</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 下拉按钮样式 */</span></span><br><span class="line"><span class="function"><span class="title">dropDown</span><span class="params">()</span></span></span><br><span class="line">  <span class="attribute">padding</span> <span class="number">0</span></span><br><span class="line">  <span class="attribute">border-left</span> <span class="number">6px</span> solid transparent</span><br><span class="line">  <span class="attribute">border-right</span> <span class="number">6px</span> solid transparent</span><br><span class="line">  <span class="attribute">border-top</span> <span class="number">10px</span> solid mt-orange</span><br><span class="line"></span><br><span class="line">.btn__select</span><br><span class="line">  btn-clean()</span><br><span class="line">  <span class="attribute">border</span> <span class="number">1px</span> solid <span class="number">#ccc</span></span><br><span class="line">  <span class="attribute">border-radius</span> <span class="number">2px</span></span><br><span class="line">  <span class="attribute">font-size</span> <span class="number">14px</span></span><br><span class="line">  <span class="attribute">color</span> gray-a7</span><br><span class="line">  <span class="attribute">padding</span> <span class="number">0.5em</span> <span class="number">0.7em</span></span><br><span class="line">  <span class="attribute">position</span> relative</span><br><span class="line">  <span class="selector-tag">input</span>,</span><br><span class="line">  button</span><br><span class="line">    btn-clean()</span><br><span class="line">    &amp;:focus~ul</span><br><span class="line">      <span class="attribute">display</span> block</span><br><span class="line">  button</span><br><span class="line">    dropDown()</span><br><span class="line">  ul</span><br><span class="line">    <span class="attribute">position</span> absolute</span><br><span class="line">    <span class="attribute">top</span> <span class="number">100%</span></span><br><span class="line">    <span class="attribute">left</span> <span class="number">0</span></span><br><span class="line">    <span class="attribute">width</span> <span class="number">100%</span></span><br><span class="line">    <span class="attribute">border-radius</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="number">2px</span></span><br><span class="line">    box-shadow 0 2px 2px rgba(0,0,0,.3)</span><br><span class="line">    <span class="attribute">display</span> none</span><br><span class="line">    &amp;:hover</span><br><span class="line">      <span class="attribute">display</span> block</span><br><span class="line">  li</span><br><span class="line">    <span class="attribute">padding</span> <span class="number">0.5em</span> <span class="number">0.3em</span></span><br><span class="line">    <span class="attribute">border</span> <span class="number">1px</span> solid <span class="number">#ccc</span></span><br><span class="line">    &amp;:not(:last-child)</span><br><span class="line">      <span class="attribute">border-bottom</span> none</span><br><span class="line">    &amp;:last-child</span><br><span class="line">      <span class="attribute">border-radius</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2px</span> <span class="number">2px</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/13/用ES6语法写的btnSelect下拉按钮/" class="archive-article-date">
+  	<time datetime="2016-10-12T16:43:04.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-13</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-使用原生js以base64读取本地图片文件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/11/使用原生js以base64读取本地图片文件/">使用原生js以base64读取本地图片文件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>在做项目的时候遇到了一个问题，需要用户上传一张图片在画布里操作，一般的逻辑是先传图片到服务器，然后从服务器读取这张图片，这过程中可能读取的时间会过长，而且服务器也没必要存操作前的图片，于是就需要本地读取图片（这里用base64的格式）。<br>这里为了备忘，记录下。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">File.prototype.convertToBase64 = <span class="function"><span class="keyword">function</span>(<span class="params">callback</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> FR= <span class="keyword">new</span> FileReader();</span><br><span class="line">    FR.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">         callback(e.target.result)</span><br><span class="line">    &#125;;       </span><br><span class="line">    FR.readAsDataURL(<span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'[type="file"]'</span>).files[<span class="number">0</span>].convertToBase64(<span class="function"><span class="keyword">function</span>(<span class="params">base64</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(base64);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/11/使用原生js以base64读取本地图片文件/" class="archive-article-date">
+  	<time datetime="2016-10-10T17:01:23.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-11</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-zz的我和hexo多说配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/08/zz的我和hexo多说配置/">zz的我和hexo多说配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="在-config-yml中添加多说的配置："><a href="#在-config-yml中添加多说的配置：" class="headerlink" title="在_config.yml中添加多说的配置："></a>在_config.yml中添加多说的配置：</h3><p><strong>(⚠️注意：_config.yml在根目录和主题根目录都会存在，主题目录下的文件信息将会覆盖根目录的文件信息)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">duoshuo: 你站点的short_name</span><br><span class="line">duoshuo_shortname: 你站点的short_name</span><br></pre></td></tr></table></figure></p>
+<p>修改<code>themes\landscape\layout\_partial\article.ejs</code>模板<br><strong>把</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">      &lt;noscript&gt;Please <span class="built_in">enable</span> JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>改为</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">  &lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">    &lt;!-- 多说评论框 start --&gt;</span><br><span class="line">    &lt;div class=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.layout %&gt;-&lt;%= post.slug %&gt;"</span> data-title=<span class="string">"&lt;%= post.title %&gt;"</span> data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;!-- 多说评论框 end --&gt;</span><br><span class="line">    &lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span><br><span class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    var duoshuoQuery = &#123;short_name:<span class="string">'&lt;%= config.duoshuo_shortname %&gt;'</span>&#125;;</span><br><span class="line">      (<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        var ds = document.createElement(<span class="string">'script'</span>);</span><br><span class="line">        ds.type = <span class="string">'text/javascript'</span>;</span><br><span class="line">        ds.async = <span class="literal">true</span>;</span><br><span class="line">        ds.src = (document.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//static.duoshuo.com/embed.js'</span>;</span><br><span class="line">        ds.charset = <span class="string">'UTF-8'</span>;</span><br><span class="line">        (document.getElementsByTagName(<span class="string">'head'</span>)[0] </span><br><span class="line">         || document.getElementsByTagName(<span class="string">'body'</span>)[0]).appendChild(ds);</span><br><span class="line">      &#125;)();</span><br><span class="line">      &lt;/script&gt;</span><br><span class="line">    &lt;!-- 多说公共JS代码 end --&gt;</span><br><span class="line">  &lt;/section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="同时使用多个deployer"><a href="#同时使用多个deployer" class="headerlink" title="同时使用多个deployer"></a>同时使用多个deployer</h3><p>单个deployer的时候的 _config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:leenty/leenty.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+<p>而换成多个deployer的时候需要在前面加<code>-</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">- type: git</span><br><span class="line">  repo: git@github.com:demo/demo.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">- type: git</span><br><span class="line">  repo: git@git.coding.net:demo/demo.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/08/zz的我和hexo多说配置/" class="archive-article-date">
+  	<time datetime="2016-10-07T16:04:33.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-08</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-sublime-material-theme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/06/sublime-material-theme/">推荐一个不错的sublime UI界面美化方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="晒一晒我的prefernces-sublime-setting"><a href="#晒一晒我的prefernces-sublime-setting" class="headerlink" title="晒一晒我的prefernces.sublime-setting"></a>晒一晒我的prefernces.sublime-setting</h2><p>界面如图, 主题名字叫做 Material Theme<br><img src="/img/prefernces-sublime-setting.png" alt="prefernces-sublime-setting"></p>
+<h3 id="主题地址"><a href="#主题地址" class="headerlink" title="主题地址"></a>主题地址</h3><p><a href="https://github.com/equinusocio/material-theme" target="_blank" rel="noopener">equinusocio/material-theme</a><br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"always_show_minimap_viewport"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"color_scheme"</span>: <span class="string">"Packages/Material Theme/schemes/Material-Theme.tmTheme"</span>,</span><br><span class="line">	<span class="attr">"file_exclude_patterns"</span>:</span><br><span class="line">	[</span><br><span class="line">		<span class="string">".DS_Store"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"folder_exclude_patterns"</span>:</span><br><span class="line">	[</span><br><span class="line">		<span class="string">".git"</span>,</span><br><span class="line">		<span class="string">"node_modules"</span>,</span><br><span class="line">		<span class="string">"public/static"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"font_size"</span>: <span class="number">12</span>,</span><br><span class="line">	<span class="attr">"ignored_packages"</span>:</span><br><span class="line">	[</span><br><span class="line">		<span class="string">"Vintage"</span></span><br><span class="line">	],</span><br><span class="line">	<span class="attr">"line_padding_bottom"</span>: <span class="number">3</span>,</span><br><span class="line">	<span class="attr">"line_padding_top"</span>: <span class="number">3</span>,</span><br><span class="line">	<span class="attr">"material_theme_accent_sky"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_compact_sidebar"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_contrast_mode"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_disable_tree_indicator"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_panel_separator"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_small_statusbar"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_small_tab"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_tabs_autowidth"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_tabs_separator"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"material_theme_tree_headings"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"overlay_scroll_bars"</span>: <span class="string">"enabled"</span>,</span><br><span class="line">	<span class="attr">"tab_size"</span>: <span class="number">2</span>,</span><br><span class="line">	<span class="attr">"theme"</span>: <span class="string">"Material-Theme.sublime-theme"</span>,</span><br><span class="line">	<span class="attr">"translate_tabs_to_spaces"</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">"word_warp"</span>: <span class="string">"auto"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/06/sublime-material-theme/" class="archive-article-date">
+  	<time datetime="2016-10-06T15:22:02.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-06</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sublime/">sublime</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/30/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/08/30/hello-world/" class="archive-article-date">
+  	<time datetime="2016-08-30T15:49:24.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-08-30</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2019 leenty
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+      <li data-hook="tools-section-friends"><span class="text">友链</span><i class="icon-link"></i></li>
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/js/" style="font-size: 12.5px;">js</a> <a href="/tags/other/" style="font-size: 10px;">other</a> <a href="/tags/sublime/" style="font-size: 10px;">sublime</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a> <a href="/tags/vue-router/" style="font-size: 17.5px;">vue-router</a> <a href="/tags/vuejs/" style="font-size: 20px;">vuejs</a> <a href="/tags/vuex/" style="font-size: 12.5px;">vuex</a>
+    			</div>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends">
+  		
+  			<div class="friends-wrap" id="js-friends">
+  			
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://vue2.leenty.com">vue2.0演示地址</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.leenty.com/">leenty的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://whqet.github.io/">whqet的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="https://shenyubin.github.io/">沈雨彬的博客</a>
+  	        
+  	          <a target="_blank" class="main-nav-link switch-friends-link" href="http://www.deboy.cn">Deboy的博客</a>
+  	        
+  	        </div>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">不会捣(xia)鼓(gao)的前端不是好全栈</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
